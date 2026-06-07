@@ -1,0 +1,54 @@
+RADAR: FINAL COMPREHENSIVE RESULTS FOR OBESITY (AACE/ACE 2016)
+========================================================================
+
+Total studies screened: 205
+Studies with demographic data: 248
+Eligible for analysis: 54
+
+--- POPULATION ---
+Total participants (eligible): 3,559,937.0
+Sample size range: 24.0 - 1,460,000.0
+Sample size mean (SD): 71,199 (245,373)
+Sample size median: 4,470
+
+--- TEMPORAL ---
+Year range: 1998 - 2015
+
+--- AGE ---
+Age reported: 51/54 (94.4%)
+
+--- SEX ---
+Sex (both M/F) reported: 52/54 (96.3%)
+Mean Male%: 43.3% (SD: 20.9)
+Mean Female%: 56.6% (SD: 20.9)
+
+--- RACE/ETHNICITY ---
+Any race reported: 54/54 (100.0%)
+All 5 race categories: 23/54 (42.6%)
+All 5 sum ≈ 100%: 21/54 (38.9%)
+  %White: 49/54 (90.7%) — Mean: 63.4% (SD: 32.8)
+  %Black: 42/54 (77.8%) — Mean: 16.4% (SD: 22.3)
+  %Hispanic: 35/54 (64.8%) — Mean: 8.6% (SD: 9.9)
+  %Asian: 33/54 (61.1%) — Mean: 17.8% (SD: 33.5)
+  %Other/Mixed: 39/54 (72.2%) — Mean: 6.2% (SD: 16.2)
+
+--- GEOGRAPHY ---
+USA: 32 (59.3%)
+Multi-country (incl. USA): 6 (11.1%)
+Multi-country: 5 (9.3%)
+Non-USA (GBR): 2 (3.7%)
+Non-USA (ESP): 2 (3.7%)
+Non-USA (JPN): 2 (3.7%)
+Non-USA (NZL): 1 (1.9%)
+Non-USA (ZAF): 1 (1.9%)
+Non-USA (TWN): 1 (1.9%)
+Non-USA (CHN): 1 (1.9%)
+Non-USA (NLD): 1 (1.9%)
+
+--- STUDY DESIGN ---
+Cross-sectional: 15 (27.8%)
+Other: 14 (25.9%)
+RCT / Clinical Trial: 12 (22.2%)
+Cohort: 6 (11.1%)
+Review / Meta-analysis: 4 (7.4%)
+Observational: 3 (5.6%)
