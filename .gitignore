@@ -1,0 +1,14 @@
+# Source PDFs - large screening exports from Google Sheets
+*.pdf
+*.xlsx
+*.xls
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+venv/
+.venv/

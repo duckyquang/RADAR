@@ -1,0 +1,82 @@
+JOURNALS = [
+    {
+        "id": "obesity_aace_2016",
+        "disease": "Obesity",
+        "society": "AACE/ACE",
+        "year": 2016,
+        "title": "AACE/ACE Comprehensive Clinical Practice Guidelines for Medical Care of Patients with Obesity",
+        "doi": "https://doi.org/10.4158/EP161365.GL",
+        "pdf_filename": "AACE_ACE Comprehensive Clinical Practice Guidelines for Medical Care of Patients with Obesity - Main Document - Extraction of Cited Source.pdf",
+    },
+    {
+        "id": "diabetes_ada_2025",
+        "disease": "Type 2 Diabetes",
+        "society": "ADA",
+        "year": 2025,
+        "title": "Standards of Care in Diabetes — 2025 (ADA Standards of Medical Care)",
+        "doi": "https://doi.org/10.2337/dc25-S001",
+        "pdf_filename": None,
+    },
+    {
+        "id": "thyroid_cancer_ata_2015",
+        "disease": "Thyroid Cancer (Differentiated)",
+        "society": "ATA",
+        "year": 2015,
+        "title": "2015 American Thyroid Association Management Guidelines for Adult Patients with Thyroid Nodules and Differentiated Thyroid Cancer",
+        "doi": "https://doi.org/10.1089/thy.2015.0020",
+        "pdf_filename": None,
+    },
+    {
+        "id": "osteoporosis_aace_2020",
+        "disease": "Osteoporosis",
+        "society": "AACE/ACE",
+        "year": 2020,
+        "title": "American Association of Clinical Endocrinologists/American College of Endocrinology Clinical Practice Guidelines for the Diagnosis and Treatment of Postmenopausal Osteoporosis",
+        "doi": "https://doi.org/10.4158/GL-2020-0524SUPPL",
+        "pdf_filename": None,
+    },
+    {
+        "id": "hcc_aasld_2023",
+        "disease": "Hepatocellular Carcinoma (HCC)",
+        "society": "AASLD",
+        "year": 2023,
+        "title": "AASLD Practice Guidance on the Management of Hepatocellular Carcinoma",
+        "doi": "https://doi.org/10.1097/HEP.0000000000000466",
+        "pdf_filename": None,
+    },
+]
+
+COUNTRY_VALID_CODES = {
+    "US", "USA", "United States", "Canada", "CA",
+    "UK", "GB", "GBR", "United Kingdom",
+    "Germany", "DE", "DEU",
+    "France", "FR", "FRA",
+    "Japan", "JP", "JPN",
+    "China", "CN", "CHN",
+    "India", "IN", "IND",
+    "Brazil", "BR", "BRA",
+    "Australia", "AU", "AUS",
+    "Italy", "IT", "ITA",
+    "Spain", "ES", "ESP",
+    "Netherlands", "NL", "NLD",
+    "South Korea", "KR", "KOR",
+    "Sweden", "SE", "SWE",
+    "Switzerland", "CH", "CHE",
+    "Denmark", "DK", "DNK",
+    "Norway", "NO", "NOR",
+    "Finland", "FI", "FIN",
+    "Belgium", "BE", "BEL",
+    "Austria", "AT", "AUT",
+    "Ireland", "IE", "IRL",
+    "New Zealand", "NZ", "NZL",
+    "Singapore", "SG", "SGP",
+    "Hong Kong", "HK", "HKG",
+    "Taiwan", "TW", "TWN",
+    "Mexico", "MX", "MEX",
+    "Multi-country", "MULTI", "Global", "International",
+}
+
+RACE_CATEGORIES = ["White", "Black", "Hispanic", "Asian", "Other/Mixed"]
+
+SEX_TOLERANCE = 5.0
+RACE_TOLERANCE = 5.0
