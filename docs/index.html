@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RADAR — Racial And Demographic Analysis of Research</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1B4F91;
+  --primary-dark: #153d72;
+  --primary-light: #dce8f7;
+  --secondary: #4A90D9;
+  --success: #1F6B3A;
+  --warning: #9D5E00;
+  --danger: #B91C1C;
+  --gray-50: #F7F8FA;
+  --gray-100: #EFF2F7;
+  --gray-200: #DDE2EC;
+  --gray-300: #C3CAD9;
+  --gray-400: #8E9AB3;
+  --gray-500: #5E6E8A;
+  --gray-600: #44546A;
+  --gray-700: #2E3D52;
+  --gray-800: #1E2C3D;
+  --gray-900: #111827;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',-apple-system,sans-serif; background:var(--gray-50); color:var(--gray-800); line-height:1.6; }
+
+/* ── Navigation ── */
+.nav { background:white; border-bottom:2px solid var(--gray-200); padding:0 32px; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50; }
+.nav-l { display:flex; align-items:center; gap:16px; }
+.nav-wordmark { display:flex; flex-direction:column; }
+.nav-title { font-size:20px; font-weight:700; color:var(--primary); letter-spacing:-.01em; line-height:1.1; }
+.nav-sub { font-size:11px; color:var(--gray-500); font-weight:400; letter-spacing:.01em; line-height:1.2; }
+.nav-divider { width:1px; height:32px; background:var(--gray-200); }
+.nav-r { font-size:11px; color:var(--gray-500); font-style:italic; text-align:right; line-height:1.4; }
+.container { max-width:1440px; margin:0 auto; padding:28px 32px; }
+
+/* ── Search Panel (replaces hero) ── */
+.search-panel { background:white; border-bottom:1px solid var(--gray-200); padding:28px 32px; }
+.search-panel-inner { max-width:1440px; margin:0 auto; }
+.search-panel h1 { font-size:22px; font-weight:600; color:var(--primary); margin-bottom:4px; letter-spacing:-.01em; }
+.search-panel .panel-sub { font-size:14px; color:var(--gray-500); margin-bottom:20px; max-width:680px; }
+.panel-input { max-width:680px; }
+.panel-input .input-row { display:flex; gap:0; border:1px solid var(--gray-300); border-radius:var(--radius); overflow:hidden; background:white; }
+.panel-input .input-row:focus-within { border-color:var(--primary); box-shadow:0 0 0 3px rgba(27,79,145,.1); }
+.panel-input input { flex:1; padding:11px 16px; border:none; font-size:14px; outline:none; font-family:inherit; color:var(--gray-900); background:transparent; }
+.panel-input input::placeholder { color:var(--gray-400); }
+.panel-input button { padding:11px 24px; border:none; background:var(--primary); color:white; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap; letter-spacing:.01em; }
+.panel-input button:hover { background:var(--primary-dark); }
+.panel-input button:disabled { opacity:.5; cursor:not-allowed; }
+.examples { display:flex; gap:6px; align-items:center; margin-top:12px; flex-wrap:wrap; }
+.examples-label { font-size:12px; color:var(--gray-400); }
+.example-btn { background:none; border:none; color:var(--secondary); padding:3px 6px; font-size:12px; cursor:pointer; font-family:inherit; text-decoration:underline; text-decoration-color:rgba(74,144,217,.3); transition:.12s; }
+.example-btn:hover { color:var(--primary); text-decoration-color:var(--primary); }
+
+/* ── Status bar ── */
+.status { display:none; padding:10px 16px; border-radius:var(--radius); margin-bottom:20px; font-size:13px; font-weight:500; align-items:center; gap:12px; border:1px solid transparent; }
+.status.show { display:flex; }
+.status.loading { background:#EBF3FB; color:var(--primary); border-color:#C6DDEE; }
+.status.error { background:#FEF2F2; color:var(--danger); border-color:#FECACA; }
+.status.success { background:#EDFAF2; color:var(--success); border-color:#A7F3C4; }
+.progress-bar-wrap { width:72px; height:4px; background:rgba(27,79,145,.15); border-radius:2px; flex-shrink:0; overflow:hidden; }
+.progress-bar-fill { height:100%; width:0%; border-radius:2px; background:var(--primary); animation:progress-indeterminate 1.4s ease infinite; }
+@keyframes progress-indeterminate {
+  0%   { width:0%;  margin-left:0%; }
+  40%  { width:60%; margin-left:20%; }
+  100% { width:0%;  margin-left:100%; }
+}
+
+/* ── Dashboard ── */
+#dashboard { display:none; }
+#dashboard.show { display:block; }
+
+.guideline-header { background:white; border-radius:var(--radius); border:1px solid var(--gray-200); box-shadow:var(--shadow); padding:20px 28px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+.guideline-header h2 { font-size:17px; font-weight:600; color:var(--gray-900); }
+.guideline-header .gh-meta { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.gh-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; background:var(--gray-100); border-radius:3px; font-size:11px; font-weight:400; color:var(--gray-500); }
+.gh-badge span { color:var(--gray-800); font-weight:600; }
+
+/* ── KPI Cards ── */
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:24px; }
+.kpi { background:white; border-radius:var(--radius); padding:16px 18px; border:1px solid var(--gray-200); box-shadow:var(--shadow); }
+.kpi-label { font-size:10px; font-weight:600; color:var(--gray-500); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.kpi-value { font-size:28px; font-weight:700; color:var(--primary); line-height:1.15; }
+.kpi-sub { font-size:11px; color:var(--gray-400); margin-top:2px; }
+
+/* ── Section titles ── */
+.section-title { font-size:13px; font-weight:600; color:var(--gray-500); text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; }
+.section-title small { font-size:11px; font-weight:400; color:var(--gray-400); text-transform:none; letter-spacing:0; }
+
+/* ── Charts ── */
+.charts { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+.chart-full { grid-column:1/-1; }
+.chart-wide { grid-column:span 2; }
+@media(max-width:1100px) { .chart-wide { grid-column:1/-1; } }
+.chart-card { background:white; border-radius:var(--radius); border:1px solid var(--gray-200); box-shadow:var(--shadow); padding:18px 20px; }
+.chart-card h3 { font-size:11px; font-weight:600; color:var(--gray-500); text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+.chart-card h3 small { font-size:11px; font-weight:400; color:var(--gray-400); text-transform:none; letter-spacing:0; }
+.chart-wrap { position:relative; height:260px; }
+.chart-wrap.tall { height:340px; }
+.chart-wrap.short { height:180px; }
+
+/* ── Meta grid ── */
+.meta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:24px; }
+.meta-card { background:white; border-radius:var(--radius); border:1px solid var(--gray-200); box-shadow:var(--shadow); padding:14px 18px; }
+.meta-card .mc-label { font-size:10px; font-weight:600; color:var(--gray-500); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; }
+.meta-card .mc-value { font-size:14px; font-weight:600; color:var(--gray-900); }
+.meta-card .mc-sub { font-size:11px; color:var(--gray-400); margin-top:2px; }
+.meta-card .mc-bar { height:3px; border-radius:2px; background:var(--gray-100); margin-top:10px; overflow:hidden; }
+.meta-card .mc-bar-fill { height:100%; border-radius:2px; transition:width .5s; }
+
+/* ── Table ── */
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead th { background:var(--gray-100); border-bottom:2px solid var(--gray-200); padding:9px 14px; text-align:left; font-weight:600; color:var(--gray-600); font-size:10px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; position:sticky; top:0; cursor:pointer; user-select:none; }
+thead th:hover { color:var(--primary); background:var(--gray-200); }
+tbody td { padding:8px 14px; border-bottom:1px solid var(--gray-100); color:var(--gray-700); vertical-align:top; }
+tbody tr:hover { background:var(--gray-50); }
+td.title-cell { max-width:240px; overflow:hidden; text-overflow:ellipsis; }
+td.title-cell a { color:var(--primary); text-decoration:none; font-weight:500; }
+td.title-cell a:hover { text-decoration:underline; }
+td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.badge { display:inline-block; padding:2px 7px; border-radius:3px; font-size:10px; font-weight:600; letter-spacing:.02em; }
+.badge-blue { background:var(--primary-light); color:var(--primary); }
+.badge-green { background:#D1FAE5; color:var(--success); }
+.badge-amber { background:#FEF3C7; color:var(--warning); }
+.badge-red { background:#FEE2E2; color:var(--danger); }
+.badge-gray { background:var(--gray-100); color:var(--gray-600); }
+.search-bar { margin-bottom:14px; display:flex; gap:8px; flex-wrap:wrap; }
+.search-bar input { flex:1; min-width:200px; padding:8px 12px; border:1px solid var(--gray-300); border-radius:var(--radius); font-size:13px; outline:none; transition:.15s; font-family:inherit; }
+.search-bar input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(27,79,145,.1); }
+.search-bar select { padding:8px 12px; border:1px solid var(--gray-300); border-radius:var(--radius); font-size:12px; outline:none; font-family:inherit; background:white; color:var(--gray-700); }
+.ss-bar-wrap { display:flex; align-items:center; gap:8px; }
+.ss-bar { height:3px; border-radius:2px; background:var(--primary-light); flex:1; max-width:60px; overflow:hidden; }
+.ss-bar-fill { height:100%; border-radius:2px; background:var(--primary); transition:width .3s; }
+
+/* ── Tab bar — flat underline style ── */
+.tab-bar { display:flex; gap:0; border-bottom:2px solid var(--gray-200); margin-bottom:20px; }
+.tab-btn { padding:9px 20px; border:none; background:transparent; border-bottom:2px solid transparent; margin-bottom:-2px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; transition:.15s; color:var(--gray-500); border-radius:0; white-space:nowrap; }
+.tab-btn:hover { color:var(--primary); }
+.tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); font-weight:600; }
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+@media(max-width:1100px) { .charts { grid-template-columns:1fr; } .container { padding:16px; } .kpis { grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); } }
+@media(max-width:600px) { .kpis { grid-template-columns:1fr 1fr; } .panel-input .input-row { flex-direction:column; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-l">
+    <div class="nav-wordmark">
+      <div class="nav-title">RADAR</div>
+      <div class="nav-sub">Racial and Demographic Analysis of Research</div>
+    </div>
+  </div>
+  <div class="nav-r">Developed by Aly Dhedhi</div>
+</nav>
+
+<div class="search-panel">
+  <div class="search-panel-inner">
+    <h1>Demographic Representation in Clinical Guidelines</h1>
+    <p class="panel-sub">Paste a clinical practice guideline DOI to identify cited studies, extract participant demographics, and visualize the evidence base.</p>
+    <div class="panel-input">
+      <form id="analyze-form" onsubmit="return analyzeGuideline(event)">
+        <div class="input-row">
+          <input type="text" id="doi-input" placeholder="Paste a guideline DOI or URL..." autocomplete="off">
+          <button type="submit" id="analyze-btn">Run Analysis</button>
+        </div>
+      </form>
+      <div class="examples">
+        <span class="examples-label">Examples:</span>
+        <button class="example-btn" onclick="setExample('10.4158/EP161365.GL')">Obesity 2016</button>
+        <button class="example-btn" onclick="setExample('10.2337/dc25-S001')">ADA Diabetes 2025</button>
+        <button class="example-btn" onclick="setExample('10.1089/thy.2015.0020')">ATA Thyroid 2015</button>
+        <button class="example-btn" onclick="setExample('10.4158/GL-2020-0524SUPPL')">AACE Osteoporosis 2020</button>
+        <button class="example-btn" onclick="setExample('10.1097/HEP.0000000000000466')">AASLD HCC 2023</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="status" id="status-bar">
+    <span id="status-msg"></span>
+  </div>
+
+  <div id="dashboard">
+    <div class="guideline-header" id="guideline-header"></div>
+
+    <div class="tab-bar" id="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+      <button class="tab-btn" onclick="switchTab('demographics')">Demographics</button>
+      <button class="tab-btn" onclick="switchTab('geography')">Geography &amp; Design</button>
+      <button class="tab-btn" onclick="switchTab('timeline')">Trends</button>
+      <button class="tab-btn" onclick="switchTab('studies')">Study Table</button>
+    </div>
+
+    <div class="tab-pane active" id="tab-overview">
+      <div class="kpis" id="kpis"></div>
+      <div class="charts" id="overview-charts"></div>
+      <div class="meta-grid" id="criteria-grid"></div>
+    </div>
+
+    <div class="tab-pane" id="tab-demographics">
+      <div class="charts" id="demographics-charts"></div>
+    </div>
+
+    <div class="tab-pane" id="tab-geography">
+      <div class="charts" id="geography-charts"></div>
+    </div>
+
+    <div class="tab-pane" id="tab-timeline">
+      <div class="charts" id="timeline-charts"></div>
+    </div>
+
+    <div class="tab-pane" id="tab-studies">
+      <div class="chart-card">
+        <h3 id="table-title">Eligible Studies</h3>
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search by title, author, country..." oninput="filterTable()">
+          <select id="design-filter" onchange="filterTable()"><option value="">All Designs</option></select>
+          <select id="sex-filter" onchange="filterTable()"><option value="">Any Sex</option><option value="Both sexes reported">Both sexes</option><option value="Male only">Male only</option><option value="Female only">Female only</option></select>
+          <select id="race-filter" onchange="filterTable()"><option value="">Any Race</option><option value="5">All 5 races</option><option value="1-4">1-4 races</option><option value="0">No race</option></select>
+        </div>
+        <div class="table-wrap" style="max-height:520px;overflow-y:auto;">
+          <table>
+            <thead><tr>
+              <th onclick="sortTable(0)">#</th>
+              <th onclick="sortTable(1)">Title</th>
+              <th onclick="sortTable(2)">Author</th>
+              <th onclick="sortTable(3)">Year</th>
+              <th onclick="sortTable(4)">Country</th>
+              <th onclick="sortTable(5)">N</th>
+              <th onclick="sortTable(6)">M%</th>
+              <th onclick="sortTable(7)">F%</th>
+              <th onclick="sortTable(8)">Age</th>
+              <th onclick="sortTable(9)">Race&#772;</th>
+              <th onclick="sortTable(10)">Design</th>
+            </tr></thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = (typeof window !== "undefined" && window.location.hostname === "localhost") ? "http://localhost:8000" : window.__RADAR_API_BASE || "https://radar-backend-xxxxx.railway.app";
+
+const CC = ['#1B4F91','#1F6B3A','#9D5E00','#B91C1C','#6B4FA8','#0F7A8A','#B25C00','#3D5FA8','#CC3300','#5A6B7A'];
+const RACE_C = ['#1B4F91','#B91C1C','#9D5E00','#1F6B3A','#6B4FA8'];
+const SEX_C = ['#1B4F91','#B91C1C'];
+let state = { data: null, charts: {}, tableData: [], sortDir: {} };
+
+function fmt(n) { return n == null || isNaN(n) ? 'N/A' : n.toLocaleString('en-US',{maximumFractionDigits:0}); }
+function fmt1(n) { return n == null || isNaN(n) ? 'N/A' : Number(n).toLocaleString('en-US',{maximumFractionDigits:1}); }
+function pct(n) { return n == null || isNaN(n) ? '-' : Number(n).toFixed(1) + '%'; }
+
+function setExample(doi) { document.getElementById('doi-input').value = doi; analyzeGuideline(new Event('submit')); }
+
+let _pollTimer = null;
+
+async function analyzeGuideline(event) {
+  event.preventDefault();
+  const input = document.getElementById('doi-input').value.trim();
+  if (!input) return;
+  const btn = document.getElementById('analyze-btn');
+  const status = document.getElementById('status-bar');
+  const msg = document.getElementById('status-msg');
+  if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null; }
+  btn.disabled = true; btn.textContent = 'Analyzing...';
+  status.className = 'status show loading';
+  msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; Looking up guideline...';
+  document.getElementById('dashboard').classList.remove('show');
+  try {
+    const form = new FormData(); form.append('doi_url', input);
+    const res = await fetch(API_BASE + '/api/analyze', { method:'POST', body: form });
+    const result = await res.json();
+    if (!result.found) {
+      status.className = 'status show error';
+      msg.textContent = result.message || 'Could not resolve DOI. Please check and try again.';
+      btn.disabled = false; btn.textContent = 'Run Analysis';
+      return;
+    }
+    // Immediate result (precomputed or cached)
+    if (result.data) {
+      _handleResult(result, status, msg, btn);
+      return;
+    }
+    // Background job started — start polling
+    const jobId = result.job_id;
+    const meta = result.meta || {};
+    msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; <b>Pipeline running</b> for <em>' + (meta.title || 'this guideline') + '</em> &mdash; extracting cited studies from CrossRef, fetching PMC full-text, computing demographics&hellip; <span id="elapsed-counter" style="color:var(--gray-500);font-size:12px;">(0s)</span>';
+    _pollTimer = setInterval(async () => {
+      try {
+        const pr = await fetch(API_BASE + '/api/status/' + jobId);
+        const pdata = await pr.json();
+        const el = document.getElementById('elapsed-counter');
+        if (el) el.textContent = '(' + pdata.elapsed + 's)';
+        if (pdata.status === 'done') {
+          clearInterval(_pollTimer); _pollTimer = null;
+          _handleResult(pdata, status, msg, btn);
+        } else if (pdata.status === 'error') {
+          clearInterval(_pollTimer); _pollTimer = null;
+          status.className = 'status show error';
+          msg.textContent = 'Pipeline error: ' + (pdata.message || 'Unknown error');
+          btn.disabled = false; btn.textContent = 'Run Analysis';
+        }
+      } catch(pe) { /* network blip, keep polling */ }
+    }, 3000);
+  } catch(e) {
+    status.className = 'status show error';
+    msg.textContent = 'Error: ' + e.message;
+    btn.disabled = false; btn.textContent = 'Run Analysis';
+  }
+}
+
+function _handleResult(result, status, msg, btn) {
+  state.data = result.data;
+  const s = state.data.summary;
+  const liveTag = result.data.live_pipeline ? ' <span style="font-size:11px;background:#e0e7ff;color:#4f46e5;padding:2px 8px;border-radius:10px;font-weight:600;">LIVE</span>' : '';
+  status.className = 'status show success';
+  msg.innerHTML = '<b>Analysis complete' + liveTag + '</b> for <em>' + state.data.journal.title + '</em> &mdash; ' + s.eligible + ' eligible studies, ' + (s.total_participants||0).toLocaleString() + ' total participants.';
+  btn.disabled = false; btn.textContent = 'Run Analysis';
+  renderDashboard();
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase().startsWith(name)));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+}
+
+function renderDashboard() {
+  const d = state.data, s = d.summary, ec = d.eligible_completeness;
+  window.scrollTo({ top: document.querySelector('.search-panel').offsetHeight * 0.6, behavior: 'smooth' });
+  document.getElementById('dashboard').classList.add('show');
+
+  document.getElementById('guideline-header').innerHTML =
+    '<div><h2>' + d.journal.title + '</h2><div class="gh-meta" style="margin-top:8px;">' +
+    '<span class="gh-badge">Society <span>' + d.journal.society + '</span></span>' +
+    '<span class="gh-badge">Year <span>' + d.journal.year + '</span></span>' +
+    '<span class="gh-badge">Disease <span>' + d.journal.disease + '</span></span>' +
+    '<span class="gh-badge">DOI <span>' + d.journal.doi + '</span></span></div></div>';
+
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi"><div class="kpi-label">Total Studies</div><div class="kpi-value">${fmt(s.total_with_data)}</div><div class="kpi-sub">screened for demographics</div></div>
+    <div class="kpi"><div class="kpi-label">Eligible</div><div class="kpi-value">${fmt(s.eligible)}</div><div class="kpi-sub">${pct(s.eligible/s.total_with_data*100)} of screened</div></div>
+    <div class="kpi"><div class="kpi-label">Total Participants</div><div class="kpi-value">${fmt(s.total_participants)}</div><div class="kpi-sub">across ${fmt(s.eligible)} studies</div></div>
+    <div class="kpi"><div class="kpi-label">Year Range</div><div class="kpi-value">${s.year_min}&ndash;${s.year_max}</div><div class="kpi-sub">${s.year_max - s.year_min} year span</div></div>
+    <div class="kpi"><div class="kpi-label">Sex Reported</div><div class="kpi-value">${ec.sex_both.pct}%</div><div class="kpi-sub">${ec.sex_both.n}/${ec.sex_both.total} studies</div></div>
+    <div class="kpi"><div class="kpi-label">Age Present</div><div class="kpi-value">${ec.age.pct}%</div><div class="kpi-sub">${ec.age.n}/${ec.age.total} studies</div></div>
+    <div class="kpi"><div class="kpi-label">Race / Ethnicity</div><div class="kpi-value">${ec.any_race.pct}%</div><div class="kpi-sub">any race reported</div></div>
+    <div class="kpi"><div class="kpi-label">All 5 Race Cats</div><div class="kpi-value">${ec.all_5_race.pct}%</div><div class="kpi-sub">fully usable</div></div>
+    <div class="kpi"><div class="kpi-label">USA Studies</div><div class="kpi-value">${d.geography.usa}</div><div class="kpi-sub">${d.geography.usa_pct}% of eligible</div></div>
+    <div class="kpi"><div class="kpi-label">Non-USA</div><div class="kpi-value">${d.geography.non_usa}</div><div class="kpi-sub">${d.geography.non_usa_pct}% non-USA</div></div>
+    <div class="kpi"><div class="kpi-label">Multi-Country</div><div class="kpi-value">${d.geography.multi + d.geography.multi_incl_usa}</div><div class="kpi-sub">${(d.geography.multi_pct + d.geography.multi_incl_usa_pct).toFixed(1)}% international</div></div>
+    <div class="kpi"><div class="kpi-label">Mean N</div><div class="kpi-value">${fmt(s.sample_size_mean)}</div><div class="kpi-sub">median ${fmt(s.sample_size_median)}</div></div>
+  `;
+
+  // Criteria meta grid
+  const cr = d.criteria_pass_rates || {};
+  const all5 = d.eligible_completeness?.all_5_race;
+  document.getElementById('criteria-grid').innerHTML = `
+    <div class="meta-card"><div class="mc-label">Sample Size > 0</div><div class="mc-value">${cr.sample_size_gt_0?.n || '?'}/${cr.sample_size_gt_0?.total || s.eligible} <span style="font-weight:400;color:var(--gray-400);">studies</span></div><div class="mc-bar"><div class="mc-bar-fill" style="width:${(cr.sample_size_gt_0?.n||0)/(cr.sample_size_gt_0?.total||1)*100}%;background:var(--success);"></div></div></div>
+    <div class="meta-card"><div class="mc-label">Country Code Valid</div><div class="mc-value">${cr.country_valid?.n || '?'}/${cr.country_valid?.total || s.eligible} <span style="font-weight:400;color:var(--gray-400);">valid country</span></div><div class="mc-bar"><div class="mc-bar-fill" style="width:${(cr.country_valid?.n||0)/(cr.country_valid?.total||1)*100}%;background:var(--success);"></div></div></div>
+    <div class="meta-card"><div class="mc-label">Sex Reported (M+F ~100%&#177;5)</div><div class="mc-value">${cr.sex_sum_100?.n || '?'}/${cr.sex_sum_100?.total || s.eligible} <span style="font-weight:400;color:var(--gray-400);">passed</span></div><div class="mc-bar"><div class="mc-bar-fill" style="width:${(cr.sex_sum_100?.n||0)/(cr.sex_sum_100?.total||1)*100}%;background:var(--secondary);"></div></div></div>
+    <div class="meta-card"><div class="mc-label">All 5 Race Cats ~100%</div><div class="mc-value">${cr.all_5_race?.n || all5?.n || '?'}/${cr.all_5_race?.total || s.eligible} <span style="font-weight:400;color:var(--gray-400);">passed</span></div><div class="mc-bar"><div class="mc-bar-fill" style="width:${((cr.all_5_race?.n||all5?.n||0)/(cr.all_5_race?.total||s.eligible||1))*100}%;background:var(--danger);"></div></div></div>
+    <div class="meta-card"><div class="mc-label">Both Sex & Race</div><div class="mc-value">${cr.both_sex_and_race?.n || '?'}/${cr.both_sex_and_race?.total || s.eligible} <span style="font-weight:400;color:var(--gray-400);">reported both</span></div><div class="mc-bar"><div class="mc-bar-fill" style="width:${(cr.both_sex_and_race?.n||0)/(cr.both_sex_and_race?.total||1)*100}%;background:var(--primary);"></div></div></div>
+  `;
+
+  destroyCharts();
+  renderOverviewCharts(d);
+  renderDemographicsCharts(d);
+  renderGeographyCharts(d);
+  renderTimelineCharts(d);
+  renderTable(d);
+}
+
+function destroyCharts() { Object.values(state.charts).forEach(c => { try { c.destroy(); } catch(e) {} }); state.charts = {}; }
+function mkChart(id, config) { const el = document.getElementById(id); if (el) state.charts[id] = new Chart(el, config); }
+
+function renderOverviewCharts(d) {
+  const c = d.completeness, s = d.summary;
+  document.getElementById('overview-charts').innerHTML = `
+    <div class="chart-card chart-full"><h3>Data Completeness <small>% of screened studies reporting each field (n=${c.country.total})</small></h3><div class="chart-wrap"><canvas id="c-completeness"></canvas></div></div>
+    <div class="chart-card"><h3>Study Design <small>(n=${s.eligible})</small></h3><div class="chart-wrap"><canvas id="c-design"></canvas></div></div>
+    <div class="chart-card"><h3>Publication Years <small>(n=${s.eligible})</small></h3><div class="chart-wrap"><canvas id="c-years"></canvas></div></div>
+    <div class="chart-card"><h3>Decade Breakdown</h3><div class="chart-wrap"><canvas id="c-decades"></canvas></div></div>
+    <div class="chart-card"><h3>Sample Sizes <small>log scale (n=${s.eligible})</small></h3><div class="chart-wrap tall"><canvas id="c-samples"></canvas></div></div>
+    <div class="chart-card"><h3>Sample Size Distribution <small>quartiles</small></h3><div class="chart-wrap"><canvas id="c-quartiles"></canvas></div></div>
+  `;
+
+  mkChart('c-completeness', {
+    type:'bar', data:{labels:['Country','Year','Sample Size','Age','Sex (both)','Any Race','All 5 Race'],datasets:[{data:[c.country.pct,c.year.pct,c.sample_size.pct,c.age.pct,c.sex_both.pct,c.any_race.pct,c.all_5_race.pct],backgroundColor:CC,borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+  const ds = d.study_design;
+  mkChart('c-design', {
+    type:'doughnut', data:{labels:Object.keys(ds),datasets:[{data:Object.values(ds),backgroundColor:CC,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{padding:8,usePointStyle:true,font:{size:10}}}}}});
+
+  const ycounts = {}; d.eligible_studies.forEach(st => { ycounts[st.year] = (ycounts[st.year]||0)+1; });
+  const years = Object.keys(ycounts).map(Number).sort((a,b)=>a-b);
+  mkChart('c-years', {
+    type:'bar', data:{labels:years.map(String),datasets:[{data:years.map(y=>ycounts[y]),backgroundColor:'#1B4F91',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{stepSize:1}},x:{grid:{display:false}}}}});
+
+  const dec = d.decade_breakdown || {};
+  mkChart('c-decades', {
+    type:'bar', data:{labels:Object.keys(dec),datasets:[{data:Object.values(dec).map(v=>v.count),backgroundColor:['#1B4F91','#1F6B3A','#9D5E00'],borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
+
+  const studies = d.eligible_studies.filter(st => st.sample_size > 0).sort((a,b) => a.sample_size - b.sample_size);
+  const titles = studies.map(st => (st.title||'').length > 35 ? st.title.slice(0,35)+'...' : st.title);
+  mkChart('c-samples', {
+    type:'bar', data:{labels:studies.map((_,i)=>i+1),datasets:[{data:studies.map(st=>st.sample_size),backgroundColor:studies.map(st=>st.sample_size>100000?'#B91C1C':st.sample_size>10000?'#9D5E00':'#1B4F91'),borderRadius:2}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:ctx=>titles[ctx[0].dataIndex],label:ctx=>'N = '+fmt(ctx.parsed.y)}}},scales:{y:{type:'logarithmic',grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false},ticks:{display:false}}}}});
+
+  const q = d.sample_size_quartiles || {};
+  mkChart('c-quartiles', {
+    type:'bar', data:{labels:['Min','Q1','Median','Q3','Max'],datasets:[{data:[q.min,q.q1,q.q2,q.q3,q.max],backgroundColor:['#8E9AB3','#4A90D9','#1B4F91','#4A90D9','#8E9AB3'],borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'N = '+fmt(ctx.parsed.y)}}},scales:{y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+}
+
+function renderDemographicsCharts(d) {
+  const s = d.summary;
+  document.getElementById('demographics-charts').innerHTML = `
+    <div class="chart-card"><h3>Sex Distribution <small>mean across eligible (n=${s.eligible})</small></h3><div class="chart-wrap"><canvas id="c-sex"></canvas></div></div>
+    <div class="chart-card"><h3>Sex Breakdown Detail <small>by study</small></h3><div class="chart-wrap"><canvas id="c-sex-breakdown"></canvas></div></div>
+    <div class="chart-card"><h3>Race Mean % <small>across eligible</small></h3><div class="chart-wrap"><canvas id="c-race-mean"></canvas></div></div>
+    <div class="chart-card"><h3>Race Reporting Rates <small>% of studies reporting each</small></h3><div class="chart-wrap"><canvas id="c-race-report"></canvas></div></div>
+    <div class="chart-card"><h3>Race Categories per Study <small>distribution</small></h3><div class="chart-wrap"><canvas id="c-race-cats"></canvas></div></div>
+    <div class="chart-card"><h3>Race Sum Distribution <small>how close race% sum to 100</small></h3><div class="chart-wrap"><canvas id="c-race-sum"></canvas></div></div>
+    <div class="chart-card chart-full"><h3>Race Composition Per Eligible Study <small>stacked %</small></h3><div class="chart-wrap tall"><canvas id="c-race-stack"></canvas></div></div>
+  `;
+
+  mkChart('c-sex', {
+    type:'doughnut', data:{labels:['Male','Female'],datasets:[{data:[d.sex_distribution.mean_male,d.sex_distribution.mean_female],backgroundColor:SEX_C,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{usePointStyle:true,font:{size:12}}}},cutout:'60%'}});
+
+  const sb = d.sex_breakdown || {};
+  const sbl = Object.keys(sb), sbv = sbl.map(k=>sb[k].count);
+  mkChart('c-sex-breakdown', {
+    type:'pie', data:{labels:sbl,datasets:[{data:sbv,backgroundColor:CC,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{padding:8,usePointStyle:true,font:{size:10}}}}}});
+
+  const r = d.race_distribution;
+  mkChart('c-race-mean', {
+    type:'bar', data:{labels:['White','Black','Hispanic','Asian','Other'],datasets:[{data:[r.white.mean,r.black.mean,r.hispanic.mean,r.asian.mean,r.other.mean],backgroundColor:RACE_C,borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+  mkChart('c-race-report', {
+    type:'bar', data:{labels:['White','Black','Hispanic','Asian','Other'],datasets:[{data:[r.white.pct,r.black.pct,r.hispanic.pct,r.asian.pct,r.other.pct],backgroundColor:RACE_C,borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+  const rcd = d.race_cats_distribution || {};
+  const rcdl = Object.keys(rcd).map(k=>k+' cats' + (k==='5'?' (all)':k==='0'?' (none)':''));
+  const rcdv = Object.values(rcd).map(v=>v.count);
+  mkChart('c-race-cats', {
+    type:'bar', data:{labels:rcdl,datasets:[{data:rcdv,backgroundColor:rcdl.map((_,i)=>i===rcdl.length-1?'#1F6B3A':'#1B4F91'),borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{stepSize:1}},x:{grid:{display:false}}}}});
+
+  const rsd = d.race_sum_distribution || {};
+  mkChart('c-race-sum', {
+    type:'bar', data:{labels:Object.keys(rsd),datasets:[{data:Object.values(rsd),backgroundColor:['#B91C1C','#9D5E00','#1B4F91','#6B4FA8','#1F6B3A'],borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
+
+  const eligible = d.eligible_studies.filter(st => st.sample_size > 0).slice(0, 30);
+  const raceKeys = ['white_pct','black_pct','hispanic_pct','asian_pct','other_pct'];
+  const raceLabels = ['White','Black','Hispanic','Asian','Other'];
+  mkChart('c-race-stack', {
+    type:'bar', data:{
+      labels: eligible.map((_,i) => '#'+(i+1)),
+      datasets: raceKeys.map((key, ci) => ({
+        label: raceLabels[ci],
+        data: eligible.map(st => st[key] ?? 0),
+        backgroundColor: RACE_C[ci],
+        borderRadius: 0,
+      }))
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{usePointStyle:true,font:{size:10}}}},
+      scales:{
+        x:{stacked:true, grid:{display:false}, ticks:{font:{size:9}}},
+        y:{stacked:true, beginAtZero:true, max:100, grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:v=>v+'%'}}
+      }
+    }
+  });
+}
+
+function renderGeographyCharts(d) {
+  document.getElementById('geography-charts').innerHTML = `
+    <div class="chart-card"><h3>Geographic Distribution <small>(n=${d.summary.eligible})</small></h3><div class="chart-wrap"><canvas id="c-geo"></canvas></div></div>
+    <div class="chart-card"><h3>Continent Breakdown <small>(n=${d.summary.eligible})</small></h3><div class="chart-wrap"><canvas id="c-continent"></canvas></div></div>
+    <div class="chart-card chart-full"><h3>Top Countries <small>(n=${d.summary.eligible})</small></h3><div class="chart-wrap"><canvas id="c-countries"></canvas></div></div>
+    <div class="chart-card chart-full"><h3>Top Journals <small>(n=${d.summary.eligible})</small></h3><div class="chart-wrap"><canvas id="c-journals"></canvas></div></div>
+  `;
+
+  const g = d.geography;
+  mkChart('c-geo', {
+    type:'doughnut', data:{labels:['USA','Multi (incl. USA)','Multi-country','Non-USA'],datasets:[{data:[g.usa,g.multi_incl_usa,g.multi,g.non_usa],backgroundColor:CC,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{padding:10,usePointStyle:true,font:{size:11}}}},cutout:'65%'}});
+
+  const cont = d.continent_breakdown || {};
+  const contl = Object.keys(cont), contv = contl.map(k=>cont[k].count);
+  mkChart('c-continent', {
+    type:'doughnut', data:{labels:contl,datasets:[{data:contv,backgroundColor:CC,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{padding:8,usePointStyle:true,font:{size:10}}}},cutout:'60%'}});
+
+  const tc = d.top_countries || [];
+  mkChart('c-countries', {
+    type:'bar', data:{labels:tc.map(x=>x.country).reverse(),datasets:[{data:tc.map(x=>x.count).reverse(),backgroundColor:'#1B4F91',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.x+' studies ('+tc[tc.length-1-ctx.dataIndex].pct+'%)'}}},
+    scales:{x:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{stepSize:1}},y:{grid:{display:false}}}}});
+
+  const tj = d.top_journals || [];
+  mkChart('c-journals', {
+    type:'bar', data:{labels:tj.map(x=>(x.journal||'').length>30 ? x.journal.slice(0,30)+'...' : x.journal||'').reverse(),datasets:[{data:tj.map(x=>x.count).reverse(),backgroundColor:'#6B4FA8',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{x:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'}},y:{grid:{display:false}}}}});
+}
+
+function renderTimelineCharts(d) {
+  document.getElementById('timeline-charts').innerHTML = `
+    <div class="chart-card chart-full"><h3>Reporting Trends Over Time <small>% of studies reporting each demographic field</small></h3><div class="chart-wrap"><canvas id="c-trends"></canvas></div></div>
+    <div class="chart-card chart-full"><h3>Total Participants Over Time <small>cumulative</small></h3><div class="chart-wrap"><canvas id="c-cumul"></canvas></div></div>
+  `;
+
+  const tr = d.reporting_trends || {};
+  const trl = Object.keys(tr);
+  mkChart('c-trends', {
+    type:'line', data:{
+      labels: trl,
+      datasets: [
+        {label:'Sex Reported', data:trl.map(k=>tr[k].sex_reported), borderColor:'#B91C1C', backgroundColor:'rgba(185,28,28,.08)', fill:true, tension:.3, pointRadius:4},
+        {label:'Age Reported', data:trl.map(k=>tr[k].age_reported), borderColor:'#9D5E00', backgroundColor:'rgba(157,94,0,.08)', fill:true, tension:.3, pointRadius:4},
+        {label:'Any Race', data:trl.map(k=>tr[k].any_race), borderColor:'#1B4F91', backgroundColor:'rgba(27,79,145,.08)', fill:true, tension:.3, pointRadius:4},
+        {label:'All 5 Races', data:trl.map(k=>tr[k].all_5_race), borderColor:'#1F6B3A', backgroundColor:'rgba(31,107,58,.08)', fill:true, tension:.3, pointRadius:4},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,font:{size:11}}}},
+    scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+  const sorted = [...d.eligible_studies].filter(st=>st.year&&st.sample_size>0).sort((a,b)=>a.year-b.year);
+  let cumul = 0;
+  const cumulData = sorted.map(st => { cumul += st.sample_size; return {year:st.year, cumul}; });
+  const cumulYears = [...new Set(cumulData.map(d=>d.year))].sort((a,b)=>a-b);
+  const cumulByYear = cumulYears.map(y => { const last = cumulData.filter(d=>d.year<=y); return last.length ? last[last.length-1].cumul : 0; });
+  mkChart('c-cumul', {
+    type:'line', data:{labels:cumulYears.map(String),datasets:[{label:'Cumulative Participants',data:cumulByYear,borderColor:'#1B4F91',backgroundColor:'rgba(27,79,145,.07)',fill:true,tension:.3,pointRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>fmt(ctx.parsed.y)+' participants'}}},scales:{y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>fmt(v)}},x:{grid:{display:false}}}}});
+}
+
+function renderTable(d) {
+  const s = d.summary;
+  document.getElementById('table-title').textContent = 'Eligible Studies (' + s.eligible + ')';
+  const designs = Object.keys(d.study_design);
+  const sel = document.getElementById('design-filter');
+  sel.innerHTML = '<option value="">All Designs</option>' + designs.map(k => '<option value="'+k+'">'+k+'</option>').join('');
+  state.tableData = d.eligible_studies.map((st,i) => ({...st, _idx:i+1}));
+  filterTable();
+}
+
+let tFilterState = {};
+
+function filterTable() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const design = document.getElementById('design-filter').value;
+  const sexV = document.getElementById('sex-filter').value;
+  const raceV = document.getElementById('race-filter').value;
+  const filtered = state.tableData.filter(st => {
+    if (design && !(st.design||'').toLowerCase().includes(design.toLowerCase())) return false;
+    if (sexV && (st.sex_status||'') !== sexV) return false;
+    if (raceV === '5' && (st.race_cats||0) !== 5) return false;
+    if (raceV === '1-4' && ((st.race_cats||0) < 1 || (st.race_cats||0) > 4)) return false;
+    if (raceV === '0' && (st.race_cats||0) !== 0) return false;
+    if (q && !(st.title||'').toLowerCase().includes(q) && !(st.author||'').toLowerCase().includes(q) && !(st.country||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
+  const maxN = Math.max(...filtered.map(x=>x.sample_size||0), 1);
+  document.getElementById('table-body').innerHTML = filtered.map((st,i) => {
+    const bw = (st.sample_size||0) / maxN * 100;
+    const rc = st.race_cats || 0;
+    const raceBadge = rc === 5 ? 'badge-green' : rc >= 3 ? 'badge-blue' : rc >= 1 ? 'badge-amber' : 'badge-gray';
+    return '<tr><td>'+(i+1)+'</td><td class="title-cell"><a href="'+(st.link||'#')+'" target="_blank">'+(st.title||'')+'</a></td><td>'+(st.author||'-')+'</td><td>'+(st.year||'')+'</td><td>'+(st.country||'')+'</td><td class="num"><div class="ss-bar-wrap"><span>'+fmt(st.sample_size)+'</span><div class="ss-bar"><div class="ss-bar-fill" style="width:'+bw+'%"></div></div></div></td><td class="num">'+(st.male_pct!=null?fmt1(st.male_pct)+'%':'-')+'</td><td class="num">'+(st.female_pct!=null?fmt1(st.female_pct)+'%':'-')+'</td><td class="num">'+(st.age||'-')+'</td><td><span class="badge '+raceBadge+'">'+rc+'/5</span></td><td><span class="badge badge-blue">'+(st.design||'').slice(0,22)+'</span></td></tr>';
+  }).join('');
+}
+
+function sortTable(col) {
+  const keys = ['_idx','title','author','year','country','sample_size','male_pct','female_pct','age','race_cats','design'];
+  const key = keys[col];
+  state.sortDir[key] = !state.sortDir[key];
+  const dir = state.sortDir[key] ? 1 : -1;
+  state.tableData.sort((a,b) => {
+    const va = a[key]??'', vb = b[key]??'';
+    return (typeof va==='number' ? va-vb : String(va).localeCompare(String(vb))) * dir;
+  });
+  filterTable();
+}
+</script>
+</body>
+</html>
