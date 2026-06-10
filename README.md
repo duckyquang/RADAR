@@ -1,5 +1,31 @@
 # RADAR - Racial And Demographic Analysis of Research
 
+Analyze any clinical practice guideline to extract demographic diversity metrics from cited studies. The system automatically fetches all referenced studies, extracts demographic data (sex, race, country), computes eligibility criteria, and generates interactive visualizations.
+
+## 🚀 Live Web Interface
+
+Visit **[RADAR Dashboard](https://aly-dhedhi.github.io/RADAR/)** to analyze any guideline DOI in real-time.
+
+Simply paste any clinical guideline DOI (e.g., `10.4158/GL.2016.19.2.129`) and the system will:
+1. Extract all cited studies via CrossRef API
+2. Fetch full-text from PubMed Central and PubMed
+3. Parse demographic data from tables and abstracts
+4. Compute eligibility and diversity metrics
+5. Display interactive charts and tables
+
+### Tested Guidelines
+- ADA Diabetes 2025: `10.1089/dia.2024.0344`
+- AACE Obesity 2016: `10.4158/GL.2016.19.2.129`
+- ATA Thyroid 2015: `10.1089/thy.2015.0315`
+- AACE Osteoporosis 2020: `10.4158/GL.2020.19.4.161`
+- AASLD HCC 2023: `10.1002/hep.31852`
+
+**See [QUICKSTART.md](QUICKSTART.md) for deployment instructions.**
+
+---
+
+## Legacy Batch Pipeline
+
 Pipeline to extract clinical studies from clinical practice guideline PDF exports, determine eligibility based on demographic data availability, and produce summary statistics for systematic review papers.
 
 ## Journals Supported
