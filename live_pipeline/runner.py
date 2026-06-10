@@ -120,6 +120,51 @@ def infer_design(typ,title):
     return "Other"
 
 
+def calc_bias_score(entries):
+    if not entries: return 0
+    n=len(entries)
+    age_gap=sum(1 for e in entries if not e.get("age") or e["age"]=="NR" or e["age"]=="")
+    sex_gap=sum(1 for e in entries if not (e.get("male_pct") and e.get("female_pct")))
+    race_gap=sum(1 for e in entries if not e.get("has_any_race"))
+    country_gap=sum(1 for e in entries if e.get("country") in ("Unknown",""))
+    geo_bias=abs(sum(1 for e in entries if "USA" in e.get("country","").upper())-n/2)*100/n
+    gaps=[(age_gap,0.25),(sex_gap,0.25),(race_gap,0.30),(country_gap,0.15),(min(geo_bias,100),0.05)]
+    return round(sum(g[0]/n*100*g[1] for g in gaps),1)
+
+
+def gen_report(data,bias_score):
+    j=data.get("journal",{})
+    s=data.get("summary",{})
+    c=data.get("completeness",{})
+    e=data.get("eligible_completeness",{})
+    lines=[]
+    lines.append(f"CLINICAL BIAS ASSESSMENT REPORT")
+    lines.append(f"{'='*60}")
+    lines.append(f"Guideline: {j.get('title','')}")
+    lines.append(f"Year: {j.get('year')} | Society: {j.get('society','N/A')}")
+    lines.append(f"")
+    lines.append(f"BIAS SCORE: {bias_score}%")
+    verdict="USABLE" if bias_score<30 else "QUESTIONABLE" if bias_score<60 else "NOT USABLE"
+    lines.append(f"VERDICT: {verdict}")
+    lines.append(f"")
+    lines.append(f"KEY FINDINGS:")
+    lines.append(f"- Studies analyzed: {s.get('eligible',0)} of {s.get('total_with_data',0)} eligible")
+    age_pct=round(100-e.get('age',{}).get('pct',0),1)
+    if age_pct>30: lines.append(f"⚠ Age data MISSING in {age_pct}% of studies")
+    sex_pct=100-e.get('sex_both',{}).get('pct',0) if e.get('sex_both') else 100
+    if sex_pct>30: lines.append(f"⚠ Sex data INCOMPLETE in {round(sex_pct,1)}% of studies")
+    race_pct=100-e.get('any_race',{}).get('pct',0) if e.get('any_race') else 100
+    if race_pct>40: lines.append(f"⚠ Race data MISSING in {round(race_pct,1)}% of studies")
+    geo=data.get('geography',{})
+    usa_pct=geo.get('usa_pct',0)
+    if usa_pct>70: lines.append(f"⚠ Geographic bias: {usa_pct}% USA-only studies")
+    lines.append(f"")
+    lines.append(f"USABILITY ASSESSMENT:")
+    lines.append(f"This guideline's cited studies have {'ADEQUATE' if verdict=='USABLE' else 'INSUFFICIENT' if verdict=='QUESTIONABLE' else 'INADEQUATE'} demographic reporting.")
+    lines.append(f"Recommend: {'Proceed with analysis' if verdict=='USABLE' else 'Exercise caution' if verdict=='QUESTIONABLE' else 'Do not use for diversity metrics'}")
+    return "\n".join(lines)
+
+
 def run(guideline_doi):
     try:
         meta=fetcher.get_crossref_meta(guideline_doi)
@@ -286,6 +331,11 @@ def run(guideline_doi):
                     "any_race":round(sum(1 for s in gr if s["has_any_race"])/n*100,1),
                     "all_5_race":round(sum(1 for s in gr if s["has_all_5_race"])/n*100,1),
                 }
+
+        bias_score=calc_bias_score(eligible)
+        report_text=gen_report(res,bias_score)
+        res["bias_score"]=bias_score
+        res["report"]=report_text
 
         return res
     except Exception as e:

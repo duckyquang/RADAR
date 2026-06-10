@@ -152,6 +152,18 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
 
 @media(max-width:1100px) { .charts { grid-template-columns:1fr; } .container { padding:16px; } .kpis { grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); } }
 @media(max-width:600px) { .kpis { grid-template-columns:1fr 1fr; } .panel-input .input-row { flex-direction:column; } }
+
+/* ── Bias Card ── */
+.bias-card { background:white; border-radius:var(--radius); border:2px solid var(--primary); box-shadow:0 2px 8px rgba(27,79,145,.12); padding:20px; margin-bottom:24px; }
+.bias-score-container { display:flex; align-items:center; gap:20px; margin-bottom:16px; }
+.bias-score { font-size:48px; font-weight:800; color:var(--primary); min-width:80px; text-align:center; }
+.bias-verdict { font-size:16px; font-weight:700; padding:8px 16px; border-radius:6px; white-space:nowrap; }
+.bias-verdict.usable { background:#D1FAE5; color:var(--success); }
+.bias-verdict.questionable { background:#FEF3C7; color:var(--warning); }
+.bias-verdict.not-usable { background:#FEE2E2; color:var(--danger); }
+.bias-summary { font-size:13px; color:var(--gray-700); line-height:1.6; margin-bottom:14px; white-space:pre-wrap; font-family:'Monaco','Courier New',monospace; }
+.download-btn { background:var(--primary); color:white; border:none; padding:10px 18px; border-radius:var(--radius); font-size:13px; font-weight:600; cursor:pointer; transition:.15s; font-family:inherit; }
+.download-btn:hover { background:var(--primary-dark); }
 </style>
 </head>
 <body>
@@ -197,6 +209,15 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
 
   <div id="dashboard">
     <div class="guideline-header" id="guideline-header"></div>
+
+    <div class="bias-card" id="bias-card" style="display:none;">
+      <div class="bias-score-container">
+        <div class="bias-score" id="bias-score">-</div>
+        <div class="bias-verdict" id="bias-verdict">-</div>
+      </div>
+      <div class="bias-summary" id="bias-summary"></div>
+      <button class="download-btn" onclick="downloadReport()">⬇ Download Report</button>
+    </div>
 
     <div class="tab-bar" id="tab-bar">
       <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
@@ -266,6 +287,20 @@ let state = { data: null, charts: {}, tableData: [], sortDir: {} };
 
 function fmt(n) { return n == null || isNaN(n) ? 'N/A' : n.toLocaleString('en-US',{maximumFractionDigits:0}); }
 function fmt1(n) { return n == null || isNaN(n) ? 'N/A' : Number(n).toLocaleString('en-US',{maximumFractionDigits:1}); }
+function pct(n) { return n == null || isNaN(n) ? '-' : Number(n).toFixed(1) + '%'; }
+
+function downloadReport() {
+  if (!state.data) return alert('No report available');
+  const d = state.data;
+  const report = d.report || 'Report not available';
+  const verdict = state.currentVerdict || 'UNKNOWN';
+  const biasScore = d.bias_score || 0;
+  const csv = `CLINICAL BIAS ASSESSMENT REPORT\nGuideline: ${d.journal.title}\nYear: ${d.journal.year} | Society: ${d.journal.society || 'N/A'}\nDOI: ${d.journal.doi}\n\nBIAS SCORE: ${biasScore}%\nVERDICT: ${verdict}\n\n${report}\n\nDETAILED METRICS:\nTotal Studies Screened,${d.summary.total_screened}\nEligible Studies,${d.summary.eligible}\nTotal Participants,${d.summary.total_participants}\nAge Data Reporting,${d.eligible_completeness.age.pct}%\nSex Data Reporting,${d.eligible_completeness.sex_both.pct}%\nRace Data Reporting,${d.eligible_completeness.any_race.pct}%\nAll 5 Race Categories,${d.eligible_completeness.all_5_race.pct}%\nUSA Studies,${d.geography.usa_pct}%\nNon-USA Studies,${d.geography.non_usa_pct}%`;
+  const el = document.createElement('a');
+  el.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  el.download = (d.journal.id || 'report') + '_bias_assessment.csv';
+  el.click();
+}
 function pct(n) { return n == null || isNaN(n) ? '-' : Number(n).toFixed(1) + '%'; }
 
 function setExample(doi) { document.getElementById('doi-input').value = doi; analyzeGuideline(new Event('submit')); }
@@ -353,6 +388,18 @@ function renderDashboard() {
     '<span class="gh-badge">Year <span>' + d.journal.year + '</span></span>' +
     '<span class="gh-badge">Disease <span>' + d.journal.disease + '</span></span>' +
     '<span class="gh-badge">DOI <span>' + d.journal.doi + '</span></span></div></div>';
+
+  const biasScore = d.bias_score || 0;
+  const verdict = biasScore < 30 ? 'USABLE' : biasScore < 60 ? 'QUESTIONABLE' : 'NOT USABLE';
+  const verdictClass = biasScore < 30 ? 'usable' : biasScore < 60 ? 'questionable' : 'not-usable';
+  const report = d.report || 'Report not available';
+  document.getElementById('bias-card').style.display = 'block';
+  document.getElementById('bias-score').textContent = biasScore + '%';
+  document.getElementById('bias-verdict').textContent = verdict;
+  document.getElementById('bias-verdict').className = 'bias-verdict ' + verdictClass;
+  document.getElementById('bias-summary').textContent = report;
+  state.currentReport = report;
+  state.currentVerdict = verdict;
 
   document.getElementById('kpis').innerHTML = `
     <div class="kpi"><div class="kpi-label">Total Studies</div><div class="kpi-value">${fmt(s.total_with_data)}</div><div class="kpi-sub">screened for demographics</div></div>

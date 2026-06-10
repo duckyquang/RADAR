@@ -165,6 +165,60 @@ def lookup_crossref(doi: str) -> Optional[dict]:
         return None
 
 
+def add_bias_assessment(data: dict) -> dict:
+    if "bias_score" in data:
+        return data
+    eligible = data.get("eligible_studies", [])
+    if not eligible:
+        data["bias_score"] = 0
+        data["report"] = "No eligible studies available"
+        return data
+    n = len(eligible)
+    age_gap = sum(1 for e in eligible if not e.get("age") or e["age"] in ("NR", ""))
+    sex_gap = sum(1 for e in eligible if not (e.get("male_pct") and e.get("female_pct")))
+    race_gap = sum(1 for e in eligible if not e.get("has_any_race"))
+    country_gap = sum(1 for e in eligible if e.get("country") in ("Unknown", ""))
+    geo_bias = abs(sum(1 for e in eligible if "USA" in e.get("country", "").upper()) - n/2) * 100 / n
+    gaps = [(age_gap, 0.25), (sex_gap, 0.25), (race_gap, 0.30), (country_gap, 0.15), (min(geo_bias, 100), 0.05)]
+    bias_score = round(sum(g[0]/n*100*g[1] for g in gaps), 1)
+    data["bias_score"] = bias_score
+
+    lines = []
+    lines.append("CLINICAL BIAS ASSESSMENT REPORT")
+    lines.append("="*60)
+    j = data.get("journal", {})
+    lines.append(f"Guideline: {j.get('title', '')}")
+    lines.append(f"Year: {j.get('year')} | Society: {j.get('society', 'N/A')}")
+    lines.append("")
+    lines.append(f"BIAS SCORE: {bias_score}%")
+    verdict = "USABLE" if bias_score < 30 else "QUESTIONABLE" if bias_score < 60 else "NOT USABLE"
+    lines.append(f"VERDICT: {verdict}")
+    lines.append("")
+    lines.append("KEY FINDINGS:")
+    lines.append(f"- Studies analyzed: {len(eligible)} of {data.get('summary', {}).get('total_with_data', 0)} eligible")
+    age_pct = round(100 - data.get('eligible_completeness', {}).get('age', {}).get('pct', 0), 1)
+    if age_pct > 30:
+        lines.append(f"⚠ Age data MISSING in {age_pct}% of studies")
+    ec = data.get('eligible_completeness', {})
+    sex_pct = 100 - ec.get('sex_both', {}).get('pct', 0) if ec.get('sex_both') else 100
+    if sex_pct > 30:
+        lines.append(f"⚠ Sex data INCOMPLETE in {round(sex_pct, 1)}% of studies")
+    race_pct = 100 - ec.get('any_race', {}).get('pct', 0) if ec.get('any_race') else 100
+    if race_pct > 40:
+        lines.append(f"⚠ Race data MISSING in {round(race_pct, 1)}% of studies")
+    geo = data.get('geography', {})
+    usa_pct = geo.get('usa_pct', 0)
+    if usa_pct > 70:
+        lines.append(f"⚠ Geographic bias: {usa_pct}% USA-only studies")
+    lines.append("")
+    lines.append("USABILITY ASSESSMENT:")
+    lines.append(f"This guideline's cited studies have {'ADEQUATE' if verdict == 'USABLE' else 'INSUFFICIENT' if verdict == 'QUESTIONABLE' else 'INADEQUATE'} demographic reporting.")
+    lines.append(f"Recommend: {'Proceed with analysis' if verdict == 'USABLE' else 'Exercise caution' if verdict == 'QUESTIONABLE' else 'Do not use for diversity metrics'}")
+
+    data["report"] = "\n".join(lines)
+    return data
+
+
 def _run_pipeline_job(doi: str, job_id: str):
     try:
         JOBS[job_id]["status"] = "running"
@@ -201,11 +255,14 @@ async def analyze(doi_url: str = Form(...)):
     # Serve precomputed if available
     precomputed = load_precomputed(doi)
     if precomputed:
+        precomputed = add_bias_assessment(precomputed)
         return JSONResponse({"found": True, "doi": doi, "data": precomputed, "precomputed": True})
 
     # Serve from in-memory cache
     if doi in PIPELINE_CACHE:
-        return JSONResponse({"found": True, "doi": doi, "data": PIPELINE_CACHE[doi], "precomputed": False, "cached": True})
+        cached = PIPELINE_CACHE[doi]
+        cached = add_bias_assessment(cached)
+        return JSONResponse({"found": True, "doi": doi, "data": cached, "precomputed": False, "cached": True})
 
     # Verify DOI resolves via CrossRef
     meta = lookup_crossref(doi)
