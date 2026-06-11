@@ -1,0 +1,1007 @@
+{
+  "journal": {
+    "doi": "https://doi.org/10.4158/GL-2020-0524SUPPL",
+    "disease": "American Association of Clinical Endocrinologists/American College of Endocrinology Clinical Practice Guidelines for the Diagnosis and Treatment of Postmenopausal Osteoporosis\u20142020 Update",
+    "society": "",
+    "year": 2020,
+    "title": "American Association of Clinical Endocrinologists/American College of Endocrinology Clinical Practice Guidelines for the Diagnosis and Treatment of Postmenopausal Osteoporosis\u20142020 Update",
+    "id": "10_4158_GL-2020-0524SUPPL"
+  },
+  "summary": {
+    "total_screened": 343,
+    "total_with_data": 100,
+    "eligible": 25,
+    "total_participants": 256055,
+    "sample_size_mean": 10242.2,
+    "sample_size_median": 2012,
+    "sample_size_min": 25,
+    "sample_size_max": 119000,
+    "sample_size_sd": 24629.7,
+    "year_min": 1992,
+    "year_max": 2018
+  },
+  "completeness": {
+    "country": {
+      "n": 81,
+      "total": 100,
+      "pct": 81.0
+    },
+    "year": {
+      "n": 100,
+      "total": 100,
+      "pct": 100.0
+    },
+    "sample_size": {
+      "n": 25,
+      "total": 100,
+      "pct": 25.0
+    },
+    "sex_both": {
+      "n": 1,
+      "total": 100,
+      "pct": 1.0
+    },
+    "any_race": {
+      "n": 2,
+      "total": 100,
+      "pct": 2.0
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 100,
+      "pct": 0.0
+    },
+    "age": {
+      "n": 0,
+      "total": 100,
+      "pct": 0
+    }
+  },
+  "eligible_completeness": {
+    "age": {
+      "n": 0,
+      "total": 25,
+      "pct": 0.0
+    },
+    "sex_both": {
+      "n": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "any_race": {
+      "n": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 25,
+      "pct": 0.0
+    },
+    "all_5_sum_100": {
+      "n": 0,
+      "total": 25,
+      "pct": 0.0
+    }
+  },
+  "sex_distribution": {
+    "mean_male": 72.2,
+    "mean_female": 57.7,
+    "sd_male": 18.7,
+    "sd_female": 42.8
+  },
+  "race_distribution": {
+    "white": {
+      "mean": 88.8,
+      "sd": 0,
+      "reported": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "black": {
+      "mean": 46.0,
+      "sd": 0,
+      "reported": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "hispanic": {
+      "mean": 95.4,
+      "sd": 0,
+      "reported": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "asian": {
+      "mean": 12.0,
+      "sd": 0,
+      "reported": 1,
+      "total": 25,
+      "pct": 4.0
+    },
+    "other": {
+      "mean": 0,
+      "sd": 0,
+      "reported": 0,
+      "total": 25,
+      "pct": 0.0
+    }
+  },
+  "geography": {
+    "usa": 13,
+    "usa_pct": 52.0,
+    "multi_incl_usa": 0,
+    "multi_incl_usa_pct": 0,
+    "multi": 0,
+    "multi_pct": 0.0,
+    "non_usa": 12,
+    "non_usa_pct": 48.0
+  },
+  "years": [
+    1992,
+    1999,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2007,
+    2010,
+    2011,
+    2012,
+    2014,
+    2015,
+    2018
+  ],
+  "year_counts": {},
+  "study_design": {
+    "Other": 81,
+    "RCT / Clinical Trial": 9,
+    "Review / Meta-analysis": 5,
+    "Cohort": 4,
+    "Case-Control": 1
+  },
+  "continent_breakdown": {
+    "North America": {
+      "count": 14,
+      "pct": 56.0
+    },
+    "Other / Unknown": {
+      "count": 3,
+      "pct": 12.0
+    },
+    "Italy": {
+      "count": 2,
+      "pct": 8.0
+    },
+    "France": {
+      "count": 2,
+      "pct": 8.0
+    },
+    "United Kingdom": {
+      "count": 2,
+      "pct": 8.0
+    },
+    "Norway": {
+      "count": 1,
+      "pct": 4.0
+    },
+    "Netherlands": {
+      "count": 1,
+      "pct": 4.0
+    }
+  },
+  "top_countries": [
+    {
+      "country": "usa",
+      "code": "usa",
+      "count": 8,
+      "pct": 32.0
+    },
+    {
+      "country": "United States",
+      "code": "USA",
+      "count": 3,
+      "pct": 12.0
+    },
+    {
+      "country": "ITA",
+      "code": "ITA",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "country": "North America",
+      "code": "CAN",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "country": "FRA",
+      "code": "FRA",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "country": "United Kingdom",
+      "code": "GBR",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "country": "usa, United States",
+      "code": "usa, United States",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "country": "UK",
+      "code": "UK",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "country": "NOR",
+      "code": "NOR",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "country": "NLD",
+      "code": "NLD",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "country": "United States",
+      "code": "United States",
+      "count": 1,
+      "pct": 4.0
+    }
+  ],
+  "sex_breakdown": {
+    "Neither reported": {
+      "count": 21,
+      "pct": 84.0
+    },
+    "Female only": {
+      "count": 2,
+      "pct": 8.0
+    },
+    "Male only": {
+      "count": 1,
+      "pct": 4.0
+    },
+    "Both sexes reported": {
+      "count": 1,
+      "pct": 4.0
+    }
+  },
+  "race_cats_distribution": {
+    "0": {
+      "count": 98,
+      "pct": 98.0
+    },
+    "2": {
+      "count": 1,
+      "pct": 1.0
+    },
+    "4": {
+      "count": 1,
+      "pct": 1.0
+    }
+  },
+  "decade_breakdown": {
+    "1990s": {
+      "count": 2,
+      "pct": 8.0
+    },
+    "2000s": {
+      "count": 8,
+      "pct": 32.0
+    },
+    "2010s": {
+      "count": 15,
+      "pct": 60.0
+    }
+  },
+  "top_journals": [
+    {
+      "journal": "Journal of Bone and Mineral Research",
+      "count": 10,
+      "pct": 40.0
+    },
+    {
+      "journal": "Osteoporosis International",
+      "count": 3,
+      "pct": 12.0
+    },
+    {
+      "journal": "The Journal of Clinical Endocrinology &amp; Metabolism",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "journal": "Endocrine Practice",
+      "count": 2,
+      "pct": 8.0
+    },
+    {
+      "journal": "Health Education Journal",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "journal": "The Lancet",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "journal": "JAMA",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "journal": "Current Osteoporosis Reports",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "journal": "Bone",
+      "count": 1,
+      "pct": 4.0
+    },
+    {
+      "journal": "Clinical Orthopaedics &amp; Related Research",
+      "count": 1,
+      "pct": 4.0
+    }
+  ],
+  "criteria_pass_rates": {
+    "sample_size_gt_0": {
+      "n": 25,
+      "total": 100
+    },
+    "country_valid": {
+      "n": 81,
+      "total": 100
+    },
+    "sex_sum_100": {
+      "n": 1,
+      "total": 100
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 100
+    },
+    "both_sex_and_race": {
+      "n": 1,
+      "total": 100
+    }
+  },
+  "eligible_studies": [
+    {
+      "title": "Population screening for osteoporosis risk: a randomised control trial of medication use and fracture risk.",
+      "link": "https://doi.org/10.1007/s00198-009-1007-x",
+      "author": "R. J. Barr; A. Stewart; D. J. Torgerson; D. M. Reid",
+      "country": "usa",
+      "year": 2010,
+      "journal": "Osteoporosis International",
+      "sample_size": 4800,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Health beliefs about osteoporosis and osteoporosis screening in older women and men",
+      "link": "https://doi.org/10.1177/0017896910364570",
+      "author": "Smita Nayak; Mark S Roberts; Chung-Chou H Chang; Susan L Greenspan",
+      "country": "usa, United States",
+      "year": 2010,
+      "journal": "Health Education Journal",
+      "sample_size": 664,
+      "age": "",
+      "male_pct": null,
+      "female_pct": 58.7,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Screening in the community to reduce fractures in older women (SCOOP): a randomised controlled trial.",
+      "link": "https://doi.org/10.1016/S0140-6736(17)32640-5",
+      "author": "Lee Shepstone; Elizabeth Lenaghan; Cyrus Cooper; Shane Clarke; Rebekah Fong-Soe-Khioe",
+      "country": "UK",
+      "year": 2018,
+      "journal": "The Lancet",
+      "sample_size": 6233,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "The WHO Absolute Fracture Risk Models (FRAX): Do Clinical Risk Factors Improve Fracture Prediction in Older Women Without Osteoporosis?",
+      "link": "https://doi.org/10.1002/jbmr.372",
+      "author": "Teresa A Hillier; Jane A Cauley; Joanne H Rizzo; Kathryn L Pedula; Kristine E Ensrud",
+      "country": "NOR",
+      "year": 2011,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 6252,
+      "age": "",
+      "male_pct": null,
+      "female_pct": 100.0,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Previous fractures at multiple sites increase the risk for subsequent fractures: The global longitudinal study of osteoporosis in women",
+      "link": "https://doi.org/10.1002/jbmr.1476",
+      "author": "Stephen Gehlbach; Kenneth G Saag; Jonathan D Adachi; Fred H Hooven; Julie Flahive",
+      "country": "USA",
+      "year": 2012,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 119000,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Cohort",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Risk of new vertebral fracture in the year following a fracture.",
+      "link": "https://doi.org/10.1001/jama.285.3.320",
+      "author": "Robert Lindsay",
+      "country": "usa",
+      "year": 2001,
+      "journal": "JAMA",
+      "sample_size": 28,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Predictive value of BMD for hip and other fractures.",
+      "link": "https://doi.org/10.1359/JBMR.050304",
+      "author": "Olof Johnell; John A Kanis; Anders Oden; Helena Johansson; Chris De Laet",
+      "country": "ITA",
+      "year": 2005,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 9891,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Assessment of Individual Fracture Risk: FRAX and Beyond",
+      "link": "https://doi.org/10.1007/s11914-010-0022-3",
+      "author": "Joop P. W. van den Bergh; Tineke A. C. M. van Geel; Willem F. Lems; Piet P. Geusens",
+      "country": "NLD",
+      "year": 2010,
+      "journal": "Current Osteoporosis Reports",
+      "sample_size": 2012,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Spine-hip discordance and fracture risk assessment: a physician-friendly FRAX enhancement.",
+      "link": "https://doi.org/10.1007/s00198-010-1461-5",
+      "author": "W. D. Leslie; L. M. Lix; H. Johansson; A. Oden; E. McCloskey",
+      "country": "CAN",
+      "year": 2011,
+      "journal": "Osteoporosis International",
+      "sample_size": 36368,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Does osteoporosis therapy invalidate FRAX for fracture prediction?",
+      "link": "https://doi.org/10.1002/jbmr.1582",
+      "author": "William D Leslie; Lisa M Lix; Helena Johansson; Anders Oden; Eugene McCloskey",
+      "country": "CAN",
+      "year": 2012,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 35764,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Axial and appendicular bone density predict fractures in older women.",
+      "link": "https://doi.org/10.1002/jbmr.5650070607",
+      "author": "Dennis M. Black; Steven R. Cummings; Harry K. Genant; Michael C. Nevitt; Lisa Palermo",
+      "country": "FRA",
+      "year": 1992,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 8134,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Relationship between bone mineral density changes with denosumab treatment and risk reduction for vertebral and nonvertebral fractures",
+      "link": "https://doi.org/10.1002/jbmr.1472",
+      "author": "Matthew Austin; Yu-Ching Yang; Eric Vittinghoff; Silvano Adami; Steven Boonen",
+      "country": "USA",
+      "year": 2012,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 7808,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Trabecular bone score (TBS) as a new complementary approach for osteoporosis evaluation in clinical practice",
+      "link": "https://doi.org/10.1016/j.bone.2015.05.016",
+      "author": "N.C. Harvey; C.C. Gl\u00fcer; N. Binkley; E.V. McCloskey; M.-L. Brandi",
+      "country": "GBR",
+      "year": 2015,
+      "journal": "Bone",
+      "sample_size": 390,
+      "age": "",
+      "male_pct": 59.0,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Yield of laboratory testing to identify secondary contributors to osteoporosis in otherwise healthy women.",
+      "link": "https://doi.org/10.1210/jc.2002-020275",
+      "author": "Cara Tannenbaum; Julie Clark; Kevin Schwartzman; Sylvan Wallenstein; Robert Lapinski",
+      "country": "usa",
+      "year": 2002,
+      "journal": "The Journal of Clinical Endocrinology &amp; Metabolism",
+      "sample_size": 664,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Prior fractures are common in patients with subsequent hip fractures.",
+      "link": "https://doi.org/10.1097/BLO.0b013e3180534269",
+      "author": "Beatrice J Edwards; Andrew D Bunta; Christine Simonelli; Mark Bolander; Lorraine A Fitzpatrick",
+      "country": "USA",
+      "year": 2007,
+      "journal": "Clinical Orthopaedics &amp; Related Research",
+      "sample_size": 632,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Accuracy of height loss during prospective monitoring for detection of incident vertebral fractures.",
+      "link": "https://doi.org/10.1007/s00198-004-1709-z",
+      "author": "K. Siminoski; G. Jiang; J. D. Adachi; D. A. Hanley; G. Cline",
+      "country": "usa",
+      "year": 2005,
+      "journal": "Osteoporosis International",
+      "sample_size": 985,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Cohort",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Markers of bone turnover predict postmenopausal forearm bone loss over 4 years: the OFELY study.",
+      "link": "https://doi.org/10.1359/jbmr.1999.14.9.1614",
+      "author": "Patrick Garnero; Elisabeth Sornay-Rendu; Fran\u00e7ois Duboeuf; Pierre D. Delmas",
+      "country": "usa",
+      "year": 1999,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 305,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Relationship of early changes in bone resorption to the reduction in fracture risk with risedronate.",
+      "link": "https://doi.org/10.1359/jbmr.2003.18.6.1051",
+      "author": "R Eastell; I Barton; Ra Hannon; A Chines; P Garnero",
+      "country": "GBR",
+      "year": 2003,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 693,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Change in bone turnover and hip, non-spine, and vertebral fracture in alendronate-treated women: the fracture intervention trial.",
+      "link": "https://doi.org/10.1359/JBMR.040512",
+      "author": "Douglas C Bauer; Dennis M Black; Patrick Garnero; Marc Hochberg; Susan Ott",
+      "country": "usa",
+      "year": 2004,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 6186,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Effects of denosumab on bone turnover markers in postmenopausal osteoporosis.",
+      "link": "https://doi.org/10.1002/jbmr.251",
+      "author": "Richard Eastell; Claus Christiansen; Andreas Grauer; Stepan Kutilek; Cesar Libanati",
+      "country": "usa",
+      "year": 2011,
+      "journal": "Journal of Bone and Mineral Research",
+      "sample_size": 160,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Changes in bone density and turnover explain the reductions in incidence of nonvertebral fractures that occur during treatment with antiresorptive agents.",
+      "link": "https://doi.org/10.1210/jcem.87.4.8415",
+      "author": "Marc C. Hochberg; Susan Greenspan; Richard D. Wasnich; Paul Miller; Desmond E. Thompson",
+      "country": "usa",
+      "year": 2002,
+      "journal": "The Journal of Clinical Endocrinology &amp; Metabolism",
+      "sample_size": 2415,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Fracture Prediction After Discontinuation of 4 to 5 Years of Alendronate Therapy",
+      "link": "https://doi.org/10.1001/jamainternmed.2014.1232",
+      "author": "Douglas C. Bauer; Ann Schwartz; Lisa Palermo; Jane Cauley; Marc Hochberg",
+      "country": "FRA",
+      "year": 2014,
+      "journal": "JAMA Internal Medicine",
+      "sample_size": 6459,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "A Trial of Calcium and Vitamin D for the Prevention of Colorectal Adenomas",
+      "link": "https://doi.org/10.1056/NEJMoa1500409",
+      "author": "John A. Baron; Elizabeth L. Barry; Leila A. Mott; Judy R. Rees; Robert S. Sandler",
+      "country": "United States",
+      "year": 2015,
+      "journal": "New England Journal of Medicine",
+      "sample_size": 60,
+      "age": "",
+      "male_pct": 85.5,
+      "female_pct": 14.5,
+      "white_pct": 88.8,
+      "black_pct": 46.0,
+      "hispanic_pct": 95.4,
+      "asian_pct": 12.0,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "The vitamin d dose response in obesity.",
+      "link": "https://doi.org/10.4158/EP13518.OR",
+      "author": "Ruban Dhaliwal; Mageda Mikhail; Martin Feuerman; John F. Aloia",
+      "country": "ITA",
+      "year": 2014,
+      "journal": "Endocrine Practice",
+      "sample_size": 25,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "EFFECTIVENESS AND OUTCOMES OF CURRENT PRACTICE IN TREATING VITAMIN D DEFICIENCY IN PATIENTS LISTED FOR LIVER TRANSPLANTATION.",
+      "link": "https://doi.org/10.4158/EP14416.OR",
+      "author": "Amanda Chaney; Michael G. Heckman; Nancy N. Diehl; Shon Meek; Andrew P. Keaveny",
+      "country": "Unknown",
+      "year": 2015,
+      "journal": "Endocrine Practice",
+      "sample_size": 127,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    }
+  ],
+  "live_pipeline": true,
+  "sample_size_quartiles": {
+    "q1": 390,
+    "q2": 2012,
+    "q3": 6459,
+    "min": 25,
+    "max": 119000
+  },
+  "reporting_trends": {
+    "1990-1994": {
+      "n": 1,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "1995-1999": {
+      "n": 1,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2000-2004": {
+      "n": 5,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2005-2009": {
+      "n": 3,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2010-2014": {
+      "n": 11,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2015+": {
+      "n": 4,
+      "sex_reported": 25.0,
+      "any_race": 25.0,
+      "all_5_race": 0.0
+    }
+  },
+  "bias_score": 78.8,
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: American Association of Clinical Endocrinologists/American College of Endocrinology Clinical Practice Guidelines for the Diagnosis and Treatment of Postmenopausal Osteoporosis\u20142020 Update\nYear: 2020 | Society: \n\nBIAS SCORE: 78.8%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 25 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 96.0% of studies\n\u26a0 Race data MISSING in 96.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+}

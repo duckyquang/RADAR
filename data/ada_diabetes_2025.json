@@ -1,0 +1,1259 @@
+{
+  "journal": {
+    "doi": "https://doi.org/10.2337/dc25-S001",
+    "disease": "1. Improving Care and Promoting Health in Populations: Standards of Care in Diabetes\u20142025",
+    "society": "",
+    "year": 2025,
+    "title": "1. Improving Care and Promoting Health in Populations: Standards of Care in Diabetes\u20142025",
+    "id": "10_2337_dc25-S001"
+  },
+  "summary": {
+    "total_screened": 129,
+    "total_with_data": 100,
+    "eligible": 35,
+    "total_participants": 927752,
+    "sample_size_mean": 26507.2,
+    "sample_size_median": 1901,
+    "sample_size_min": 5,
+    "sample_size_max": 770000,
+    "sample_size_sd": 129629.0,
+    "year_min": 2007,
+    "year_max": 2024
+  },
+  "completeness": {
+    "country": {
+      "n": 87,
+      "total": 100,
+      "pct": 87.0
+    },
+    "year": {
+      "n": 100,
+      "total": 100,
+      "pct": 100.0
+    },
+    "sample_size": {
+      "n": 35,
+      "total": 100,
+      "pct": 35.0
+    },
+    "sex_both": {
+      "n": 13,
+      "total": 100,
+      "pct": 13.0
+    },
+    "any_race": {
+      "n": 17,
+      "total": 100,
+      "pct": 17.0
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 100,
+      "pct": 0.0
+    },
+    "age": {
+      "n": 0,
+      "total": 100,
+      "pct": 0
+    }
+  },
+  "eligible_completeness": {
+    "age": {
+      "n": 0,
+      "total": 35,
+      "pct": 0.0
+    },
+    "sex_both": {
+      "n": 13,
+      "total": 35,
+      "pct": 37.1
+    },
+    "any_race": {
+      "n": 16,
+      "total": 35,
+      "pct": 45.7
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 35,
+      "pct": 0.0
+    },
+    "all_5_sum_100": {
+      "n": 0,
+      "total": 35,
+      "pct": 0.0
+    }
+  },
+  "sex_distribution": {
+    "mean_male": 45.0,
+    "mean_female": 38.4,
+    "sd_male": 27.7,
+    "sd_female": 22.3
+  },
+  "race_distribution": {
+    "white": {
+      "mean": 44.7,
+      "sd": 35.1,
+      "reported": 15,
+      "total": 35,
+      "pct": 42.9
+    },
+    "black": {
+      "mean": 19.1,
+      "sd": 21.4,
+      "reported": 13,
+      "total": 35,
+      "pct": 37.1
+    },
+    "hispanic": {
+      "mean": 17.5,
+      "sd": 19.0,
+      "reported": 11,
+      "total": 35,
+      "pct": 31.4
+    },
+    "asian": {
+      "mean": 11.1,
+      "sd": 23.4,
+      "reported": 11,
+      "total": 35,
+      "pct": 31.4
+    },
+    "other": {
+      "mean": 40.0,
+      "sd": 0,
+      "reported": 1,
+      "total": 35,
+      "pct": 2.9
+    }
+  },
+  "geography": {
+    "usa": 8,
+    "usa_pct": 22.9,
+    "multi_incl_usa": 0,
+    "multi_incl_usa_pct": 0,
+    "multi": 3,
+    "multi_pct": 8.6,
+    "non_usa": 24,
+    "non_usa_pct": 68.6
+  },
+  "years": [
+    2007,
+    2011,
+    2018,
+    2019,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "year_counts": {},
+  "study_design": {
+    "Other": 74,
+    "Review / Meta-analysis": 16,
+    "RCT / Clinical Trial": 5,
+    "Survey": 3,
+    "Cohort": 2
+  },
+  "continent_breakdown": {
+    "North America": {
+      "count": 8,
+      "pct": 22.9
+    },
+    "Other / Unknown": {
+      "count": 5,
+      "pct": 14.3
+    },
+    "Switzerland": {
+      "count": 5,
+      "pct": 14.3
+    },
+    "Italy": {
+      "count": 4,
+      "pct": 11.4
+    },
+    "Colombia": {
+      "count": 3,
+      "pct": 8.6
+    },
+    "China": {
+      "count": 2,
+      "pct": 5.7
+    },
+    "France": {
+      "count": 2,
+      "pct": 5.7
+    },
+    "Poland": {
+      "count": 2,
+      "pct": 5.7
+    },
+    "Norway": {
+      "count": 1,
+      "pct": 2.9
+    },
+    "Australia": {
+      "count": 1,
+      "pct": 2.9
+    },
+    "Germany": {
+      "count": 1,
+      "pct": 2.9
+    },
+    "United Kingdom": {
+      "count": 1,
+      "pct": 2.9
+    }
+  },
+  "top_countries": [
+    {
+      "country": "United States",
+      "code": "USA",
+      "count": 6,
+      "pct": 17.1
+    },
+    {
+      "country": "CHE",
+      "code": "CHE",
+      "count": 5,
+      "pct": 14.3
+    },
+    {
+      "country": "ITA",
+      "code": "ITA",
+      "count": 4,
+      "pct": 11.4
+    },
+    {
+      "country": "COL",
+      "code": "COL",
+      "count": 3,
+      "pct": 8.6
+    },
+    {
+      "country": "CHN",
+      "code": "CHN",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "country": "FRA",
+      "code": "FRA",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "country": "POL",
+      "code": "POL",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "country": "United States, U.S.",
+      "code": "United States, U.S.",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "NOR",
+      "code": "NOR",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "usa",
+      "code": "usa",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "AUS",
+      "code": "AUS",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "North America",
+      "code": "CAN",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "DEU",
+      "code": "DEU",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "country": "United Kingdom",
+      "code": "GBR",
+      "count": 1,
+      "pct": 2.9
+    }
+  ],
+  "sex_breakdown": {
+    "Neither reported": {
+      "count": 16,
+      "pct": 45.7
+    },
+    "Both sexes reported": {
+      "count": 13,
+      "pct": 37.1
+    },
+    "Male only": {
+      "count": 3,
+      "pct": 8.6
+    },
+    "Female only": {
+      "count": 3,
+      "pct": 8.6
+    }
+  },
+  "race_cats_distribution": {
+    "0": {
+      "count": 83,
+      "pct": 83.0
+    },
+    "1": {
+      "count": 2,
+      "pct": 2.0
+    },
+    "2": {
+      "count": 2,
+      "pct": 2.0
+    },
+    "3": {
+      "count": 6,
+      "pct": 6.0
+    },
+    "4": {
+      "count": 7,
+      "pct": 7.0
+    }
+  },
+  "decade_breakdown": {
+    "2000s": {
+      "count": 1,
+      "pct": 2.9
+    },
+    "2010s": {
+      "count": 3,
+      "pct": 8.6
+    },
+    "2020s": {
+      "count": 31,
+      "pct": 88.6
+    }
+  },
+  "top_journals": [
+    {
+      "journal": "JAMA Network Open",
+      "count": 7,
+      "pct": 20.0
+    },
+    {
+      "journal": "Diabetes Care",
+      "count": 6,
+      "pct": 17.1
+    },
+    {
+      "journal": "Journal of General Internal Medicine",
+      "count": 3,
+      "pct": 8.6
+    },
+    {
+      "journal": "JAMA Health Forum",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "journal": "Journal of Medical Internet Research",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "journal": "Clinical Diabetes",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "journal": "Diabetes Research and Clinical Practice",
+      "count": 2,
+      "pct": 5.7
+    },
+    {
+      "journal": "New England Journal of Medicine",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "journal": "BMC Primary Care",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "journal": "American Journal of Preventive Medicine",
+      "count": 1,
+      "pct": 2.9
+    }
+  ],
+  "criteria_pass_rates": {
+    "sample_size_gt_0": {
+      "n": 35,
+      "total": 100
+    },
+    "country_valid": {
+      "n": 87,
+      "total": 100
+    },
+    "sex_sum_100": {
+      "n": 13,
+      "total": 100
+    },
+    "all_5_race": {
+      "n": 0,
+      "total": 100
+    },
+    "both_sex_and_race": {
+      "n": 12,
+      "total": 100
+    }
+  },
+  "eligible_studies": [
+    {
+      "title": "Trends in Diabetes Treatment and Control in U.S. Adults, 1999\u20132018",
+      "link": "https://doi.org/10.1056/NEJMsa2032271",
+      "author": "Michael Fang; Dan Wang; Josef Coresh; Elizabeth Selvin",
+      "country": "United States, U.S.",
+      "year": 2021,
+      "journal": "New England Journal of Medicine",
+      "sample_size": 5,
+      "age": "",
+      "male_pct": 0.65,
+      "female_pct": 1.0,
+      "white_pct": 1.0,
+      "black_pct": 1.74,
+      "hispanic_pct": null,
+      "asian_pct": 2.18,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 3,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Beyond Comorbidity Counts: How Do Comorbidity Type and Severity Influence Diabetes Patients\u2019 Treatment Priorities and Self-Management?",
+      "link": "https://doi.org/10.1007/s11606-007-0313-2",
+      "author": "Eve A. Kerr; Michele Heisler; Sarah L. Krein; Mohammed Kabeto; Kenneth M. Langa",
+      "country": "USA",
+      "year": 2007,
+      "journal": "Journal of General Internal Medicine",
+      "sample_size": 1901,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Language Barriers, Physician-Patient Language Concordance, and Glycemic Control Among Insured Latinos with Diabetes: The Diabetes Study of Northern California (DISTANCE)",
+      "link": "https://doi.org/10.1007/s11606-010-1507-6",
+      "author": "Alicia Fernandez; Dean Schillinger; E. Margaret Warton; Nancy Adler; Howard H. Moffet",
+      "country": "USA",
+      "year": 2011,
+      "journal": "Journal of General Internal Medicine",
+      "sample_size": 7248,
+      "age": "",
+      "male_pct": 94.0,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Trends in Glycemic Control Among Youth and Young Adults With Diabetes: The SEARCH for Diabetes in Youth Study.",
+      "link": "https://doi.org/10.2337/dc21-0507",
+      "author": "Faisal S. Malik; Katherine A. Sauder; Scott Isom; Beth A. Reboussin; Dana Dabelea",
+      "country": "COL",
+      "year": 2022,
+      "journal": "Diabetes Care",
+      "sample_size": 6369,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Measurement and Validation of the Comprehensive Score for Financial Toxicity (COST) in a Population With Diabetes.",
+      "link": "https://doi.org/10.2337/dc22-0494",
+      "author": "Minal R. Patel; Guanghao Zhang; Michele Heisler; Peter X.K. Song; John D. Piette",
+      "country": "USA",
+      "year": 2022,
+      "journal": "Diabetes Care",
+      "sample_size": 600,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Primary care team and its association with quality of care for people with multimorbidity: a systematic review",
+      "link": "https://doi.org/10.1186/s12875-023-01968-z",
+      "author": "Mingyue Li; Haoqing Tang; Xiaoyun Liu",
+      "country": "CHN",
+      "year": 2023,
+      "journal": "BMC Primary Care",
+      "sample_size": 2076,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Review / Meta-analysis",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Association of Primary Care Engagement in Value-Based Reform Programs With Health Services Outcomes",
+      "link": "https://doi.org/10.1001/jamahealthforum.2022.0005",
+      "author": "Julia Adler-Milstein; Ariel Linden; John M. Hollingsworth; Andrew M. Ryan",
+      "country": "FRA",
+      "year": 2022,
+      "journal": "JAMA Health Forum",
+      "sample_size": 54,
+      "age": "",
+      "male_pct": 43.9,
+      "female_pct": 57.1,
+      "white_pct": 4.0,
+      "black_pct": 10.0,
+      "hispanic_pct": 5.3,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 3,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Effects of a Digital Diabetes Prevention Program: An RCT.",
+      "link": "https://doi.org/10.1016/j.amepre.2021.10.023",
+      "author": "Jeffrey A. Katula; Emily V. Dressler; Carol A. Kittel; Lea N. Harvin; Fabio A. Almeida",
+      "country": "NOR",
+      "year": 2022,
+      "journal": "American Journal of Preventive Medicine",
+      "sample_size": 599,
+      "age": "",
+      "male_pct": 61.4,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Patterns of Telemedicine Use and Glycemic Outcomes of Endocrinology Care for Patients With Type 2 Diabetes",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2023.46305",
+      "author": "Margaret F. Zupa; Varsha G. Vimalananda; Scott D. Rothenberger; Jonathan Y. Lin; Jason M. Ng",
+      "country": "usa",
+      "year": 2023,
+      "journal": "JAMA Network Open",
+      "sample_size": 1547,
+      "age": "",
+      "male_pct": 42.0,
+      "female_pct": 58.0,
+      "white_pct": 88.0,
+      "black_pct": 77.0,
+      "hispanic_pct": 66.0,
+      "asian_pct": 81.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Telemedicine in the Management of Type 1 Diabetes",
+      "link": "https://doi.org/10.5888/pcd15.170168",
+      "author": "Timothy Xu; Shreya Pujara; Sarah Sutton; Mary Rhee",
+      "country": "CHE",
+      "year": 2018,
+      "journal": "Preventing Chronic Disease",
+      "sample_size": 2016,
+      "age": "",
+      "male_pct": null,
+      "female_pct": 9.4,
+      "white_pct": 84.4,
+      "black_pct": 15.6,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 2,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Implementation of an Intensive Telehealth Intervention for Rural Patients with Clinic-Refractory Diabetes",
+      "link": "https://doi.org/10.1007/s11606-021-07281-8",
+      "author": "Elizabeth A. Kobe; Allison A. Lewinski; Amy S. Jeffreys; Valerie A. Smith; Cynthia J. Coffman",
+      "country": "USA",
+      "year": 2022,
+      "journal": "Journal of General Internal Medicine",
+      "sample_size": 230,
+      "age": "",
+      "male_pct": 95.0,
+      "female_pct": null,
+      "white_pct": 80.0,
+      "black_pct": null,
+      "hispanic_pct": 14.0,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 2,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Effectiveness, reach, uptake, and feasibility of digital health interventions for adults with type 2 diabetes: a systematic review and meta-analysis of randomised controlled trials.",
+      "link": "https://doi.org/10.1016/S2589-7500(22)00233-3",
+      "author": "George Moschonis; George Siopis; Jenny Jung; Evette Eweka; Ruben Willems",
+      "country": "AUS",
+      "year": 2023,
+      "journal": "The Lancet Digital Health",
+      "sample_size": 4546,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Telemedicine in Improving Glycemic Control Among Children and Adolescents With Type 1 Diabetes Mellitus: Systematic Review and Meta-Analysis",
+      "link": "https://doi.org/10.2196/51538",
+      "author": "Kun Zhang; Qiyuan Huang; Qiaosong Wang; Chengyang Li; Qirong Zheng",
+      "country": "CHN",
+      "year": 2024,
+      "journal": "Journal of Medical Internet Research",
+      "sample_size": 1704,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Review / Meta-analysis",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Implementation Science Perspectives on Implementing Telemedicine Interventions for Hypertension or Diabetes Management: Scoping Review",
+      "link": "https://doi.org/10.2196/42134",
+      "author": "Ayisha Khalid; Quanfang Dong; Enkhzaya Chuluunbaatar; Victoria Haldane; Hammad Durrani",
+      "country": "CAN",
+      "year": 2023,
+      "journal": "Journal of Medical Internet Research",
+      "sample_size": 423,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": 40.0,
+      "design": "Review / Meta-analysis",
+      "race_cats": 1,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Making Diabetes Electronic Medical Record Data Actionable: Promoting Benchmarking and Population Health Improvement Using the T1D Exchange Quality Improvement Portal",
+      "link": "https://doi.org/10.2337/cd22-0072",
+      "author": "Ann Mungmode; Nudrat Noor; Ruth S. Weinstock; Roberto Izquierdo; Justin A. Indyk",
+      "country": "ITA",
+      "year": 2023,
+      "journal": "Clinical Diabetes",
+      "sample_size": 45000,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Strategies for overcoming therapeutic inertia in type 2 diabetes: A systematic review and meta-analysis.",
+      "link": "https://doi.org/10.1111/dom.14455",
+      "author": "Rhea E. Powell; Francesco Zaccardi; Christine Beebe; Xin Mei Chen; Alyssa Crawford",
+      "country": "USA",
+      "year": 2021,
+      "journal": "Diabetes, Obesity and Metabolism",
+      "sample_size": 243,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Review / Meta-analysis",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "The effect of personalized intelligent digital systems for self-care training on type II diabetes: a systematic review and meta-analysis of clinical trials.",
+      "link": "https://doi.org/10.1007/s00592-023-02133-9",
+      "author": "Mozhgan Tanhapour; Maryam Peimani; Sharareh Rostam Niakan Kalhori; Ensieh Nasli Esfahani; Hadi Shakibian",
+      "country": "DEU",
+      "year": 2023,
+      "journal": "Acta Diabetologica",
+      "sample_size": 3071,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "RCT / Clinical Trial",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Comparison of Diabetes Medications Used by Adults With Commercial Insurance vs Medicare Advantage, 2016 to 2019",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2020.35792",
+      "author": "Rozalina G. McCoy; Holly K. Van Houten; Yihong Deng; Pinar Karaca Mandic; Joseph S. Ross",
+      "country": "CHE",
+      "year": 2021,
+      "journal": "JAMA Network Open",
+      "sample_size": 382,
+      "age": "",
+      "male_pct": 58.3,
+      "female_pct": 41.7,
+      "white_pct": 85.0,
+      "black_pct": 37.0,
+      "hispanic_pct": 25.0,
+      "asian_pct": 3.6,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Glucagon fill rates and cost among children and adolescents with type 1 diabetes in the United States, 2011\u20132021",
+      "link": "https://doi.org/10.1016/j.diabres.2023.111026",
+      "author": "Tyler J. Benning; Herbert C. Heien; Joseph R. Herges; Ana L. Creo; Alaa Al Nofal",
+      "country": "CHE",
+      "year": 2023,
+      "journal": "Diabetes Research and Clinical Practice",
+      "sample_size": 13267,
+      "age": "",
+      "male_pct": 0.94,
+      "female_pct": 47.7,
+      "white_pct": 76.4,
+      "black_pct": 0.83,
+      "hispanic_pct": 0.93,
+      "asian_pct": 1.03,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Gaps in glucagon fills among commercially insured patients receiving a glucagon prescription",
+      "link": "https://doi.org/10.1016/j.diabres.2023.110720",
+      "author": "Joseph R. Herges; Jordan D. Haag; Kimberly A. Kosloski Tarpenning; Kristin C. Mara; Rozalina G. McCoy",
+      "country": "CHE",
+      "year": 2023,
+      "journal": "Diabetes Research and Clinical Practice",
+      "sample_size": 216,
+      "age": "",
+      "male_pct": 34.0,
+      "female_pct": 34.5,
+      "white_pct": 67.0,
+      "black_pct": null,
+      "hispanic_pct": 4.0,
+      "asian_pct": 2.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 3,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Disparities in Continuous Glucose Monitor Use Between Children With Type 1 Diabetes Living in Urban and Rural Areas.",
+      "link": "https://doi.org/10.2337/dc23-1564",
+      "author": "Daniel R. Tilden; Benjamin French; Karishma A. Datye; Sarah S. Jaser",
+      "country": "Unknown",
+      "year": 2024,
+      "journal": "Diabetes Care",
+      "sample_size": 2008,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Association of Race/Ethnicity, Gender, and Socioeconomic Status With Sodium-Glucose Cotransporter 2 Inhibitor Use Among Patients With Diabetes in the US",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2021.6139",
+      "author": "Lauren A. Eberly; Lin Yang; Nwamaka D. Eneanya; Utibe Essien; Howard Julien",
+      "country": "Unknown",
+      "year": 2021,
+      "journal": "JAMA Network Open",
+      "sample_size": 542,
+      "age": "",
+      "male_pct": 48.5,
+      "female_pct": 0.82,
+      "white_pct": 1.0,
+      "black_pct": 1.0,
+      "hispanic_pct": null,
+      "asian_pct": 2.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 3,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Racial, Ethnic, and Socioeconomic Inequities in Glucagon-Like Peptide-1 Receptor Agonist Use Among Patients With Diabetes in the US",
+      "link": "https://doi.org/10.1001/jamahealthforum.2021.4182",
+      "author": "Lauren A. Eberly; Lin Yang; Utibe R. Essien; Nwamaka D. Eneanya; Howard M. Julien",
+      "country": "Unknown",
+      "year": 2021,
+      "journal": "JAMA Health Forum",
+      "sample_size": 292,
+      "age": "",
+      "male_pct": 49.7,
+      "female_pct": 1.15,
+      "white_pct": 1.0,
+      "black_pct": 1.0,
+      "hispanic_pct": 1.0,
+      "asian_pct": 1.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Association of Prescription Co-payment With Adherence to Glucagon-Like Peptide-1 Receptor Agonist and Sodium-Glucose Cotransporter-2 Inhibitor Therapies in Patients With Heart Failure and Diabetes",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2023.16290",
+      "author": "Utibe R. Essien; Balvindar Singh; Gretchen Swabe; Amber E. Johnson; Lauren A. Eberly",
+      "country": "POL",
+      "year": 2023,
+      "journal": "JAMA Network Open",
+      "sample_size": 7356,
+      "age": "",
+      "male_pct": 37.1,
+      "female_pct": 62.9,
+      "white_pct": 15.0,
+      "black_pct": 23.0,
+      "hispanic_pct": 18.8,
+      "asian_pct": 2.5,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "\u201cUse and Continuity of Weight-modifying Medications among Adults with Diabetes and Overweight/Obesity: U.S. population study\u201d",
+      "link": "https://doi.org/10.1002/oby.23869",
+      "author": "Rodolfo J. Galindo; Tegveer S. Uppal; Rozalina G. McCoy; Guillermo E. Umpierrez; Mohammed K. Ali",
+      "country": "ITA",
+      "year": 2023,
+      "journal": "Obesity",
+      "sample_size": 7402,
+      "age": "",
+      "male_pct": 50.0,
+      "female_pct": 52.3,
+      "white_pct": 64.7,
+      "black_pct": 17.7,
+      "hispanic_pct": null,
+      "asian_pct": 5.3,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 3,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Evaluation of High-Deductible Health Plans and Acute Glycemic Complications Among Adults With Diabetes",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2022.50602",
+      "author": "David H. Jiang; Jeph Herrin; Holly K. Van Houten; Rozalina G. McCoy",
+      "country": "CHE",
+      "year": 2023,
+      "journal": "JAMA Network Open",
+      "sample_size": 752,
+      "age": "",
+      "male_pct": 53.3,
+      "female_pct": 46.7,
+      "white_pct": 26.0,
+      "black_pct": 29.0,
+      "hispanic_pct": 26.0,
+      "asian_pct": 11.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Enrollment in High-Deductible Health Plans and Incident Diabetes Complications",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2024.3394",
+      "author": "Rozalina G. McCoy; Kavya S. Swarna; David H. Jiang; Holly K. Van Houten; Jie Chen",
+      "country": "POL",
+      "year": 2024,
+      "journal": "JAMA Network Open",
+      "sample_size": 828,
+      "age": "",
+      "male_pct": 1.29,
+      "female_pct": 44.3,
+      "white_pct": 26.0,
+      "black_pct": 29.0,
+      "hispanic_pct": 26.0,
+      "asian_pct": 11.0,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 4,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Association Between High-Deductible Health Plans and Engagement in Routine Medical Care for Type 2 Diabetes in a Privately Insured Population: A Propensity Score-Matched Study.",
+      "link": "https://doi.org/10.2337/dc21-1885",
+      "author": "You M. Wu; Jie Huang; Mary E. Reed",
+      "country": "Unknown",
+      "year": 2022,
+      "journal": "Diabetes Care",
+      "sample_size": 6801,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Estimates of the Percentage of US Adults With Diabetes Who Could Be Screened for Diabetic Retinopathy in Primary Care Settings.",
+      "link": "https://doi.org/10.1001/jamaophthalmol.2018.6909",
+      "author": "Diane M. Gibson",
+      "country": "COL",
+      "year": 2019,
+      "journal": "JAMA Ophthalmology",
+      "sample_size": 3229,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Increasing Social Determinants of Health Screening Rates Among Six Endocrinology Centers Across the United States: Results From the T1D Exchange Quality Improvement Collaborative",
+      "link": "https://doi.org/10.2337/cd23-0060",
+      "author": "Ori Odugbesan; Trevon Wright; Nana-Hawa Yayah Jones; Selorm Dei-Tutu; Mary Pat Gallagher",
+      "country": "ITA",
+      "year": 2024,
+      "journal": "Clinical Diabetes",
+      "sample_size": 17917,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Access to Diabetes Care Should Be a Universal Right for People With Type 1 Diabetes: Lessons Learned From the Norwegian Childhood Diabetes Registry.",
+      "link": "https://doi.org/10.2337/dc24-0086",
+      "author": "Heiko Bratke; Eva Biringer; Anastasia Ushakova; Hanna D. Margeirsdottir; Siv Janne Kummernes",
+      "country": "ITA",
+      "year": 2024,
+      "journal": "Diabetes Care",
+      "sample_size": 12640,
+      "age": "",
+      "male_pct": null,
+      "female_pct": 46.0,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Metabolic Syndrome and COVID-19 Mortality Among Adult Black Patients in New Orleans",
+      "link": "https://doi.org/10.2337/dci20-0053",
+      "author": "Felicia Hill-Briggs; Nancy E. Adler; Seth A. Berkowitz; Marshall H. Chin; Tiffany L. Gary-Webb",
+      "country": "FRA",
+      "year": 2021,
+      "journal": "Diabetes Care",
+      "sample_size": 770000,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Racial and Ethnic Disparities in Glycemic Control Among Insured US Adults",
+      "link": "https://doi.org/10.1001/jamanetworkopen.2023.36307",
+      "author": "Nora I. Zakaria; Parisa Tehranifar; Blandine Laferr\u00e8re; Sandra S. Albrecht",
+      "country": "COL",
+      "year": 2023,
+      "journal": "JAMA Network Open",
+      "sample_size": 575,
+      "age": "",
+      "male_pct": 49.5,
+      "female_pct": 50.5,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 1,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Nonmedical Interventions For Type 2 Diabetes: Evidence, Actionable Strategies, And Policy Opportunities",
+      "link": "https://doi.org/10.1377/hlthaff.2022.00236",
+      "author": "Leonard E. Egede; Rebekah J. Walker; Sebastian Linde; Jennifer A. Campbell; Aprill Z. Dawson",
+      "country": "GBR",
+      "year": 2022,
+      "journal": "Health Affairs",
+      "sample_size": 4498,
+      "age": "",
+      "male_pct": null,
+      "female_pct": null,
+      "white_pct": null,
+      "black_pct": null,
+      "hispanic_pct": null,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Other",
+      "race_cats": 0,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 0,
+      "has_all_5_race": 0
+    },
+    {
+      "title": "Implicit Racial\u2013Ethnic and Insurance-Mediated Bias to Recommending Diabetes Technology: Insights from T1D Exchange Multicenter Pediatric and Adult Diabetes Provider Cohort",
+      "link": "https://doi.org/10.1089/dia.2022.0042",
+      "author": "Ori Odugbesan; Ananta Addala; Grace Nelson; Rachel Hopkins; Kristina Cossen",
+      "country": "USA",
+      "year": 2022,
+      "journal": "Diabetes Technology &amp; Therapeutics",
+      "sample_size": 1415,
+      "age": "",
+      "male_pct": null,
+      "female_pct": 60.0,
+      "white_pct": 51.0,
+      "black_pct": 5.0,
+      "hispanic_pct": 5.0,
+      "asian_pct": null,
+      "other_pct": null,
+      "design": "Cohort",
+      "race_cats": 3,
+      "has_sex": 0,
+      "has_age": 0,
+      "has_any_race": 1,
+      "has_all_5_race": 0
+    }
+  ],
+  "live_pipeline": true,
+  "sample_size_quartiles": {
+    "q1": 542,
+    "q2": 1901,
+    "q3": 6801,
+    "min": 5,
+    "max": 770000
+  },
+  "reporting_trends": {
+    "2005-2009": {
+      "n": 1,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2010-2014": {
+      "n": 1,
+      "sex_reported": 0.0,
+      "any_race": 0.0,
+      "all_5_race": 0.0
+    },
+    "2015+": {
+      "n": 33,
+      "sex_reported": 39.4,
+      "any_race": 48.5,
+      "all_5_race": 0.0
+    }
+  },
+  "bias_score": 63.0,
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 1. Improving Care and Promoting Health in Populations: Standards of Care in Diabetes\u20142025\nYear: 2025 | Society: \n\nBIAS SCORE: 63.0%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 35 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 62.9% of studies\n\u26a0 Race data MISSING in 54.3% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+}
