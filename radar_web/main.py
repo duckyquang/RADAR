@@ -14,11 +14,13 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 app = FastAPI(title="RADAR - Racial And Demographic Analysis of Research")
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 BASE = Path(__file__).parent
 templates = Jinja2Templates(directory=str(BASE / "templates"))
