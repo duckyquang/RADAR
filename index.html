@@ -436,58 +436,11 @@ async function analyzeGuideline(event) {
         renderDashboard();
         return;
       }
-    } catch(e) {}
-  }
-
-  // Try live API
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const API_BASE = isLocal ? 'http://localhost:8000' : PUBLIC_API_URL;
-  try {
-    const form = new FormData(); form.append('doi_url', input);
-    const res = await fetch(API_BASE + '/api/analyze', { method:'POST', body: form });
-      const result = await res.json();
-      if (!result.found) {
-        if (result.job_id) {
-          const jobId = result.job_id;
-          const meta = result.meta || {};
-          msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; <b>Pipeline running</b> for <em>' + (meta.title || 'guideline') + '</em> &mdash; extracting cited studies, fetching full-text, computing demographics&hellip; <span id="elapsed-counter" style="color:var(--gray-400);font-size:12px;">(0s)</span>';
-          _pollTimer = setInterval(async () => {
-            try {
-              const pr = await fetch(API_BASE + '/api/status/' + jobId);
-              const pdata = await pr.json();
-              const el = document.getElementById('elapsed-counter');
-              if (el) el.textContent = '(' + pdata.elapsed + 's)';
-              if (pdata.status === 'done') {
-                clearInterval(_pollTimer); _pollTimer = null;
-                state.data = pdata.data;
-                state.isLive = true;
-                status.className = 'status show success';
-                msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + pdata.data.journal.title + '</em> &mdash; ' + pdata.data.summary.eligible + ' eligible studies.';
-                btn.disabled = false; btn.textContent = 'Run Analysis';
-                renderDashboard();
-              } else if (pdata.status === 'error') {
-                clearInterval(_pollTimer); _pollTimer = null;
-                status.className = 'status show error';
-                msg.textContent = 'Pipeline error: ' + (pdata.message || 'Unknown error');
-                btn.disabled = false; btn.textContent = 'Run Analysis';
-              }
-            } catch(pe) {}
-          }, 3000);
-          return;
-        } else {
-          status.className = 'status show error';
-          msg.textContent = result.message || 'Could not resolve DOI.';
-          btn.disabled = false; btn.textContent = 'Run Analysis';
-          return;
-        }
-      }
-      if (result.data) {
-        state.data = result.data;
-        state.isLive = result.precomputed || false;
-        status.className = 'status show success';
-        msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge ' + (result.precomputed ? 'precomputed' : 'live') + '">' + (result.precomputed ? 'CACHED' : 'LIVE') + '</span> for <em>' + result.data.journal.title + '</em>';
+      // CrossRef couldn't resolve DOI
+      if (result.message) {
+        status.className = 'status show error';
+        msg.textContent = result.message;
         btn.disabled = false; btn.textContent = 'Run Analysis';
-        renderDashboard();
         return;
       }
     } catch(e) {
