@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: radar-api
+    runtime: python
+    repo: https://github.com/duckyquang/RADAR
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn radar_web.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

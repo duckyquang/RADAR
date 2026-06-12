@@ -300,6 +300,9 @@ const CC = ['#9B1B30','#DC143C','#1A1A1A','#404040','#808080','#B3B3B3','#5C5C5C
 const RACE_C = ['#9B1B30','#DC143C','#1A1A1A','#404040','#808080'];
 const SEX_C = ['#1A1A1A','#DC143C'];
 
+// Set your public API URL here (e.g., https://radar-api.onrender.com)
+const PUBLIC_API_URL = 'https://suse-unified-florida-roger.trycloudflare.com';
+
 const KNOWN_DOIS = {
   '10.1097/hep.0000000000000466': 'aasld_hcc_2023',
   '10.2337/dc25-s001': 'ada_diabetes_2025',
@@ -436,13 +439,12 @@ async function analyzeGuideline(event) {
     } catch(e) {}
   }
 
-  // Try live API (only works from localhost due to CORS)
+  // Try live API
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  if (isLocal) {
-    const API_BASE = 'http://localhost:8000';
-    try {
-      const form = new FormData(); form.append('doi_url', input);
-      const res = await fetch(API_BASE + '/api/analyze', { method:'POST', body: form });
+  const API_BASE = isLocal ? 'http://localhost:8000' : PUBLIC_API_URL;
+  try {
+    const form = new FormData(); form.append('doi_url', input);
+    const res = await fetch(API_BASE + '/api/analyze', { method:'POST', body: form });
       const result = await res.json();
       if (!result.found) {
         if (result.job_id) {
@@ -490,7 +492,11 @@ async function analyzeGuideline(event) {
       }
     } catch(e) {
       status.className = 'status show error';
-      msg.innerHTML = '<b>Live pipeline not available.</b> Make sure the server is running on <code>http://localhost:8000</code>.';
+      if (isLocal) {
+        msg.innerHTML = '<b>Live pipeline not available.</b> Make sure the server is running on <code>http://localhost:8000</code>.';
+      } else {
+        msg.innerHTML = '<b>API server unreachable.</b> The public API at <code>' + PUBLIC_API_URL + '</code> is not responding. Run the pipeline locally at <a href="http://localhost:8000" style="color:var(--crimson-bright);">http://localhost:8000</a>.';
+      }
       btn.disabled = false; btn.textContent = 'Run Analysis';
       return;
     }
@@ -498,7 +504,11 @@ async function analyzeGuideline(event) {
 
   // Not found
   status.className = 'status show error';
-  msg.innerHTML = '<b>No pre-computed data for this DOI.</b> The 6 examples above are immediately available. For other guidelines, run the live pipeline at <a href="http://localhost:8000" style="color:var(--crimson-bright);">http://localhost:8000</a>.';
+  if (isLocal) {
+    msg.innerHTML = '<b>No pre-computed data for this DOI.</b> The 6 examples above are immediately available. For other guidelines, run the live pipeline at <a href="http://localhost:8000" style="color:var(--crimson-bright);">http://localhost:8000</a>.';
+  } else {
+    msg.innerHTML = '<b>No pre-computed data and API unavailable.</b> Check that the public API is running at <code>' + PUBLIC_API_URL + '</code>.';
+  }
   btn.disabled = false; btn.textContent = 'Run Analysis';
 }
 
