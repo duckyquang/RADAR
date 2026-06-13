@@ -1,102 +1,90 @@
-# RADAR - Racial And Demographic Analysis of Research
+# RADAR — Racial And Demographic Analysis of Research
 
-Analyze any clinical practice guideline to extract demographic diversity metrics from cited studies. The system automatically fetches all referenced studies, extracts demographic data (sex, race, country), computes eligibility criteria, and generates interactive visualizations.
+**Live site:** https://duckyquang.github.io/RADAR/
 
-## 🚀 Live Web Interface
-
-Visit **[RADAR Dashboard](https://aly-dhedhi.github.io/RADAR/)** to analyze any guideline DOI in real-time.
-
-Simply paste any clinical guideline DOI (e.g., `10.4158/GL.2016.19.2.129`) and the system will:
-1. Extract all cited studies via CrossRef API
-2. Fetch full-text from PubMed Central and PubMed
-3. Parse demographic data from tables and abstracts
-4. Compute eligibility and diversity metrics
-5. Display interactive charts and tables
-
-### Tested Guidelines
-- ADA Diabetes 2025: `10.1089/dia.2024.0344`
-- AACE Obesity 2016: `10.4158/GL.2016.19.2.129`
-- ATA Thyroid 2015: `10.1089/thy.2015.0315`
-- AACE Osteoporosis 2020: `10.4158/GL.2020.19.4.161`
-- AASLD HCC 2023: `10.1002/hep.31852`
-
-**See [QUICKSTART.md](QUICKSTART.md) for deployment instructions.**
+Analyze any clinical practice guideline to extract demographic diversity metrics from cited studies. Enter a DOI, and RADAR automatically fetches all referenced studies, extracts demographic data (sex, race, country) from PMC full-text XML, runs eligibility checks, and generates interactive charts with a bias assessment.
 
 ---
 
-## Legacy Batch Pipeline
+## Quick Start
 
-Pipeline to extract clinical studies from clinical practice guideline PDF exports, determine eligibility based on demographic data availability, and produce summary statistics for systematic review papers.
+### Option A: GitHub Pages (static, 6 pre-computed guidelines)
 
-## Journals Supported
+Visit https://duckyquang.github.io/RADAR/ and click any example button — results load instantly. For other guidelines, use the live pipeline.
 
-| ID | Disease | Society | Year |
-|----|---------|---------|------|
-| `obesity_aace_2016` | Obesity | AACE/ACE | 2016 |
-| `diabetes_ada_2025` | Type 2 Diabetes | ADA | 2025 |
-| `thyroid_cancer_ata_2015` | Thyroid Cancer | ATA | 2015 |
-| `osteoporosis_aace_2020` | Osteoporosis | AACE/ACE | 2020 |
-| `hcc_aasld_2023` | Hepatocellular Carcinoma | AASLD | 2023 |
-
-## Setup
+### Option B: Live pipeline (any DOI)
 
 ```bash
-pip install pdfplumber matplotlib openpyxl
+pip install -r requirements.txt
+python3 -m uvicorn radar_web.main:app --host 0.0.0.0 --port 8000
 ```
 
-## Usage
+Open http://localhost:8000 — enter any guideline DOI and the pipeline runs live.
 
-### 1. Parse a PDF
-```bash
-python run_pipeline.py parse obesity_aace_2016
+### Option C: Via public API tunnel
+
+GH Pages also tries a public HTTPS API. Currently the API is tunneled from localhost — for permanent production, deploy to Render (see below).
+
+---
+
+## How It Works
+
+1. **CrossRef lookup** — resolves the guideline DOI and fetches all cited references
+2. **PubMed/PMC enrichment** — each cited study DOI is looked up in PubMed; if a PMCID exists, the full-text XML is parsed for demographic tables (sample size, sex%, race%)
+3. **Eligibility checks** — sample size > 0, valid country code, sex M+F ≈ 100%, 5 race categories reported
+4. **Results** — interactive dashboard with KPIs, charts (completeness, design, geography, trends, race distribution), sortable study table, and a bias score card
+5. **Downloadable reports** — CSV or standalone HTML with all charts embedded
+
+---
+
+## Deployment to Render (permanent public API)
+
+The repo includes `render.yaml` for one-click deployment:
+
+1. Sign up at https://render.com
+2. Click **New Web Service** → connect your GitHub repo
+3. Render auto-detects `render.yaml` — deploy
+4. Set the resulting URL (e.g. `https://radar-api.onrender.com`) as `PUBLIC_API_URL` in `index.html`
+
+---
+
+## Pre-computed Guidelines
+
+| DOI | Guideline | Studies | Eligible | Participants | With Race |
+|-----|-----------|--------:|---------:|-------------:|----------:|
+| `10.1097/HEP.0000000000000466` | AASLD HCC 2023 | 318 | 113 | 18.9M | 24 |
+| `10.2337/dc25-S001` | ADA Diabetes 2025 | 129 | 35 | 927K | 16 |
+| `10.1089/thy.2015.0020` | ATA Thyroid 2015 | 999 | 78 | 60.5M | 2 |
+| `10.4158/EP161365.GL` | AACE Obesity 2016 | 205 | 54 | 3.6M | — |
+| `10.4158/GL-2020-0524SUPPL` | AACE Osteoporosis 2020 | 343 | 62 | 578K | 4 |
+| `10.1093/eurheartj/ehab484` | ESC CVD Prevention 2021 | 773 | 42 | 1.6M | 3 |
+
+---
+
+## Project Structure
+
 ```
-Extracts study DOIs, titles, screening status, and TABLE 1 availability from the guideline PDF.
-
-### 2. Fill demographic data
-Open the generated CSV and manually extract from each cited study's full text:
-- Sample size, country, sex distribution (M%/F%), race distribution (White/Black/Hispanic/Asian/Other)
-
-### 3. Run eligibility check
-```bash
-python run_pipeline.py check output/obesity_aace_2016_filled.csv
+├── index.html                  # GH Pages frontend (crimson/black theme)
+├── data/                       # Pre-computed guideline JSON files
+├── radar_web/
+│   ├── main.py                 # FastAPI server
+│   ├── templates/index.html    # Server-served frontend
+│   └── static/                 # Static assets
+├── live_pipeline/
+│   ├── runner.py               # Pipeline orchestrator
+│   ├── fetcher.py              # CrossRef/PubMed/PMC API calls
+│   └── demographics.py         # PMC XML parser + text extraction
+├── pipeline/                   # Legacy batch pipeline (PDF-based)
+├── render.yaml                 # Render deployment config
+└── requirements.txt
 ```
 
-### 4. Alternative: Analyze from spreadsheet
-```bash
-python scripts/analyze_spreadsheet.py
-```
-Reads the Google Sheets export directly for journals with manually extracted data.
+---
 
-## Output Structure
+## Tech Stack
 
-```
-output/
-├── fig1_data_completeness.png     # Data field reporting rates
-├── fig2_geo_distribution.png      # Geographic distribution
-├── fig3_year_distribution.png     # Publication year histogram
-├── fig4_race_reporting.png        # Race category reporting rates
-├── fig5_study_design.png          # Study design distribution
-├── obesity_final_results.txt      # Paper-ready results
-└── obesity_eligible_studies.csv   # All eligible studies with data
-```
-
-## Pipeline Modules
-
-| Module | Purpose |
-|--------|---------|
-| `pipeline/parser.py` | PDF table extraction with pdfplumber |
-| `pipeline/eligibility.py` | 4-criteria eligibility check |
-| `pipeline/config.py` | Journal definitions, country codes, tolerances |
-| `pipeline/utils.py` | CSV I/O, template generation, reporting |
-
-## Results (Obesity 2016)
-
-| Metric | Value |
-|--------|-------|
-| Studies screened | 205 |
-| Eligible | 54 (26.3%) |
-| Total participants | 3,559,937 |
-| Year range | 1998–2015 |
-| Sex reported | 96.3% |
-| All 5 race categories | 42.6% |
-| USA studies | 59.3% |
+- **Frontend:** Vanilla JS + Chart.js, responsive CSS (crimson/black/white)
+- **Backend:** Python FastAPI + uvicorn
+- **Data Sources:** CrossRef API, PubMed E-utilities, PMC Open Access
+- **Deployment:** GitHub Pages (frontend), Render/Railway/Fly.io (API)
+- **Rate Limiting:** Thread-locked NCBI rate limiter (0.35s interval)
