@@ -26,7 +26,7 @@ BASE = Path(__file__).parent
 templates = Jinja2Templates(directory=str(BASE / "templates"))
 app.mount("/static", StaticFiles(directory=str(BASE / "static")), name="static")
 
-DATA_DIR = BASE / "data"
+DATA_DIR = BASE.parent / "data"
 
 GUIDELINES = {}
 KNOWN_LINKS = {}

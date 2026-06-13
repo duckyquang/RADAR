@@ -1,6 +1,7 @@
 # RADAR — Racial And Demographic Analysis of Research
 
 **Live site:** https://duckyquang.github.io/RADAR/
+**Presentation:** `RADAR_Presentation.pptx` — 14-slide deck for team presentation (slides included in repo)
 
 Analyze any clinical practice guideline to extract demographic diversity metrics from cited studies. Enter a DOI, and RADAR automatically fetches all referenced studies, extracts demographic data (sex, race, country) from PMC full-text XML, runs eligibility checks, and generates interactive charts with a bias assessment.
 
