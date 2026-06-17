@@ -31,6 +31,8 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); color:var(--gray-800); line-height:1.6; }
+
+/* Navigation */
 .nav { background:var(--black); border-bottom:3px solid var(--crimson); padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50; }
 .nav-l { display:flex; align-items:center; gap:16px; }
 .nav-logo { width:36px; height:36px; background:var(--crimson); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; font-size:16px; letter-spacing:-.02em; }
@@ -39,6 +41,8 @@ body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); co
 .nav-sub { font-size:10px; color:var(--gray-400); font-weight:400; letter-spacing:.04em; text-transform:uppercase; line-height:1.2; }
 .nav-r { font-size:11px; color:var(--gray-400); text-align:right; line-height:1.4; }
 .nav-r strong { color:var(--crimson-bright); font-weight:600; }
+
+/* Search */
 .search-panel { background:var(--black); border-bottom:1px solid var(--gray-700); padding:32px 32px 28px; }
 .search-panel-inner { max-width:1440px; margin:0 auto; }
 .search-panel h1 { font-size:24px; font-weight:800; color:var(--white); margin-bottom:4px; letter-spacing:-.01em; }
@@ -55,7 +59,10 @@ body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); co
 .examples-label { font-size:11px; color:var(--gray-500); font-weight:500; margin-right:4px; }
 .example-btn { background:none; border:1px solid var(--gray-600); border-radius:4px; color:var(--gray-300); padding:4px 10px; font-size:11px; cursor:pointer; font-family:inherit; transition:.12s; }
 .example-btn:hover { border-color:var(--crimson); color:var(--crimson-bright); }
+
 .container { max-width:1440px; margin:0 auto; padding:24px 32px; }
+
+/* Status */
 .status { display:none; padding:12px 16px; border-radius:var(--radius); margin-bottom:20px; font-size:13px; font-weight:500; align-items:center; gap:12px; border:1px solid transparent; }
 .status.show { display:flex; }
 .status.loading { background:#2D1A1F; color:#F2D5DA; border-color:#5C202E; }
@@ -68,23 +75,32 @@ body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); co
   40%  { width:60%; margin-left:20%; }
   100% { width:0%;  margin-left:100%; }
 }
+
 #dashboard { display:none; }
 #dashboard.show { display:block; }
+
+/* Status badge for precomputed vs live */
 .data-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:4px; font-size:10px; font-weight:600; letter-spacing:.03em; }
+.data-badge.precomputed { background:#1A2D40; color:#93C5FD; }
 .data-badge.live { background:#1A2D1A; color:#86EFAC; }
-.data-badge.cached { background:#1A2D40; color:#93C5FD; }
 .data-badge.error { background:#2D1A1A; color:#FCA5A5; }
+
 .guideline-header { background:var(--white); border-radius:var(--radius); border:1px solid var(--gray-200); box-shadow:var(--shadow); padding:20px 28px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
 .guideline-header h2 { font-size:16px; font-weight:700; color:var(--black); }
 .gh-meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
 .gh-badge { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:4px; font-size:11px; font-weight:400; color:var(--gray-500); }
 .gh-badge span { color:var(--crimson); font-weight:700; }
+
+/* KPI Cards */
 .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:24px; }
 .kpi { background:var(--white); border-radius:var(--radius); padding:16px 18px; border:1px solid var(--gray-200); box-shadow:var(--shadow); border-left:3px solid var(--crimson); }
 .kpi-label { font-size:10px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
 .kpi-value { font-size:26px; font-weight:800; color:var(--black); line-height:1.15; }
 .kpi-sub { font-size:11px; color:var(--gray-400); margin-top:2px; }
+
 .section-title { font-size:12px; font-weight:700; color:var(--gray-500); text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; }
+
+/* Charts */
 .charts { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
 .chart-full { grid-column:1/-1; }
 @media(max-width:1100px) { .chart-wide { grid-column:1/-1; } }
@@ -93,6 +109,8 @@ body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); co
 .chart-card h3 small { font-size:11px; font-weight:400; color:var(--gray-400); text-transform:none; letter-spacing:0; }
 .chart-wrap { position:relative; height:260px; }
 .chart-wrap.tall { height:340px; }
+
+/* Meta grid */
 .meta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:24px; }
 .meta-card { background:var(--white); border-radius:var(--radius); border:1px solid var(--gray-200); box-shadow:var(--shadow); padding:14px 18px; }
 .meta-card .mc-label { font-size:10px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; }
@@ -100,6 +118,8 @@ body { font-family:'Inter',-apple-system,sans-serif; background:var(--white); co
 .meta-card .mc-sub { font-size:11px; color:var(--gray-400); margin-top:2px; }
 .meta-card .mc-bar { height:3px; border-radius:2px; background:var(--gray-100); margin-top:10px; overflow:hidden; }
 .meta-card .mc-bar-fill { height:100%; border-radius:2px; transition:width .5s; }
+
+/* Table */
 .table-wrap { overflow-x:auto; }
 table { width:100%; border-collapse:collapse; font-size:13px; }
 thead th { background:var(--black); color:var(--white); border-bottom:2px solid var(--crimson); padding:10px 14px; text-align:left; font-weight:600; font-size:10px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; position:sticky; top:0; cursor:pointer; user-select:none; }
@@ -123,14 +143,19 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
 .ss-bar-wrap { display:flex; align-items:center; gap:8px; }
 .ss-bar { height:3px; border-radius:2px; background:var(--gray-100); flex:1; max-width:60px; overflow:hidden; }
 .ss-bar-fill { height:100%; border-radius:2px; background:var(--crimson); transition:width .3s; }
+
+/* Tab bar */
 .tab-bar { display:flex; gap:0; border-bottom:2px solid var(--gray-200); margin-bottom:20px; }
 .tab-btn { padding:10px 24px; border:none; background:transparent; border-bottom:2px solid transparent; margin-bottom:-2px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; transition:.15s; color:var(--gray-500); border-radius:0; white-space:nowrap; }
 .tab-btn:hover { color:var(--crimson); }
 .tab-btn.active { color:var(--crimson); border-bottom-color:var(--crimson); font-weight:700; }
 .tab-pane { display:none; }
 .tab-pane.active { display:block; }
+
 @media(max-width:1100px) { .charts { grid-template-columns:1fr; } .container { padding:16px; } .kpis { grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); } }
 @media(max-width:600px) { .kpis { grid-template-columns:1fr 1fr; } .panel-input .input-row { flex-direction:column; } }
+
+/* Bias Card */
 .bias-card { background:var(--white); border-radius:var(--radius); border:2px solid var(--crimson); box-shadow:0 2px 12px rgba(155,27,48,.15); padding:24px; margin-bottom:24px; }
 .bias-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
 .bias-score { font-size:48px; font-weight:900; color:var(--crimson); min-width:80px; text-align:center; line-height:1; }
@@ -143,6 +168,8 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
 .download-btn:hover { background:var(--crimson-dark); }
 .download-btn.alt { background:var(--white); color:var(--crimson); border:1px solid var(--crimson); }
 .download-btn.alt:hover { background:var(--gray-50); }
+
+/* Footer */
 .footer { margin-top:40px; padding:20px 0; border-top:1px solid var(--gray-200); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:12px; color:var(--gray-400); }
 .footer strong { color:var(--crimson); font-weight:600; }
 .footer .version { font-size:10px; color:var(--gray-400); }
@@ -211,12 +238,14 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
       </div>
       <div id="bias-explanation" style="font-size:14px;font-weight:500;color:var(--gray-700);margin-bottom:12px;padding:10px 14px;background:var(--gray-50);border-radius:6px;border-left:3px solid var(--crimson);line-height:1.5;"></div>
       <div class="bias-summary" id="bias-summary"></div>
+
       <div style="margin-top:12px;padding:10px 14px;background:var(--gray-50);border-radius:6px;font-size:11px;color:var(--gray-500);line-height:1.6;border:1px solid var(--gray-200);">
         <strong style="color:var(--crimson);font-size:11px;">How to interpret this score:</strong><br>
         <strong>USABLE (0–29%)</strong> — Adequate demographic reporting. Race, sex, age, and geographic data are available in most cited studies. The evidence base can support diversity analysis. Proceed with subgroup comparisons and representativeness assessment.<br>
         <strong>QUESTIONABLE (30–59%)</strong> — Significant gaps in demographic reporting. Key variables (especially race/ethnicity or sex) are missing from many studies. Exercise caution — any diversity findings may be biased by incompleteness.<br>
         <strong>NOT USABLE (60–100%)</strong> — Critical demographic data is absent from the majority of cited studies. Reliable conclusions about participant diversity cannot be drawn. The guideline's evidence base needs more inclusive reporting before analysis is meaningful.
       </div>
+
       <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
         <button class="download-btn" onclick="downloadReport()">⬇ CSV Report</button>
         <button class="download-btn" onclick="downloadHTMLReport()">⬇ HTML Report</button>
@@ -285,7 +314,7 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
 
     <div class="tab-pane" id="tab-compare">
       <div id="compare-dashboard">
-        <div class="chart-card" id="compare-hint" style="text-align:center;padding:40px;">
+        <div class="kpis" id="compare-hint" style="grid-template-columns:1fr;text-align:center;padding:40px;">
           <div style="color:var(--gray-400);font-size:14px;">Enter multiple DOIs in the batch compare field above to see a side-by-side comparison.</div>
         </div>
         <div id="compare-table-wrap" style="display:none;">
@@ -294,10 +323,21 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
             <table id="compare-table">
               <thead>
                 <tr>
-                  <th>Guideline</th><th>Year</th><th>Society</th><th>Screened</th><th>Eligible</th>
-                  <th>Participants</th><th>Bias Score</th><th>Verdict</th><th>Sex %</th>
-                  <th>Race (any) %</th><th>Race (all5) %</th><th>USA %</th><th>Non-USA %</th>
-                  <th>Author Ctrys</th><th>Data Quality</th>
+                  <th>Guideline</th>
+                  <th>Year</th>
+                  <th>Society</th>
+                  <th>Screened</th>
+                  <th>Eligible</th>
+                  <th>Participants</th>
+                  <th>Bias Score</th>
+                  <th>Verdict</th>
+                  <th>Sex %</th>
+                  <th>Race (any) %</th>
+                  <th>Race (all 5) %</th>
+                  <th>USA %</th>
+                  <th>Non-USA %</th>
+                  <th>Author Ctrys</th>
+                  <th>Data Quality</th>
                 </tr>
               </thead>
               <tbody id="compare-body"></tbody>
@@ -325,9 +365,27 @@ const CC = ['#9B1B30','#DC143C','#1A1A1A','#404040','#808080','#B3B3B3','#5C5C5C
 const RACE_C = ['#9B1B30','#DC143C','#1A1A1A','#404040','#808080'];
 const SEX_C = ['#1A1A1A','#DC143C'];
 
-let state = { data: null, charts: {}, tableData: [], sortDir: {}, compareData: null };
-let _pollTimer = null;
+// Set your public API URL here (e.g., https://radar-api.onrender.com)
+const PUBLIC_API_URL = 'https://6d617466154ca2bb-173-205-211-234.serveousercontent.com';
 document.addEventListener('DOMContentLoaded', renderRecent);
+
+const KNOWN_DOIS = {
+  '10.1097/hep.0000000000000466': 'aasld_hcc_2023',
+  '10.2337/dc25-s001': 'ada_diabetes_2025',
+  '10.1089/thy.2015.0020': 'ata_thyroid_2015',
+  '10.4158/ep161365.gl': 'obesity',
+  '10.4158/gl-2020-0524suppl': 'aace_suppl',
+  '10.1093/eurheartj/ehab484': 'esc_cvd_2021',
+};
+
+// Map normalized DOI to file
+function doiToFile(doi) {
+  const key = doi.toLowerCase().replace(/^https?:\/\/doi\.org\//, '');
+  return KNOWN_DOIS[key] || null;
+}
+
+let state = { data: null, charts: {}, tableData: [], sortDir: {}, isLive: false, compareData: null, recent: [] };
+let _pollTimer = null;
 
 function fmt(n) { return n == null || isNaN(n) ? 'N/A' : n.toLocaleString('en-US',{maximumFractionDigits:0}); }
 function fmt1(n) { return n == null || isNaN(n) ? 'N/A' : Number(n).toLocaleString('en-US',{maximumFractionDigits:1}); }
@@ -346,6 +404,7 @@ function downloadReport() {
   const geo = d.geography || {};
   const eligible = d.eligible_studies || [];
 
+  // Bias components
   const n = eligible.length || 1;
   const ageGap = n;
   const sexGap = eligible.filter(e => !(e.male_pct && e.female_pct)).length;
@@ -375,11 +434,16 @@ function downloadReport() {
   lines.push('BIAS COMPONENT BREAKDOWN');
   lines.push('-' .repeat(40));
   lines.push('Component,Missing/Gap (%),Weight,Contribution (%)');
-  lines.push('Age missing,,' + (ageGap/n*100).toFixed(1) + ',25%,' + ageContrib);
-  lines.push('Sex missing,,' + (sexGap/n*100).toFixed(1) + ',25%,' + sexContrib);
-  lines.push('Race missing,,' + (raceGap/n*100).toFixed(1) + ',30%,' + raceContrib);
-  lines.push('Country missing,,' + (countryGap/n*100).toFixed(1) + ',15%,' + countryContrib);
-  lines.push('Geographic bias,,' + Math.min(geoBias, 100).toFixed(1) + ',5%,' + geoContrib);
+  const agePct = (ageGap/n*100).toFixed(1);
+  const sexPct = (sexGap/n*100).toFixed(1);
+  const racePct2 = (raceGap/n*100).toFixed(1);
+  const ctryPct = (countryGap/n*100).toFixed(1);
+  const geoPct2 = Math.min(geoBias, 100).toFixed(1);
+  lines.push('Age missing,,' + agePct + ',25%,' + ageContrib);
+  lines.push('Sex missing,,' + sexPct + ',25%,' + sexContrib);
+  lines.push('Race missing,,' + racePct2 + ',30%,' + raceContrib);
+  lines.push('Country missing,,' + ctryPct + ',15%,' + countryContrib);
+  lines.push('Geographic bias,,' + geoPct2 + ',5%,' + geoContrib);
   lines.push('TOTAL,,,100%,' + fmt1(biasScore));
   lines.push('');
   lines.push('SUMMARY METRICS');
@@ -909,6 +973,7 @@ async function analyzeGuideline(event) {
   msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; Looking up guideline...';
   document.getElementById('dashboard').classList.remove('show');
 
+  // Normalize DOI
   let doi = input.trim().replace(/^https?:\/\/(dx\.)?doi\.org\//, '').replace(/^doi:\s*/i, '').replace(/\/+$/, '');
   if (!doi) {
     status.className = 'status show error';
@@ -917,44 +982,70 @@ async function analyzeGuideline(event) {
     return;
   }
 
-  // Call live API
+  // Try precomputed data first
+  const fileKey = doiToFile(doi);
+  if (fileKey) {
+    try {
+      const res = await fetch('data/' + fileKey + '.json');
+      if (res.ok) {
+        const data = await res.json();
+        state.data = data;
+        state.isLive = false;
+        status.className = 'status show success';
+        msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge precomputed">PRE-COMPUTED</span> for <em>' + data.journal.title + '</em> &mdash; ' + data.summary.eligible + ' eligible studies.';
+        btn.disabled = false; btn.textContent = 'Run Analysis';
+        renderDashboard();
+        saveRecentItem(doi, data.journal.title, data.bias_score || 0,
+          (data.bias_score||0) < 30 ? 'USABLE' : (data.bias_score||0) < 60 ? 'QUESTIONABLE' : 'NOT USABLE');
+        return;
+      }
+    } catch(e) {
+      // precomputed fetch failed, fall through
+    }
+  }
+
+  // Try live API or browser pipeline
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const apiUrl = isLocal ? '' : PUBLIC_API_URL;
   try {
+    msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; Looking up guideline via API...';
     const form = new FormData(); form.append('doi_url', input);
-    const res = await fetch('/api/analyze', { method:'POST', body: form });
+    const res = await fetch(apiUrl + '/api/analyze', { method:'POST', body: form });
     const result = await res.json();
     if (result.job_id) {
       const jobId = result.job_id;
-        const meta = result.meta || {};
-        msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; <b>Pipeline running</b> for <em>' + (meta.title || 'guideline') + '</em> &mdash; extracting cited studies, fetching full-text, computing demographics&hellip; <span id="elapsed-counter" style="color:var(--gray-400);font-size:12px;">(0s)</span>';
-        _pollTimer = setInterval(async () => {
-          try {
-            const pr = await fetch('/api/status/' + jobId);
-            const pdata = await pr.json();
-            const el = document.getElementById('elapsed-counter');
-            if (el) el.textContent = '(' + pdata.elapsed + 's)';
-            if (pdata.status === 'done') {
-              clearInterval(_pollTimer); _pollTimer = null;
-              state.data = pdata.data;
-              status.className = 'status show success';
-              msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + pdata.data.journal.title + '</em> &mdash; ' + pdata.data.summary.eligible + ' eligible studies.';
-              btn.disabled = false; btn.textContent = 'Run Analysis';
-              renderDashboard();
-            } else if (pdata.status === 'error') {
-              clearInterval(_pollTimer); _pollTimer = null;
-              status.className = 'status show error';
-              msg.textContent = 'Pipeline error: ' + (pdata.message || 'Unknown error');
-              btn.disabled = false; btn.textContent = 'Run Analysis';
-            }
-          } catch(pe) {}
-        }, 3000);
-        return;
-      }
+      const meta = result.meta || {};
+      msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; <b>Pipeline running</b> for <em>' + (meta.title || 'guideline') + '</em> &mdash; extracting cited studies, fetching full-text, computing demographics&hellip; <span id="elapsed-counter" style="color:var(--gray-400);font-size:12px;">(0s)</span>';
+      _pollTimer = setInterval(async () => {
+        try {
+          const pr = await fetch(apiUrl + '/api/status/' + jobId);
+          const pdata = await pr.json();
+          const el = document.getElementById('elapsed-counter');
+          if (el) el.textContent = '(' + pdata.elapsed + 's)';
+          if (pdata.status === 'done') {
+            clearInterval(_pollTimer); _pollTimer = null;
+      state.data = pdata.data;
+      status.className = 'status show success';
+      msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + pdata.data.journal.title + '</em> &mdash; ' + pdata.data.summary.eligible + ' eligible studies.';
+      btn.disabled = false; btn.textContent = 'Run Analysis';
+      try { renderDashboard(); } catch(e) { msg.innerHTML += ' — Render warning'; }
+          } else if (pdata.status === 'error') {
+            clearInterval(_pollTimer); _pollTimer = null;
+            status.className = 'status show error';
+            msg.textContent = 'Pipeline error: ' + (pdata.message || 'Unknown error');
+            btn.disabled = false; btn.textContent = 'Run Analysis';
+          }
+        } catch(pe) {}
+      }, 3000);
+      return;
+    }
     if (result.data) {
       state.data = result.data;
+      state.isLive = true;
       status.className = 'status show success';
-      msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge ' + (result.precomputed ? 'cached' : 'live') + '">' + (result.precomputed ? 'CACHED' : 'LIVE') + '</span> for <em>' + result.data.journal.title + '</em>';
+      msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + result.data.journal.title + '</em>';
       btn.disabled = false; btn.textContent = 'Run Analysis';
-      renderDashboard();
+      try { renderDashboard(); } catch(e) { msg.innerHTML += ' — <span style="color:#FCA5A5;">Render warning</span>'; }
       return;
     }
     if (result.message) {
@@ -964,7 +1055,7 @@ async function analyzeGuideline(event) {
       return;
     }
   } catch(e) {
-    // Fall back to browser pipeline
+    // API call failed - fall back to browser pipeline
     msg.innerHTML = '<div class="progress-bar-wrap" style="width:160px;"><div class="progress-bar-fill" id="pb-fill" style="transition:width .3s ease;"></div></div>&nbsp; <b>Browser pipeline</b><span id="progress-text" style="margin-left:8px;font-size:12px;color:var(--gray-300);"></span>';
     try {
       const data = await browserRunAnalysis(doi, (status, pct) => {
@@ -979,13 +1070,14 @@ async function analyzeGuideline(event) {
         return;
       }
       state.data = data;
+      state.isLive = true;
       status.className = 'status show success';
       msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">BROWSER</span> for <em>' + data.journal.title + '</em> &mdash; ' + data.summary.eligible + ' eligible studies.';
       btn.disabled = false; btn.textContent = 'Run Analysis';
       renderDashboard();
     } catch(browserError) {
       status.className = 'status show error';
-      msg.innerHTML = '<b>Could not run analysis.</b> ' + browserError.message;
+      msg.innerHTML = '<b>Could not run analysis.</b> ' + browserError.message + '. Try the 6 pre-computed examples above.';
       btn.disabled = false; btn.textContent = 'Run Analysis';
     }
     return;
@@ -1040,7 +1132,7 @@ function generateVerdictExplanation(data) {
   const eligible = data.eligible_studies || [];
   const n = eligible.length;
   if (!n) return 'No eligible studies to evaluate.';
-  const bias = data.bias_score || 0;
+  const bias = Math.min(data.bias_score || 0, 100);
   const ec = data.eligible_completeness || {};
   const sexPct = ec.sex_both?.pct || 0;
   const racePct = ec.any_race?.pct || 0;
@@ -1076,9 +1168,11 @@ async function runCompare() {
   if (!input) return;
   const dois = input.split(',').map(d => d.trim()).filter(Boolean);
   if (dois.length < 2) { alert('Enter at least 2 DOIs separated by commas.'); return; }
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const apiUrl = isLocal ? '' : PUBLIC_API_URL;
   try {
     const form = new FormData(); form.append('dois', JSON.stringify(dois));
-    const res = await fetch('/api/compare', { method:'POST', body: form });
+    const res = await fetch(apiUrl + '/api/compare', { method:'POST', body: form });
     const result = await res.json();
     if (result.comparison && result.comparison.length >= 2) {
       state.compareData = result.comparison;
@@ -1117,6 +1211,7 @@ function renderCompare(comparison) {
       '</tr>';
   }).join('');
 
+  // Charts
   destroyCharts();
   const labels = comparison.map(c => (c.title||'').slice(0,30));
   const biasData = comparison.map(c => c.bias_score);
@@ -1124,19 +1219,31 @@ function renderCompare(comparison) {
   const raceAnyData = comparison.map(c => c.race_any_pct);
   const raceAll5Data = comparison.map(c => c.race_all5_pct);
   const qualityData = comparison.map(c => c.avg_quality || 0);
+  const colors = ['#9B1B30','#DC143C','#1A1A1A','#404040','#808080','#B3B3B3','#5C5C5C'];
 
   mkChart('c-compare-bias', {
-    type:'bar', data:{labels,datasets:[{data:biasData,backgroundColor:biasData.map(v=>v<30?'#065F46':v<60?'#92400E':'#991B1B'),borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Bias: '+ctx.parsed.y+'%'}}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+    type:'bar', data: {
+      labels, datasets: [{ data: biasData, backgroundColor: biasData.map(v => v < 30 ? '#065F46' : v < 60 ? '#92400E' : '#991B1B'), borderRadius: 4 }]
+    },
+    options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Bias Score: '+ctx.parsed.y+'%'}}}, scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false,},ticks:{maxRotation:0}}}}});
+
   mkChart('c-compare-elig', {
-    type:'bar', data:{labels,datasets:[{data:eligData,backgroundColor:['#9B1B30','#DC143C','#1A1A1A','#404040','#808080','#B3B3B3'].slice(0,comparison.length),borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
+    type:'bar', data:{labels,datasets:[{data:eligData,backgroundColor:colors.slice(0,comparison.length),borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{stepSize:1}},x:{grid:{display:false}}}}});
+
   mkChart('c-compare-race', {
-    type:'bar', data:{labels,datasets:[{label:'Any Race',data:raceAnyData,backgroundColor:'#9B1B30'},{label:'All 5 Races',data:raceAll5Data,backgroundColor:'#DC143C'}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{usePointStyle:true,font:{size:10}}}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
+    type:'bar', data:{
+      labels,
+      datasets:[
+        {label:'Any Race',data:raceAnyData,backgroundColor:'#9B1B30',borderRadius:3},
+        {label:'All 5 Races',data:raceAll5Data,backgroundColor:'#DC143C',borderRadius:3}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{usePointStyle:true,font:{size:10}}}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
   mkChart('c-compare-quality', {
     type:'bar', data:{labels,datasets:[{data:qualityData,backgroundColor:qualityData.map(v=>v>=70?'#065F46':v>=40?'#92400E':'#991B1B'),borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Quality: '+fmt1(ctx.parsed.y)}}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'Quality Score: '+fmt1(ctx.parsed.y)}}},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
 }
 
 function addBiasAssessment(data) {
@@ -1144,7 +1251,7 @@ function addBiasAssessment(data) {
   const eligible = data.eligible_studies || [];
   if (!eligible.length) { data.bias_score = 0; data.report = 'No eligible studies'; return data; }
   const n = eligible.length;
-  const age_gap = n;
+  const age_gap = n; // always missing
   const sex_gap = eligible.filter(e => !(e.male_pct && e.female_pct)).length;
   const race_gap = eligible.filter(e => !e.has_any_race).length;
   const country_gap = eligible.filter(e => !e.country || e.country === 'Unknown').length;
@@ -1183,22 +1290,29 @@ function renderDashboard() {
   window.scrollTo({ top: document.querySelector('.search-panel').offsetHeight * 0.6, behavior: 'smooth' });
   document.getElementById('dashboard').classList.add('show');
 
+  const liveTag = state.isLive ? ' <span class="data-badge live">LIVE</span>' : ' <span class="data-badge precomputed">PRE-COMPUTED</span>';
   document.getElementById('guideline-header').innerHTML =
-    '<div><h2>' + d.journal.title + ' <span class="data-badge live">LIVE</span></h2><div class="gh-meta" style="margin-top:8px;">' +
+    '<div><h2>' + d.journal.title + liveTag + '</h2><div class="gh-meta" style="margin-top:8px;">' +
     '<span class="gh-badge">Society <span>' + (d.journal.society || 'N/A') + '</span></span>' +
     '<span class="gh-badge">Year <span>' + d.journal.year + '</span></span>' +
     '<span class="gh-badge">DOI <span>' + (d.journal.doi || '') + '</span></span></div></div>';
 
-  const biasScore = d.bias_score || 0;
+  const biasScore = Math.min(d.bias_score || 0, 100);
   const verdict = biasScore < 30 ? 'USABLE' : biasScore < 60 ? 'QUESTIONABLE' : 'NOT USABLE';
   const verdictClass = biasScore < 30 ? 'usable' : biasScore < 60 ? 'questionable' : 'not-usable';
-  document.getElementById('bias-card').style.display = 'block';
-  document.getElementById('bias-score').textContent = biasScore + '%';
-  document.getElementById('bias-verdict').textContent = verdict;
-  document.getElementById('bias-verdict').className = 'bias-verdict ' + verdictClass;
-  document.getElementById('bias-summary').textContent = d.report || 'Report not available';
-  document.getElementById('bias-explanation').innerHTML = generateVerdictExplanation(d);
+  const bc = document.getElementById('bias-card');
+  if (bc) bc.style.display = 'block';
+  const bsEl = document.getElementById('bias-score');
+  if (bsEl) bsEl.textContent = biasScore + '%';
+  const bvEl = document.getElementById('bias-verdict');
+  if (bvEl) { bvEl.textContent = verdict; bvEl.className = 'bias-verdict ' + verdictClass; }
+  const bsum = document.getElementById('bias-summary');
+  if (bsum) bsum.textContent = d.report || 'Report not available';
+  const bex = document.getElementById('bias-explanation');
+  if (bex) bex.innerHTML = generateVerdictExplanation(d);
   state.currentVerdict = verdict;
+
+  // Save to recent
   saveRecentItem(d.journal.doi || '', d.journal.title, biasScore, verdict);
 
   const dq = d.data_quality || {};
@@ -1214,7 +1328,7 @@ function renderDashboard() {
     <div class="kpi"><div class="kpi-label">All 5 Race Cats</div><div class="kpi-value">${ec.all_5_race.pct}%</div><div class="kpi-sub">fully usable</div></div>
     <div class="kpi"><div class="kpi-label">USA Studies</div><div class="kpi-value">${d.geography.usa}</div><div class="kpi-sub">${d.geography.usa_pct}% of eligible</div></div>
     <div class="kpi"><div class="kpi-label">Non-USA</div><div class="kpi-value">${d.geography.non_usa}</div><div class="kpi-sub">${d.geography.non_usa_pct}% non-USA</div></div>
-    <div class="kpi"><div class="kpi-label">Multi-Country</div><div class="kpi-value">${d.geography.multi + d.geography.multi_incl_usa}</div><div class="kpi-sub">${(d.geography.multi_pct + d.geography.multi_incl_usa_pct).toFixed(1)}% international</div></div>
+    <div class="kpi"><div class="kpi-label">Multi-Country</div><div class="kpi-value">${(d.geography.multi||0) + (d.geography.multi_incl_usa||0)}</div><div class="kpi-sub">${fmt1((d.geography.multi_pct||0)+(d.geography.multi_incl_usa_pct||0))}% international</div></div>
     <div class="kpi"><div class="kpi-label">Mean N</div><div class="kpi-value">${fmt(s.sample_size_mean)}</div><div class="kpi-sub">median ${fmt(s.sample_size_median)}</div></div>
     <div class="kpi"><div class="kpi-label">Data Quality</div><div class="kpi-value">${fmt1(avgQual)}</div><div class="kpi-sub">${qualityPct(avgQual)} (n=${(dq.quality_distribution?.high||0)+(dq.quality_distribution?.medium||0)+(dq.quality_distribution?.low||0)||s.eligible})</div></div>
     <div class="kpi"><div class="kpi-label">Author Countries</div><div class="kpi-value">${aq.country_count || 0}</div><div class="kpi-sub">${formatAuthors(aq.unique_countries)}</div></div>
@@ -1457,7 +1571,7 @@ function filterTable() {
     const qs = st.quality_score || 0;
     const qb = qualityBadge(qs);
     const src = st.best_source || 'CrossRef';
-    const srcShort = src.replace('Full-text','FT').replace('Unpaywall OA','Unpayw');
+    const srcShort = src.replace('PMC Full-text','PMC').replace('Full-text','FT').replace('PubMed Abstract','PM Abstr').replace('Unpaywall OA','Unpayw');
     return '<tr><td>'+(i+1)+'</td><td class="title-cell"><a href="'+(st.link||'#')+'" target="_blank">'+(st.title||'')+'</a></td><td>'+(st.author||'-')+'</td><td>'+(st.year||'')+'</td><td>'+(st.country||'')+'</td><td class="num"><div class="ss-bar-wrap"><span>'+fmt(st.sample_size)+'</span><div class="ss-bar"><div class="ss-bar-fill" style="width:'+bw+'%"></div></div></div></td><td class="num">'+(st.male_pct!=null?fmt1(st.male_pct)+'%':'-')+'</td><td class="num">'+(st.female_pct!=null?fmt1(st.female_pct)+'%':'-')+'</td><td><span class="badge '+raceBadge+'">'+rc+'/5</span></td><td><span class="badge badge-crimson">'+(st.design||'').slice(0,22)+'</span></td><td><span class="badge '+qb+'">'+fmt1(qs)+'</span></td><td><span class="badge badge-gray" title="'+src+'">'+srcShort+'</span></td></tr>';
   }).join('');
 }
