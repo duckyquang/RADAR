@@ -576,14 +576,6 @@ async function browserSearchPubMedByDOI(doi) {
   return ids[0] || null;
 }
 
-async function browserFetchPMC(pmid) {
-  const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=${pmid}&retmode=xml`);
-  if (!r.ok) return null;
-  const text = await r.text();
-  if (text.includes('<body>') && text.length > 1000) return text;
-  return null;
-}
-
 async function browserFetchPubMed(pmid) {
   const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
   if (!r.ok) return null;
@@ -660,84 +652,6 @@ function browserExtractDemoFromText(text) {
   return result;
 }
 
-function browserParsePMCXML(xml) {
-  const info = {};
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xml, 'text/xml');
-  const articleMeta = doc.querySelector('article-meta');
-  if (articleMeta) {
-    const titleEl = articleMeta.querySelector('article-title');
-    if (titleEl) info.title = titleEl.textContent;
-    const jt = articleMeta.querySelector('journal-title');
-    if (jt) info.journal = jt.textContent;
-    const yearEl = articleMeta.querySelector('year');
-    if (yearEl) info.year = parseInt(yearEl.textContent);
-  }
-  const authors = [];
-  doc.querySelectorAll('contrib[contrib-type="author"]').forEach(c => {
-    const given = c.querySelector('given-names')?.textContent || '';
-    const family = c.querySelector('surname')?.textContent || '';
-    if (given || family) authors.push((given+' '+family).trim());
-  });
-  if (authors.length) info.authors = authors.slice(0,10);
-  const affs = [];
-  doc.querySelectorAll('aff').forEach(a => affs.push(a.textContent));
-  if (affs.length) info.affiliations = affs;
-  const bodyTexts = [];
-  const body = doc.querySelector('body');
-  if (body) {
-    body.querySelectorAll('p').forEach(p => { const t = p.textContent; if (t && t.length > 20) bodyTexts.push(t); });
-    const demoFromText = browserExtractDemoFromText(bodyTexts.join(' '));
-    Object.assign(info, demoFromText);
-    doc.querySelectorAll('table-wrap').forEach(tw => {
-      const cap = tw.querySelector('caption')?.textContent?.toLowerCase() || '';
-      if (!/baseline|demographic|characteristic|participant|patient|study population|enrollment|demography/.test(cap)) return;
-      const table = tw.querySelector('table');
-      if (!table) return;
-      const rows = table.querySelectorAll('tr');
-      if (rows.length < 2) return;
-      const headers = [];
-      rows[0].querySelectorAll('th').forEach(th => headers.push(th.textContent.toLowerCase()));
-      let headerTotal = 0;
-      headers.forEach((h, i) => {
-        const nm = h.match(/n\s*[:=]?\s*([\d,]+)/);
-        if (nm) { const v = parseInt(nm[1].replace(/,/g,'')); if (v > 10) headerTotal += v; }
-      });
-      if (headerTotal > 0 && !info.sample_size) info.sample_size = headerTotal;
-      for (let ri = 1; ri < rows.length; ri++) {
-        const cells = rows[ri].querySelectorAll('td, th');
-        if (cells.length < 2) continue;
-        const label = cells[0].textContent.trim().toLowerCase();
-        if (label.length < 2) continue;
-        const vals = [];
-        for (let ci = 1; ci < cells.length; ci++) {
-          const nums = cells[ci].textContent.replace(/%/g,'').match(/[\d,.]+/g);
-          if (nums) vals.push(parseFloat(nums[0].replace(/,/g,'')));
-        }
-        if (!vals.length) continue;
-        let field = null;
-        if (/^n\s*[=:]/.test(label) && /total|overall|all/.test(label)) field = 'sample_size';
-        else if (/(?:female|women|girls).*(?:no\.|n\s*=|%|number|pct)/i.test(label)) field = 'female_pct';
-        else if (/(?:male|men|boys).*(?:no\.|n\s*=|%|number|pct)/i.test(label)) field = 'male_pct';
-        else if (/white/.test(label) && !/black/.test(label)) field = 'white_pct';
-        else if (/black/.test(label) || /african/.test(label)) field = 'black_pct';
-        else if (/hispanic|latino/.test(label)) field = 'hispanic_pct';
-        else if (/asian/.test(label)) field = 'asian_pct';
-        else if (/female|women/.test(label)) field = 'female_pct';
-        else if (/male|men/.test(label)) field = 'male_pct';
-        if (field === 'sample_size') {
-          const v = Math.max(...vals);
-          if (v > 10 && v < 100000000) info.sample_size = v;
-        } else if (field && ['male_pct','female_pct','white_pct','black_pct','hispanic_pct','asian_pct'].includes(field)) {
-          const ok = vals.filter(v => v <= 100);
-          if (ok.length && !(field in info)) info[field] = Math.max(...ok);
-        }
-      }
-    });
-  }
-  return info;
-}
-
 function browserInferCountry(affiliations) {
   const ctryMap = {
     'united states':'USA','usa':'USA','united kingdom':'GBR','uk':'GBR','england':'GBR',
@@ -764,20 +678,6 @@ async function browserEnrichSingle(refDoi) {
   if (meta) Object.assign(s, meta);
   const pmid = await browserSearchPubMedByDOI(refDoi);
   if (!pmid) return {...s, _quality: 5, best_source: 'CrossRef'};
-  let pmcXml = await browserFetchPMC(pmid);
-  if (pmcXml) {
-    const pi = browserParsePMCXML(pmcXml);
-    for (const k of ['sample_size','male_pct','female_pct','white_pct','black_pct','hispanic_pct','asian_pct','other_pct']) {
-      if (pi[k] != null && !s[k]) s[k] = pi[k];
-    }
-    if (pi.affiliations && !s.country) {
-      const c = browserInferCountry(pi.affiliations);
-      if (c) s.country = c;
-    }
-    if (pi.title && (!s.title || pi.title.length > s.title.length)) s.title = pi.title;
-    if (pi.year && !s.year) s.year = pi.year;
-    return {...s, _quality: 85, best_source: 'PMC Full-text'};
-  }
   const pubXml = await browserFetchPubMed(pmid);
   if (pubXml) {
     const pi = browserParsePubmedXML(pubXml);
@@ -791,7 +691,7 @@ async function browserEnrichSingle(refDoi) {
     }
     if (pi.title && (!s.title || pi.title.length > s.title.length)) s.title = pi.title;
     if (pi.year && !s.year) s.year = pi.year;
-    return {...s, _quality: 30, best_source: 'PubMed Abstract'};
+    return {...s, _quality: 30, best_source: 'PubMed'};
   }
   return {...s, _quality: 5, best_source: 'CrossRef'};
 }
@@ -1460,7 +1360,7 @@ function filterTable() {
     const qs = st.quality_score || 0;
     const qb = qualityBadge(qs);
     const src = st.best_source || 'CrossRef';
-    const srcShort = src.replace('PMC Full-text','PMC').replace('Full-text','FT').replace('PubMed Abstract','PM Abstr').replace('Unpaywall OA','Unpayw');
+    const srcShort = src.replace('Full-text','FT').replace('Unpaywall OA','Unpayw');
     return '<tr><td>'+(i+1)+'</td><td class="title-cell"><a href="'+(st.link||'#')+'" target="_blank">'+(st.title||'')+'</a></td><td>'+(st.author||'-')+'</td><td>'+(st.year||'')+'</td><td>'+(st.country||'')+'</td><td class="num"><div class="ss-bar-wrap"><span>'+fmt(st.sample_size)+'</span><div class="ss-bar"><div class="ss-bar-fill" style="width:'+bw+'%"></div></div></div></td><td class="num">'+(st.male_pct!=null?fmt1(st.male_pct)+'%':'-')+'</td><td class="num">'+(st.female_pct!=null?fmt1(st.female_pct)+'%':'-')+'</td><td><span class="badge '+raceBadge+'">'+rc+'/5</span></td><td><span class="badge badge-crimson">'+(st.design||'').slice(0,22)+'</span></td><td><span class="badge '+qb+'">'+fmt1(qs)+'</span></td><td><span class="badge badge-gray" title="'+src+'">'+srcShort+'</span></td></tr>';
   }).join('');
 }
