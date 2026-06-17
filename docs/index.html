@@ -1024,12 +1024,11 @@ async function analyzeGuideline(event) {
           if (el) el.textContent = '(' + pdata.elapsed + 's)';
           if (pdata.status === 'done') {
             clearInterval(_pollTimer); _pollTimer = null;
-            state.data = pdata.data;
-            state.isLive = true;
-            status.className = 'status show success';
-            msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + pdata.data.journal.title + '</em> &mdash; ' + pdata.data.summary.eligible + ' eligible studies.';
-            btn.disabled = false; btn.textContent = 'Run Analysis';
-            renderDashboard();
+      state.data = pdata.data;
+      status.className = 'status show success';
+      msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + pdata.data.journal.title + '</em> &mdash; ' + pdata.data.summary.eligible + ' eligible studies.';
+      btn.disabled = false; btn.textContent = 'Run Analysis';
+      try { renderDashboard(); } catch(e) { msg.innerHTML += ' — Render warning'; }
           } else if (pdata.status === 'error') {
             clearInterval(_pollTimer); _pollTimer = null;
             status.className = 'status show error';
@@ -1046,7 +1045,7 @@ async function analyzeGuideline(event) {
       status.className = 'status show success';
       msg.innerHTML = '<b>Analysis complete</b> <span class="data-badge live">LIVE</span> for <em>' + result.data.journal.title + '</em>';
       btn.disabled = false; btn.textContent = 'Run Analysis';
-      renderDashboard();
+      try { renderDashboard(); } catch(e) { msg.innerHTML += ' — <span style="color:#FCA5A5;">Render warning</span>'; }
       return;
     }
     if (result.message) {
@@ -1298,16 +1297,19 @@ function renderDashboard() {
     '<span class="gh-badge">Year <span>' + d.journal.year + '</span></span>' +
     '<span class="gh-badge">DOI <span>' + (d.journal.doi || '') + '</span></span></div></div>';
 
-  const rawBias = d.bias_score || 0;
-  const biasScore = Math.min(rawBias, 100);
+  const biasScore = Math.min(d.bias_score || 0, 100);
   const verdict = biasScore < 30 ? 'USABLE' : biasScore < 60 ? 'QUESTIONABLE' : 'NOT USABLE';
   const verdictClass = biasScore < 30 ? 'usable' : biasScore < 60 ? 'questionable' : 'not-usable';
-  document.getElementById('bias-card').style.display = 'block';
-  document.getElementById('bias-score').textContent = biasScore + '%';
-  document.getElementById('bias-verdict').textContent = verdict;
-  document.getElementById('bias-verdict').className = 'bias-verdict ' + verdictClass;
-  document.getElementById('bias-summary').textContent = d.report || 'Report not available';
-  document.getElementById('bias-explanation').innerHTML = generateVerdictExplanation(d);
+  const bc = document.getElementById('bias-card');
+  if (bc) bc.style.display = 'block';
+  const bsEl = document.getElementById('bias-score');
+  if (bsEl) bsEl.textContent = biasScore + '%';
+  const bvEl = document.getElementById('bias-verdict');
+  if (bvEl) { bvEl.textContent = verdict; bvEl.className = 'bias-verdict ' + verdictClass; }
+  const bsum = document.getElementById('bias-summary');
+  if (bsum) bsum.textContent = d.report || 'Report not available';
+  const bex = document.getElementById('bias-explanation');
+  if (bex) bex.innerHTML = generateVerdictExplanation(d);
   state.currentVerdict = verdict;
 
   // Save to recent
