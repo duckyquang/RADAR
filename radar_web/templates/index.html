@@ -539,22 +539,26 @@ const NCBI_RATE_MS = 250;
 let _lastFetch = 0;
 
 async function _ncbiFetch(url) {
-  const now = Date.now();
-  const wait = NCBI_RATE_MS - (now - _lastFetch);
-  if (wait > 0) await new Promise(r => setTimeout(r, wait));
-  _lastFetch = Date.now();
-  return await fetch(url);
+  try {
+    const now = Date.now();
+    const wait = NCBI_RATE_MS - (now - _lastFetch);
+    if (wait > 0) await new Promise(r => setTimeout(r, wait));
+    _lastFetch = Date.now();
+    return await fetch(url);
+  } catch(e) { return new Response(null, {status:0}); }
 }
 
 async function _ncbiSearch(url) {
-  return await fetch(url);
+  try { return await fetch(url); } catch(e) { return new Response(null, {status:0}); }
 }
 
 async function browserFetchCrossrefRefs(doi) {
-  const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
-  if (!r.ok) return [];
-  const msg = (await r.json()).message || {};
-  return (msg.reference || []).map(ref => ref.DOI).filter(Boolean);
+  try {
+    const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
+    if (!r.ok) return [];
+    const msg = (await r.json()).message || {};
+    return (msg.reference || []).map(ref => ref.DOI).filter(Boolean);
+  } catch(e) { return []; }
 }
 
 async function browserFetchCrossrefMeta(doi) {
