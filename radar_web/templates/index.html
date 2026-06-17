@@ -534,7 +534,7 @@ td{padding:8px 12px;border-bottom:1px solid var(--gray-100);}
   el.click();
 }
 
-// ====== BROWSER PIPELINE: runs entirely client-side ======
+// ====== BROWSER PIPELINE: runs entirely client-side, no server needed ======
 const NCBI_RATE_MS = 250;
 let _lastFetch = 0;
 
@@ -545,11 +545,11 @@ async function _ncbiFetch(url) {
     if (wait > 0) await new Promise(r => setTimeout(r, wait));
     _lastFetch = Date.now();
     return await fetch(url);
-  } catch(e) { return { ok: false, json: async () => ({}), text: async () => "" }; }
+  } catch(e) { return { ok: false, json: () => Promise.resolve({}), text: () => Promise.resolve('') }; }
 }
 
 async function _ncbiSearch(url) {
-  try { return await fetch(url); } catch(e) { return { ok: false, json: async () => ({}), text: async () => "" }; }
+  try { return await fetch(url); } catch(e) { return { ok: false, json: () => Promise.resolve({}), text: () => Promise.resolve('') }; }
 }
 
 async function browserFetchCrossrefRefs(doi) {
@@ -562,55 +562,109 @@ async function browserFetchCrossrefRefs(doi) {
 }
 
 async function browserFetchCrossrefMeta(doi) {
-  const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
-  if (!r.ok) return null;
-  const msg = (await r.json()).message || {};
-  const title = Array.isArray(msg.title) ? msg.title[0] : msg.title;
-  const authors = (msg.author || []).map(a => `${a.given||''} ${a.family||''}`.trim()).filter(Boolean);
-  const container = Array.isArray(msg['container-title']) ? msg['container-title'][0] : msg['container-title'];
-  const pp = msg['published-print'] || msg['published-online'] || {};
-  const pd = pp['date-parts'] || [[null]];
-  return {doi, title: title||'', 'author_str': authors.slice(0,5).join('; '), year: pd[0]?.[0], journal: container||'', type: msg.type||'', publisher: msg.publisher||''};
+  try {
+    const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
+    if (!r.ok) return null;
+    const msg = (await r.json()).message || {};
+    const title = Array.isArray(msg.title) ? msg.title[0] : msg.title;
+    const authors = (msg.author || []).map(a => `${a.given||''} ${a.family||''}`.trim()).filter(Boolean);
+    const container = Array.isArray(msg['container-title']) ? msg['container-title'][0] : msg['container-title'];
+    const pp = msg['published-print'] || msg['published-online'] || {};
+    const pd = pp['date-parts'] || [[null]];
+    return {doi, title: title||'', 'author_str': authors.slice(0,5).join('; '), year: pd[0]?.[0], journal: container||'', type: msg.type||'', publisher: msg.publisher||''};
+  } catch(e) { return null; }
 }
 
 async function browserSearchPubMedByDOI(doi) {
   const r = await _ncbiSearch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(doi+'[DOI]')}&retmax=5&retmode=json`);
-  if (!r.ok) return null;
-  const ids = (await r.json()).esearchresult?.idlist || [];
+  if (!r || !r.ok) return null;
+  const body = await r.json();
+  const ids = (body && body.esearchresult && body.esearchresult.idlist) || [];
   return ids[0] || null;
 }
 
 async function browserFetchPubMed(pmid) {
   const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
-  if (!r.ok) return null;
+  if (!r || !r.ok) return null;
   return await r.text();
+}
+
+async function browserFetchPMC(pmid) {
+  const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=${pmid}&retmode=xml`);
+  if (!r || !r.ok) return null;
+  const text = await r.text();
+  if (text.includes('<body>') && text.length > 1000) return text;
+  return null;
 }
 
 function browserParsePubmedXML(xml) {
   const info = {};
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xml, 'text/xml');
-  const absParts = [];
-  doc.querySelectorAll('AbstractText').forEach(el => {
-    const label = el.getAttribute('Label') || '';
-    let text = label ? label + ': ' : '';
-    text += el.textContent || '';
-    if (text.trim()) absParts.push(text.trim());
-  });
-  info.abstract = absParts.join(' ');
-  const artTitle = doc.querySelector('ArticleTitle');
-  if (artTitle) info.title = artTitle.textContent;
-  const affs = [];
-  doc.querySelectorAll('Affiliation').forEach(el => { if (el.textContent) affs.push(el.textContent); });
-  if (affs.length) info.affiliations = affs;
-  const yearEl = doc.querySelector('PubDate Year');
-  if (yearEl) info.year = parseInt(yearEl.textContent);
+  try {
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    const absParts = [];
+    doc.querySelectorAll('AbstractText').forEach(el => {
+      const label = el.getAttribute('Label') || '';
+      let text = label ? label + ': ' : '';
+      text += el.textContent || '';
+      if (text.trim()) absParts.push(text.trim());
+    });
+    info.abstract = absParts.join(' ');
+    const artTitle = doc.querySelector('ArticleTitle');
+    if (artTitle) info.title = artTitle.textContent;
+    const affs = [];
+    doc.querySelectorAll('Affiliation').forEach(el => { if (el.textContent) affs.push(el.textContent); });
+    if (affs.length) info.affiliations = affs;
+    const yearEl = doc.querySelector('PubDate Year');
+    if (yearEl) info.year = parseInt(yearEl.textContent);
+    // Check for PMC ID in PubMed XML
+    doc.querySelectorAll('ArticleId').forEach(el => {
+      if (el.getAttribute('IdType') === 'pmc' && el.textContent) info.pmc_id = el.textContent;
+    });
+  } catch(e) {}
+  return info;
+}
+
+function browserParsePMCXML(xml) {
+  const info = {};
+  try {
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    doc.querySelectorAll('table-wrap').forEach(tw => {
+      const cap = (tw.querySelector('caption')||{}).textContent || '';
+      if (!/baseline|demographic|characteristic|participant|patient|study.*population|enrollment|demography|sex|race|ethnicity/i.test(cap)) return;
+      const table = tw.querySelector('table');
+      if (!table || table.querySelectorAll('tr').length < 2) return;
+      const rows = table.querySelectorAll('tr');
+      const hdrCells = rows[0].querySelectorAll('th, td');
+      const hdrTexts = [];
+      hdrCells.forEach(c => hdrTexts.push(c.textContent.trim().toLowerCase()));
+      const ilbl = [], ivals = [];
+      for (let ri = 1; ri < rows.length; ri++) {
+        const cells = rows[ri].querySelectorAll('td, th');
+        if (cells.length < 2) continue;
+        const label = cells[0].textContent.trim().toLowerCase();
+        for (let ci = 1; ci < cells.length; ci++) {
+          const nums = (cells[ci].textContent||'').replace(/%/g,'').match(/[\d,.]+/g);
+          if (nums) {
+            const v = parseFloat(nums[0].replace(/,/g,''));
+            if (/n\s*[:=]/.test(label) && /total|overall|all|entire/.test(label) && v > 10 && v < 1e8) info.sample_size = v;
+            else if (/female|women/.test(label) && v <= 100) info.female_pct = v;
+            else if (/male|men/.test(label) && v <= 100) info.male_pct = v;
+            else if (/white/.test(label) && v <= 100) info.white_pct = v;
+            else if (/black|african.?american/.test(label) && v <= 100) info.black_pct = v;
+            else if (/hispanic|latino/.test(label) && v <= 100) info.hispanic_pct = v;
+            else if (/^asian$/.test(label) && v <= 100) info.asian_pct = v;
+          }
+        }
+      }
+    });
+  } catch(e) {}
   return info;
 }
 
 function browserExtractDemoFromText(text) {
   const result = {};
   if (!text) return result;
+  // Sample size
   const samplePats = [
     /(?:total\s+of|n\s*[=:]?\s*)([\d,]+)\s*(?:patients|participants|subjects|individuals)/gi,
     /(?:enrolled|included|recruited|studied)\s+(?:a\s+total\s+of\s+)?([\d,]+)\s+(?:patients|participants|subjects)/gi,
@@ -627,6 +681,7 @@ function browserExtractDemoFromText(text) {
   }
   if (maxSample > 0) result.sample_size = maxSample;
 
+  // Sex - careful ordering (male patterns before female to avoid false matches)
   const malePat = /(\d+(?:\.\d+)?)\s*%\s*(?:male|men|were\s+men)/gi;
   const malePat2 = /(?:male|men)\s*[:=]\s*(\d+(?:\.\d+)?)\s*%/gi;
   const femalePat = /(\d+(?:\.\d+)?)\s*%\s*(?:female|women|were\s+women)/gi;
@@ -639,6 +694,7 @@ function browserExtractDemoFromText(text) {
   if (mp != null) result.male_pct = mp;
   if (fp != null) result.female_pct = fp;
 
+  // Race
   const racePats = [
     [/(\d+(?:\.\d+)?)\s*%\s*(?:white|caucasian)/gi, 'white_pct'],
     [/(\d+(?:\.\d+)?)\s*%\s*(?:black|african.?american)/gi, 'black_pct'],
@@ -658,13 +714,14 @@ function browserExtractDemoFromText(text) {
 
 function browserInferCountry(affiliations) {
   const ctryMap = {
-    'united states':'USA','usa':'USA','united kingdom':'GBR','uk':'GBR','england':'GBR',
+    'united states':'USA','usa':'USA','u.s.a.':'USA','united kingdom':'GBR','uk':'GBR','england':'GBR',
     'germany':'DEU','france':'FRA','italy':'ITA','spain':'ESP','canada':'CAN','australia':'AUS',
     'japan':'JPN','china':'CHN','south korea':'KOR','india':'IND','brazil':'BRA','netherlands':'NLD',
     'sweden':'SWE','switzerland':'CHE','denmark':'DNK','norway':'NOR','belgium':'BEL','austria':'AUT',
     'ireland':'IRL','new zealand':'NZL','israel':'ISR','south africa':'ZAF','russia':'RUS','turkey':'TUR',
     'poland':'POL','portugal':'PRT','greece':'GRC','finland':'FIN','taiwan':'TWN','hong kong':'HKG',
-    'singapore':'SGP','mexico':'MEX','argentina':'ARG','chile':'CHL','colombia':'COL',
+    'singapore':'SGP','mexico':'MEX','argentina':'ARG','chile':'CHL','colombia':'COL','egypt':'EGY',
+    'nigeria':'NGA','kenya':'KEN','thailand':'THA','uae':'ARE','saudi arabia':'SAU','czech republic':'CZE',
   };
   if (!affiliations || !affiliations.length) return null;
   for (const aff of affiliations) {
@@ -678,25 +735,42 @@ function browserInferCountry(affiliations) {
 
 async function browserEnrichSingle(refDoi) {
   const s = {doi: refDoi};
-  const meta = await browserFetchCrossrefMeta(refDoi);
-  if (meta) Object.assign(s, meta);
-  const pmid = await browserSearchPubMedByDOI(refDoi);
-  if (!pmid) return {...s, _quality: 5, best_source: 'CrossRef'};
-  const pubXml = await browserFetchPubMed(pmid);
-  if (pubXml) {
-    const pi = browserParsePubmedXML(pubXml);
-    if (pi.abstract) {
-      const demo = browserExtractDemoFromText(pi.abstract);
-      Object.assign(s, demo);
+  try {
+    const meta = await browserFetchCrossrefMeta(refDoi);
+    if (meta) Object.assign(s, meta);
+    const pmid = await browserSearchPubMedByDOI(refDoi);
+    if (!pmid) return {...s, _quality: 5, best_source: 'CrossRef'};
+    const pubXml = await browserFetchPubMed(pmid);
+    if (pubXml) {
+      const pi = browserParsePubmedXML(pubXml);
+      if (pi.abstract) {
+        const demo = browserExtractDemoFromText(pi.abstract);
+        Object.assign(s, demo);
+      }
+      if (!s.country && pi.affiliations) {
+        const c = browserInferCountry(pi.affiliations);
+        if (c) s.country = c;
+      }
+      if (pi.title && (!s.title || pi.title.length > s.title.length)) s.title = pi.title;
+      if (pi.year && !s.year) s.year = pi.year;
+      // If PubMed gave no sample_size AND article has PMC, try PMC full-text for tables
+      if (!s.sample_size && pi.pmc_id) {
+        const pmcXml = await browserFetchPMC(pmid);
+        if (pmcXml) {
+          const pmi = browserParsePMCXML(pmcXml);
+          if (pmi.sample_size && !s.sample_size) s.sample_size = pmi.sample_size;
+          if (pmi.male_pct != null && s.male_pct == null) s.male_pct = pmi.male_pct;
+          if (pmi.female_pct != null && s.female_pct == null) s.female_pct = pmi.female_pct;
+          if (pmi.white_pct != null && s.white_pct == null) s.white_pct = pmi.white_pct;
+          if (pmi.black_pct != null && s.black_pct == null) s.black_pct = pmi.black_pct;
+          if (pmi.hispanic_pct != null && s.hispanic_pct == null) s.hispanic_pct = pmi.hispanic_pct;
+          if (pmi.asian_pct != null && s.asian_pct == null) s.asian_pct = pmi.asian_pct;
+          return {...s, _quality: 85, best_source: 'PMC'};
+        }
+      }
+      return {...s, _quality: 30, best_source: 'PubMed'};
     }
-    if (!s.country && pi.affiliations) {
-      const c = browserInferCountry(pi.affiliations);
-      if (c) s.country = c;
-    }
-    if (pi.title && (!s.title || pi.title.length > s.title.length)) s.title = pi.title;
-    if (pi.year && !s.year) s.year = pi.year;
-    return {...s, _quality: 30, best_source: 'PubMed'};
-  }
+  } catch(e) {}
   return {...s, _quality: 5, best_source: 'CrossRef'};
 }
 
@@ -705,20 +779,25 @@ async function browserRunAnalysis(doi, onProgress) {
   log('Resolving guideline DOI via CrossRef...', 0);
   const meta = await browserFetchCrossrefMeta(doi);
   if (!meta) return {error: `Could not resolve DOI: ${doi}`};
-  const ji = {doi: `https://doi.org/${doi}`, disease: meta.title || 'Unknown', society: '', year: meta.year, title: meta.title || 'Untitled', id: doi.replace(/[/.]/g,'_')};
+
+  const guidelineDoi = `https://doi.org/${doi}`;
+  const ji = {doi: guidelineDoi, disease: meta.title || 'Unknown', society: '', year: meta.year, title: meta.title || 'Untitled', id: doi.replace(/[/.]/g,'_')};
+
   log('Fetching cited references from CrossRef...', 2);
   const refs = await browserFetchCrossrefRefs(doi);
   const total = refs.length;
   const batch = refs.slice(0, 100);
   log(`Found ${total} references (processing up to 100)`, 5);
+
   const rawStudies = [];
   const BATCH_CONCURRENCY = 10;
   for (let i = 0; i < batch.length; i += BATCH_CONCURRENCY) {
     const chunk = batch.slice(i, i + BATCH_CONCURRENCY);
-    log(`Study ${Math.min(i+BATCH_CONCURRENCY, batch.length)}/${batch.length}`, 5 + Math.round(i/batch.length*85));
+    log(`Study ${Math.min(i+BATCH_CONCURRENCY, batch.length)}/${batch.length} (PubMed)`, 5 + Math.round(i/batch.length*85));
     const results = await Promise.all(chunk.map(d => browserEnrichSingle(d)));
     rawStudies.push(...results);
   }
+
   const entries = rawStudies.map(s => {
     const mp = s.male_pct; const fp = s.female_pct;
     const rc = ['white_pct','black_pct','hispanic_pct','asian_pct','other_pct'].filter(k => s[k] != null && s[k] > 0).length;
@@ -735,16 +814,23 @@ async function browserRunAnalysis(doi, onProgress) {
       author_countries: [], author_geo_diversity: 0,
     };
   });
+
+  // Build same result structure as the server
   const nAll = entries.length;
   let eligible = entries.filter(e => (e.sample_size || 0) > 0);
   if (!eligible.length) eligible = entries.filter(e => e.has_sex || e.has_any_race);
   if (!eligible.length) eligible = entries.filter(e => e.country && e.country !== 'Unknown');
   if (!eligible.length) eligible = entries.slice(0, 10);
+
   const nEl = eligible.length;
   const samples = eligible.map(e => e.sample_size).filter(Boolean);
-  const sortedSamples = [...samples].sort((a,b)=>a-b);
+  const yrs = new Set(eligible.map(e => e.year).filter(Boolean));
   const sm = samples.length ? samples.reduce((a,b)=>a+b,0)/samples.length : 0;
+  const sortedSamples = [...samples].sort((a,b)=>a-b);
+
   const comp = (n, t) => ({n, total: t, pct: t ? Math.round(n/t*1000)/10 : 0});
+
+  // Build full result (same format as server)
   const res = {
     journal: ji, live_pipeline: true,
     summary: {
@@ -752,6 +838,7 @@ async function browserRunAnalysis(doi, onProgress) {
       total_participants: eligible.reduce((s,e) => s + (e.sample_size||0), 0),
       sample_size_mean: Math.round(sm*10)/10,
       sample_size_median: sortedSamples.length ? sortedSamples[Math.floor(sortedSamples.length/2)] : 0,
+      year_min: Math.min(...yrs), year_max: Math.max(...yrs),
     },
     completeness: {
       country: comp(entries.filter(e => e.country !== 'Unknown').length, nAll),
@@ -763,7 +850,8 @@ async function browserRunAnalysis(doi, onProgress) {
       age: {n: 0, total: nAll, pct: 0},
     },
     eligible_completeness: {
-      age: comp(0, nEl), sex_both: comp(eligible.filter(e => e.has_sex).length, nEl),
+      age: comp(0, nEl),
+      sex_both: comp(eligible.filter(e => e.has_sex).length, nEl),
       any_race: comp(eligible.filter(e => e.has_any_race).length, nEl),
       all_5_race: comp(eligible.filter(e => e.has_all_5_race).length, nEl),
       all_5_sum_100: comp(eligible.filter(e => e.has_all_5_race).length, nEl),
@@ -772,14 +860,16 @@ async function browserRunAnalysis(doi, onProgress) {
     geography: {
       usa: eligible.filter(e => (e.country||'').toUpperCase().includes('USA')).length,
       non_usa: eligible.filter(e => e.country && !e.country.toUpperCase().includes('USA') && e.country !== 'Unknown').length,
-      multi: 0, multi_incl_usa: 0,
+      multi: 0, multi_incl_usa: 0, multi_pct: 0, multi_incl_usa_pct: 0,
     },
     data_quality: {avg_quality_score: 0, quality_distribution: {high:0, medium:0, low:0}},
     author_geography: {unique_countries: [], country_count: 0},
     bias_score: 0, report: '',
   };
+
   res.geography.usa_pct = nEl ? Math.round(res.geography.usa/nEl*1000)/10 : 0;
   res.geography.non_usa_pct = nEl ? Math.round(res.geography.non_usa/nEl*1000)/10 : 0;
+
   const qualityScores = eligible.map(e => e.quality_score).filter(Boolean);
   res.data_quality.avg_quality_score = qualityScores.length ? Math.round(qualityScores.reduce((a,b)=>a+b,0)/qualityScores.length*10)/10 : 0;
   res.data_quality.quality_distribution = {
@@ -787,6 +877,8 @@ async function browserRunAnalysis(doi, onProgress) {
     medium: qualityScores.filter(q => q >= 40 && q < 70).length,
     low: qualityScores.filter(q => q < 40).length,
   };
+
+  // Compute bias score
   const ageGap = nEl;
   const sexGap = eligible.filter(e => !e.has_sex).length;
   const raceGap = eligible.filter(e => !e.has_any_race).length;
@@ -794,6 +886,7 @@ async function browserRunAnalysis(doi, onProgress) {
   const geoBias = Math.abs(eligible.filter(e => (e.country||'').toUpperCase().includes('USA')).length - nEl/2) * 100 / (nEl || 1);
   const gaps = [[ageGap,0.25],[sexGap,0.25],[raceGap,0.30],[countryGap,0.15],[Math.min(geoBias,100),0.05]];
   res.bias_score = Math.round(gaps.reduce((s,g) => s + g[0]/(nEl||1)*100*g[1], 0)*10)/10;
+
   return res;
 }
 // ====== END BROWSER PIPELINE ======
