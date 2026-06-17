@@ -960,10 +960,13 @@ function setExample(doi) {
   analyzeGuideline(new Event('submit'));
 }
 
+let _analyzing = false;
 async function analyzeGuideline(event) {
   event.preventDefault();
+  if (_analyzing) return;
+  _analyzing = true;
   const input = document.getElementById('doi-input').value.trim();
-  if (!input) return;
+  if (!input) { _analyzing = false; return; }
   const btn = document.getElementById('analyze-btn');
   const status = document.getElementById('status-bar');
   const msg = document.getElementById('status-msg');
@@ -973,14 +976,11 @@ async function analyzeGuideline(event) {
   msg.innerHTML = '<div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>&nbsp; Looking up guideline...';
   document.getElementById('dashboard').classList.remove('show');
 
+  try {
+
   // Normalize DOI
   let doi = input.trim().replace(/^https?:\/\/(dx\.)?doi\.org\//, '').replace(/^doi:\s*/i, '').replace(/\/+$/, '');
-  if (!doi) {
-    status.className = 'status show error';
-    msg.textContent = 'Invalid DOI. Please check and try again.';
-    btn.disabled = false; btn.textContent = 'Run Analysis';
-    return;
-  }
+  if (!doi) { status.className = 'status show error'; msg.textContent = 'Invalid DOI. Please check and try again.'; btn.disabled = false; btn.textContent = 'Run Analysis'; return; }
 
   // Try precomputed data first
   const fileKey = doiToFile(doi);
@@ -1082,6 +1082,7 @@ async function analyzeGuideline(event) {
     }
     return;
   }
+} finally { _analyzing = false; }
 }
 
 function switchTab(name) {
