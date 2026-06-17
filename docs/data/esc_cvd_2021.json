@@ -445,7 +445,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Population screening and intervention for vascular disease in Danish men (VIVA): a randomised controlled trial.",
@@ -468,7 +472,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170\u2008000 participants in 26 randomised trials",
@@ -491,7 +499,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The effects of lowering LDL cholesterol with statin therapy in people at low risk of vascular disease: meta-analysis of individual data from 27 randomised trials",
@@ -514,7 +526,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Trajectories of Non-HDL C Across Midlife: Implications for Cardiovascular Prevention",
@@ -537,7 +553,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Major Lipids, Apolipoproteins, and Risk of Vascular Disease",
@@ -560,7 +580,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Mendelian randomization of blood lipids for coronary heart disease",
@@ -583,7 +607,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Plasma HDL cholesterol and risk of myocardial infarction: a mendelian randomisation study",
@@ -606,7 +634,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effects of Anacetrapib in Patients with Atherosclerotic Vascular Disease.",
@@ -629,7 +661,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sex Differences in Blood Pressure Associations With Cardiovascular Outcomes",
@@ -652,7 +688,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Normal Systolic Blood Pressure Level With Cardiovascular Disease in the Absence of Risk Factors.",
@@ -675,7 +715,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Smoking and risk of myocardial infarction in women and men: longitudinal population study.",
@@ -698,7 +742,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Global, regional, and national comparative risk assessment of 84 behavioural, environmental and occupational, and metabolic risks or clusters of risks for 195 countries and territories, 1990\u20132017: a systematic analysis for the Global Burden of Disease Study 2017",
@@ -721,7 +769,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body mass index and all cause mortality in HUNT and UK Biobank studies: linear and non-linear mendelian randomisation analyses",
@@ -744,7 +796,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body-mass index and all-cause mortality: individual-participant-data meta-analysis of 239 prospective studies in four continents",
@@ -767,7 +823,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "BMI and all cause mortality: systematic review and non-linear dose-response meta-analysis of 230 cohort studies with 3.74 million deaths among 30.3 million participants",
@@ -790,7 +850,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Separate and combined associations of body-mass index and abdominal adiposity with cardiovascular disease: collaborative analysis of 58 prospective studies",
@@ -813,7 +877,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sex and gender: modifiers of health, disease, and medicine",
@@ -836,7 +904,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sex disparities in the management of coronary heart disease in general practices in Australia.",
@@ -859,7 +931,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Ten-Year Differences in Women\u2019s Awareness Related to Coronary Heart Disease: Results of the 2019 American Heart Association National Survey: A Special Report From the American Heart Association",
@@ -882,7 +958,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sex Versus Gender-Related Characteristics: Which Predicts Outcome After Acute Coronary Syndrome in the Young?",
@@ -905,7 +985,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Women have higher left ventricular ejection fractions than men independent of differences in left ventricular volume: the Dallas Heart Study.",
@@ -928,7 +1012,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Routinely reported ejection fraction and mortality in clinical practice: where does the nadir of risk lie?",
@@ -951,7 +1039,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Corrigendum to: Cardiovascular health after menopause transition, pregnancy disorders, and other gynaecologic conditions: a consensus document from European cardiologists, gynaecologists, and endocrinologists",
@@ -974,7 +1066,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Estimating treatment effects for individual patients based on the results of randomised clinical trials",
@@ -997,7 +1093,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Associations of kidney disease measures with mortality and end-stage renal disease in individuals with and without diabetes: a meta-analysis",
@@ -1020,7 +1120,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Equalization of four cardiovascular risk algorithms after systematic recalibration: individual-participant meta-analysis of 86 prospective studies.",
@@ -1043,7 +1147,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Estimated Life Expectancy Without Recurrent Cardiovascular Events in Patients With Vascular Disease: The SMART\u2010REACH Model",
@@ -1066,7 +1174,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Distribution of Estimated 10-Year Risk of Recurrent Vascular Events and Residual Risk in a Secondary Prevention Population.",
@@ -1089,7 +1201,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Rivaroxaban with or without Aspirin in Stable Cardiovascular Disease.",
@@ -1112,7 +1228,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Cardiovascular Risk Reduction with Icosapent Ethyl for Hypertriglyceridemia.",
@@ -1135,7 +1255,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Colchicine in Patients with Chronic Coronary Disease.",
@@ -1158,7 +1282,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Efficacy and Safety of Low-Dose Colchicine after Myocardial Infarction.",
@@ -1181,7 +1309,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Age at Diagnosis of Type 2 Diabetes Mellitus and Associations With Cardiovascular and Mortality Risks.",
@@ -1204,7 +1336,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Development and Validation of a Model to Predict Absolute Vascular Risk Reduction by Moderate-Intensity Statin Therapy in Individual Patients With Type 2 Diabetes Mellitus: The Anglo Scandinavian Cardiac Outcomes Trial, Antihypertensive and Lipid-Lowering Treatment to Prevent Heart Attack Trial, and Collaborative Atorvastatin Diabetes Study.",
@@ -1227,7 +1363,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Contemporary model for cardiovascular risk prediction in people with type 2 diabetes.",
@@ -1250,7 +1390,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Excess mortality and cardiovascular disease in young adults with type 1 diabetes in relation to age at onset: a nationwide, register-based cohort study",
@@ -1273,7 +1417,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Relative Prognostic Importance and Optimal Levels of Risk Factors for Mortality and Cardiovascular Outcomes in Type 1 Diabetes Mellitus.",
@@ -1296,7 +1444,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk of Cardiovascular Disease and Total Mortality in Adults with Type 1 Diabetes: Scottish Registry Linkage Study",
@@ -1319,7 +1471,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Development and validation of QRISK3 risk prediction algorithms to estimate future risk of cardiovascular disease: prospective cohort study",
@@ -1342,7 +1498,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     }
   ],
   "live_pipeline": true,
@@ -1380,5 +1540,23 @@
     }
   },
   "bias_score": 79.2,
-  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice\nYear: 2021 | Society: \n\nBIAS SCORE: 79.2%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 40 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 95.0% of studies\n\u26a0 Race data MISSING in 90.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice\nYear: 2021 | Society: \n\nBIAS SCORE: 79.2%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 40 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 95.0% of studies\n\u26a0 Race data MISSING in 90.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics",
+  "data_quality": {
+    "avg_quality_score": 53.8,
+    "quality_distribution": {
+      "high": 4,
+      "medium": 36,
+      "low": 0
+    },
+    "source_breakdown": {
+      "PMC Full-text": 4,
+      "PubMed Abstract": 36
+    }
+  },
+  "author_geography": {
+    "unique_countries": [],
+    "country_count": 0,
+    "avg_author_diversity": 0,
+    "max_author_diversity": 0
+  }
 }

@@ -442,7 +442,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk Factors for Hepatocellular Cancer in Contemporary Cohorts of Patients with Cirrhosis",
@@ -465,7 +469,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Long-term Effects of Hepatitis B Immunization of Infants in Preventing Liver Cancer.",
@@ -488,7 +496,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Characteristics, management, and outcomes of patients with hepatocellular carcinoma in Africa: a multicountry observational study from the Africa Liver Cancer Consortium.",
@@ -511,7 +523,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Impact of country of birth on age at the time of diagnosis of hepatocellular carcinoma in the United States",
@@ -534,7 +550,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "AGA Clinical Practice Update on Screening and Surveillance for Hepatocellular Carcinoma in Patients With Nonalcoholic Fatty Liver Disease: Expert Review",
@@ -557,7 +577,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk of Hepatocellular Cancer in Patients With Non-Alcoholic Fatty Liver Disease",
@@ -580,7 +604,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Clinical characteristics, surveillance, treatment allocation, and outcomes of non-alcoholic fatty liver disease-related hepatocellular carcinoma: a systematic review and meta-analysis",
@@ -603,7 +631,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Tobacco, alcohol use and risk of hepatocellular carcinoma and intrahepatic cholangiocarcinoma: The Liver Cancer Pooling Project",
@@ -626,7 +658,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Adiposity, Adulthood Weight Change, and Risk of Incident Hepatocellular Carcinoma",
@@ -649,7 +685,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of metabolic health phenotypes, obesity, and hepatocellular carcinoma risk",
@@ -672,7 +712,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Perceptions of weight status and energy balance behaviors among patients with non-alcoholic fatty liver disease",
@@ -695,7 +739,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Models estimating risk of hepatocellular carcinoma in patients with alcohol or NAFLD-related cirrhosis for risk stratification",
@@ -718,7 +766,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Development of models estimating the risk of hepatocellular carcinoma after antiviral treatment for hepatitis C",
@@ -741,7 +793,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk of Hepatocellular Cancer in HCV Patients Treated With Direct-Acting Antiviral Agents.",
@@ -764,7 +820,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Aspirin with Hepatocellular Carcinoma and Liver-Related Mortality",
@@ -787,7 +847,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Statin Use and the Risk of Hepatocellular Carcinoma: A Meta-Analysis of Observational Studies",
@@ -810,7 +874,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Statin and aspirin for chemoprevention of hepatocellular carcinoma: Time to use or wait further?",
@@ -833,7 +901,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Lipophilic Statins and Risk for Hepatocellular Carcinoma and Death in Patients With Chronic Viral Hepatitis: Results From a Nationwide Swedish Population",
@@ -856,7 +928,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Lifestyle and Environmental Approaches for the Primary Prevention of Hepatocellular Carcinoma",
@@ -879,7 +955,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Contemporary Epidemiology of Chronic Liver Disease and Cirrhosis",
@@ -902,7 +982,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk Factors for Cirrhosis in Contemporary Hepatology Practices\u2014Findings From the Texas Hepatocellular Carcinoma Consortium Cohort",
@@ -925,7 +1009,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Cost-Effectiveness of Hepatocellular Carcinoma Surveillance: An Assessment of Benefits and Harms",
@@ -948,7 +1036,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Increased Risk for Hepatocellular Carcinoma Persists Up to 10 Years After HCV Eradication in Patients With Baseline Cirrhosis or High FIB-4 Scores",
@@ -971,7 +1063,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Randomized controlled trial of screening for hepatocellular carcinoma.",
@@ -994,7 +1090,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "HCC Surveillance Improves Early Detection, Curative Treatment Receipt, and Survival in Patients with Cirrhosis: A Systematic Review and Meta-Analysis",
@@ -1017,7 +1117,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Feasibility of conducting a randomized control trial for liver cancer screening: Is a randomized controlled trial for liver cancer screening feasible or still needed?",
@@ -1040,7 +1144,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Early Detection, Curative Treatment, and Survival Rates for Hepatocellular Carcinoma Surveillance in Patients with Cirrhosis: A Meta-analysis",
@@ -1063,7 +1171,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Overdiagnosis of hepatocellular carcinoma: Prevented by guidelines?",
@@ -1086,7 +1198,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Length time bias in surveillance for hepatocellular carcinoma and how to avoid it.",
@@ -1109,7 +1225,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Detection of Hepatocellular Carcinoma at Advanced Stages Among Patients in the HALT-C Trial: Where Did Surveillance Fail?",
@@ -1132,7 +1252,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Dynamic Changes in Ultrasound Quality for Hepatocellular Carcinoma Screening in Patients With Cirrhosis",
@@ -1155,7 +1279,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "An assessment of benefits and harms of hepatocellular carcinoma surveillance in patients with cirrhosis.",
@@ -1178,7 +1306,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association between ultrasound quality and test performance for <scp>HCC</scp> surveillance in patients with cirrhosis: a retrospective cohort study",
@@ -1201,7 +1333,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Surveillance Imaging and Alpha Fetoprotein for Early Detection of Hepatocellular Carcinoma in Patients With Cirrhosis: A Meta-analysis",
@@ -1224,7 +1360,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Longitudinal Assessment of Three Serum Biomarkers to Detect Very Early-Stage Hepatocellular Carcinoma.",
@@ -1247,7 +1387,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "GALAD demonstrates high sensitivity for HCC surveillance in a cohort of patients with cirrhosis",
@@ -1270,7 +1414,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Changes in the Glycosylation of Kininogen and the Development of a Kininogen-Based Algorithm for the Early Detection of HCC",
@@ -1293,7 +1441,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Biomarkers for the Early Detection of Hepatocellular Carcinoma",
@@ -1316,7 +1468,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "International Liver Cancer Association (ILCA) White Paper on Biomarker Development for Hepatocellular Carcinoma",
@@ -1339,7 +1495,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Plasma des-gamma-carboxyprothrombin in the early stage of hepatocellular carcinoma.",
@@ -1362,7 +1522,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The utility of Lens culinaris agglutinin-reactive alpha-fetoprotein in the diagnosis of hepatocellular carcinoma: evaluation in a United States referral population.",
@@ -1385,7 +1549,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Alpha-fetoprotein, Des-gamma Carboxyprothrombin, and Lectin-Bound Alpha-fetoprotein in Early Hepatocellular Carcinoma",
@@ -1408,7 +1576,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Role of the GALAD and BALAD-2 Serologic Models in Diagnosis of Hepatocellular Carcinoma and Prediction of Survival in Patients.",
@@ -1431,7 +1603,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "A multi-analyte cell-free DNA-based blood test for early detection of hepatocellular carcinoma.",
@@ -1454,7 +1630,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "MRI With Liver-Specific Contrast for Surveillance of Patients With Cirrhosis at High Risk of Hepatocellular Carcinoma.",
@@ -1477,7 +1657,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence and clinical significance of discordant LI-RADS\u00ae observations on multiphase contrast-enhanced MRI in patients with cirrhosis.",
@@ -1500,7 +1684,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Hepatocellular carcinoma demonstrates heterogeneous growth patterns in a multi-center cohort of patients with cirrhosis",
@@ -1523,7 +1711,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Semiannual surveillance is superior to annual surveillance for the detection of early hepatocellular carcinoma and patient survival.",
@@ -1546,7 +1738,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Ultrasonographic surveillance of hepatocellular carcinoma in cirrhosis: a randomized trial comparing 3- and 6-month periodicities.",
@@ -1569,7 +1765,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Use of Hepatocellular Carcinoma Surveillance in Patients With Cirrhosis: A Systematic Review and Meta\u2010Analysis",
@@ -1592,7 +1792,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Patient-Reported Barriers are Associated with Receipt of Hepatocellular Carcinoma Surveillance in a Multi-Center Cohort of Patients with Cirrhosis",
@@ -1615,7 +1819,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Primary Care Provider Practice Patterns and Barriers to Hepatocellular Carcinoma Surveillance",
@@ -1638,7 +1846,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Multi-Center Randomized Clinical Trial of a Mailed Outreach Strategy for Hepatocellular Carcinoma Surveillance",
@@ -1661,7 +1873,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Recall patterns and risk of primary liver cancer for subcentimeter ultrasound liver observations: a multicenter study",
@@ -1684,7 +1900,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Factors That Affect Accuracy of \u03b1-Fetoprotein Test in Detection of\u00a0Hepatocellular Carcinoma in Patients With Cirrhosis",
@@ -1707,7 +1927,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Improved Detection of Hepatocellular Carcinoma by Using a\u00a0Longitudinal Alpha-Fetoprotein Screening Algorithm",
@@ -1730,7 +1954,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Characterization of Small Nodules in Cirrhosis by Assessment of Vascularity: The Problem of Hypovascular Hepatocellular Carcinoma *",
@@ -1753,7 +1981,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Hepatocellular carcinoma: diagnostic performance of multidetector CT and MR imaging-a systematic review and meta-analysis.",
@@ -1776,7 +2008,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Contrast ultrasound LI-RADS LR-5 identifies hepatocellular carcinoma in cirrhosis in a multicenter restropective study of 1,006 nodules.",
@@ -1799,7 +2035,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     }
   ],
   "live_pipeline": true,
@@ -1843,5 +2083,23 @@
     }
   },
   "bias_score": 69.2,
-  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: AASLD Practice Guidance on prevention, diagnosis, and treatment of hepatocellular carcinoma\nYear: 2023 | Society: \n\nBIAS SCORE: 69.2%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 60 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 90.0% of studies\n\u26a0 Race data MISSING in 65.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: AASLD Practice Guidance on prevention, diagnosis, and treatment of hepatocellular carcinoma\nYear: 2023 | Society: \n\nBIAS SCORE: 69.2%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 60 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 90.0% of studies\n\u26a0 Race data MISSING in 65.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics",
+  "data_quality": {
+    "avg_quality_score": 62.3,
+    "quality_distribution": {
+      "high": 21,
+      "medium": 39,
+      "low": 0
+    },
+    "source_breakdown": {
+      "PMC Full-text": 21,
+      "PubMed Abstract": 39
+    }
+  },
+  "author_geography": {
+    "unique_countries": [],
+    "country_count": 0,
+    "avg_author_diversity": 0,
+    "max_author_diversity": 0
+  }
 }

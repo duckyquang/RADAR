@@ -49,12 +49,68 @@ def get_crossref_refs(doi):
     except: return []
 
 
+DATA_SOURCE_PRIORITY = {
+    "pmc_fulltext_xml": 5,
+    "unpaywall_pdf": 4,
+    "pmc_table": 3,
+    "pubmed_abstract": 2,
+    "openalex_meta": 1,
+    "crossref_only": 0,
+}
+
+DATA_SOURCE_LABELS = {
+    "pmc_fulltext_xml": "PMC Full-text",
+    "unpaywall_pdf": "Unpaywall OA",
+    "pmc_table": "PMC Table",
+    "pubmed_abstract": "PubMed Abstract",
+    "openalex_meta": "OpenAlex",
+    "crossref_only": "CrossRef",
+}
+
+
+def _best_data_source(sources):
+    if not sources:
+        return "crossref_only"
+    return max(sources, key=lambda x: DATA_SOURCE_PRIORITY.get(x, 0))
+
+
 def enrich_single(ref_doi):
-    s={"doi":ref_doi}
+    s={"doi":ref_doi, "data_sources": [], "_quality": 0}
+    sources = []
     meta=fetcher.get_crossref_meta(ref_doi)
     if meta:
         s.update(title=meta.get("title",""),author_str=meta.get("author_str",""),
                  year=meta.get("year"),journal=meta.get("journal",""),type=meta.get("type",""))
+        sources.append("crossref_only")
+
+    # Try OpenAlex for richer metadata (author countries, institutions)
+    oa = fetcher.search_openalex(ref_doi)
+    if oa:
+        sources.append("openalex_meta")
+        if not s.get("title") and oa.get("title"):
+            s["title"] = oa["title"]
+        if not s.get("author_str") and oa.get("author_str"):
+            s["author_str"] = oa["author_str"]
+        if oa.get("author_countries"):
+            s["author_countries"] = oa["author_countries"]
+        if oa.get("institutions"):
+            s["institutions"] = oa["institutions"]
+
+    # Try Unpaywall for OA fulltext (catches non-PMC OA)
+    up_text = fetcher.get_fulltext_via_unpaywall(ref_doi)
+    if up_text:
+        sources.append("unpaywall_pdf")
+        pi = demographics.parse_pmc_fulltext(up_text)  # reuse PMC parser for XML
+        if pi:
+            demo_keys = {k:v for k,v in pi.items() if k not in ("title","journal","year","authors","affiliations","abstract")}
+            for k, v in demo_keys.items():
+                if k not in s or not s.get(k):
+                    s[k] = v
+            if pi.get("affiliations"):
+                aff = demographics.infer_country_from_affiliations(pi["affiliations"])
+                if aff and not s.get("country"):
+                    s["country"] = aff
+
     try:
         pmid=fetcher.search_pubmed_by_doi(ref_doi)
         if pmid:
@@ -63,6 +119,7 @@ def enrich_single(ref_doi):
             if pmcid:
                 fulltext=fetcher.fetch_pmc_fulltext(pmcid)
             if fulltext:
+                sources.append("pmc_fulltext_xml" if "<body>" in fulltext else "pmc_table")
                 pi=demographics.parse_pmc_fulltext(fulltext)
                 s.update({k:v for k,v in pi.items() if k not in ("title","journal","year","authors","affiliations","abstract")})
                 if "sample_size" not in s:
@@ -74,6 +131,7 @@ def enrich_single(ref_doi):
                             demo=demographics.extract_demographics_from_text(abstract)
                             s.update(demo)
                             if not s.get("title") and pi2.get("title"): s["title"]=pi2["title"]
+                            sources.append("pubmed_abstract")
                 if pi.get("affiliations"):
                     aff=demographics.infer_country_from_affiliations(pi["affiliations"])
                     if aff: s["country"]=aff
@@ -82,6 +140,7 @@ def enrich_single(ref_doi):
             else:
                 xml=fetcher.fetch_pubmed_xml(pmid)
                 if xml:
+                    sources.append("pubmed_abstract")
                     pi2=demographics.parse_pubmed_xml(xml)
                     abstract=pi2.get("abstract","")
                     if abstract:
@@ -94,6 +153,21 @@ def enrich_single(ref_doi):
                     if not s.get("year") and pi2.get("year"): s["year"]=pi2["year"]
     except Exception as e:
         s["_error"] = str(e)
+
+    s["data_sources"] = sources
+    best = _best_data_source(sources)
+    s["best_source"] = best
+    s["best_source_label"] = DATA_SOURCE_LABELS.get(best, "Unknown")
+
+    # Quality score: 0-100 based on data depth
+    has_sample = 1 if s.get("sample_size") else 0
+    has_sex = 1 if s.get("male_pct") and s.get("female_pct") else 0
+    has_race = 1 if any(s.get(k) for k in ["white_pct","black_pct","hispanic_pct","asian_pct","other_pct"]) else 0
+    has_country = 1 if s.get("country") and s["country"] not in ("Unknown","") else 0
+    source_score = DATA_SOURCE_PRIORITY.get(best, 0) / 5 * 30
+    data_score = (has_sample + has_sex*2 + has_race*3 + has_country) / 7 * 70
+    s["_quality"] = round(source_score + data_score, 1)
+
     return s
 
 
@@ -188,6 +262,8 @@ def run(guideline_doi):
         for s in raw_studies:
             mp=s.get("male_pct"); fp=s.get("female_pct")
             rc=sum(1 for k in ["white_pct","black_pct","hispanic_pct","asian_pct","other_pct"] if s.get(k) is not None and s[k]>0)
+            author_countries = s.get("author_countries", [])
+            author_geo_diversity = len(author_countries) if author_countries else 0
             entries.append({
                 "title":s.get("title","Untitled"),"link":f"https://doi.org/{s.get('doi','')}" if s.get("doi") else "",
                 "author":s.get("author_str",""),"country":s.get("country","Unknown"),
@@ -199,6 +275,10 @@ def run(guideline_doi):
                 "race_cats":rc,
                 "has_sex":1 if mp is not None and fp is not None and (mp>0 or fp>0) else 0,
                 "has_age":0,"has_any_race":1 if rc>0 else 0,"has_all_5_race":1 if rc==5 else 0,
+                "quality_score": s.get("_quality", 0),
+                "best_source": s.get("best_source_label", "CrossRef"),
+                "author_countries": author_countries,
+                "author_geo_diversity": author_geo_diversity,
             })
 
         n_all=len(entries)
@@ -270,8 +350,31 @@ def run(guideline_doi):
             y=e.get("year")
             if y: dec[f"{(y//10)*10}s"]+=1
 
+        author_countries_all = []
+        for e in eligible:
+            ac = e.get("author_countries") or []
+            if isinstance(ac, list):
+                author_countries_all.extend(ac)
+        author_geo_set = set(author_countries_all)
+        quality_scores = [e.get("quality_score", 0) for e in eligible if e.get("quality_score", 0) > 0]
+
         res={
             "journal":ji,
+            "author_geography": {
+                "unique_countries": sorted(author_geo_set) if author_geo_set else [],
+                "country_count": len(author_geo_set),
+                "avg_author_diversity": round(statistics.mean([e.get("author_geo_diversity", 0) for e in eligible]), 1) if eligible else 0,
+                "max_author_diversity": max([e.get("author_geo_diversity", 0) for e in eligible]) if eligible else 0,
+            },
+            "data_quality": {
+                "avg_quality_score": round(statistics.mean(quality_scores), 1) if quality_scores else 0,
+                "quality_distribution": {
+                    "high": sum(1 for q in quality_scores if q >= 70),
+                    "medium": sum(1 for q in quality_scores if 40 <= q < 70),
+                    "low": sum(1 for q in quality_scores if q < 40),
+                },
+                "source_breakdown": dict(Counter(e.get("best_source", "Unknown") for e in entries)),
+            },
             "summary":{"total_screened":total,"total_with_data":n_all,"eligible":n_eligible,
                        "total_participants":sum((e.get("sample_size") or 0) for e in eligible),
                        "sample_size_mean":round(sm,1),"sample_size_median":round(smed,1),

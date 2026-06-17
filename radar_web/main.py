@@ -306,6 +306,71 @@ async def get_job_status(job_id: str):
         return JSONResponse({"status": job["status"], "elapsed": elapsed})
 
 
+@app.post("/api/compare")
+async def compare_guidelines(dois: str = Form(...)):
+    """Compare multiple DOIs side-by-side. Accepts comma-separated or JSON array DOIs."""
+    import json as _json
+    try:
+        doi_list = _json.loads(dois)
+    except:
+        doi_list = [d.strip() for d in dois.split(",") if d.strip()]
+    results = []
+    for doi in doi_list:
+        r_doi = resolve_doi(doi)
+        precomputed = load_precomputed(r_doi)
+        if precomputed:
+            precomputed = add_bias_assessment(precomputed)
+            results.append({"doi": r_doi, "data": precomputed, "precomputed": True})
+        elif r_doi in PIPELINE_CACHE:
+            cached = add_bias_assessment(PIPELINE_CACHE[r_doi])
+            results.append({"doi": r_doi, "data": cached, "precomputed": False, "cached": True})
+        else:
+            meta = lookup_crossref(r_doi)
+            if meta:
+                results.append({"doi": r_doi, "error": "not_analyzed",
+                                "message": "Run single analysis first to populate cache",
+                                "meta": meta})
+            else:
+                results.append({"doi": r_doi, "error": "not_found",
+                                "message": "Could not resolve DOI"})
+
+    # Build comparison summary
+    entries = []
+    for r in results:
+        d = r.get("data")
+        if not d:
+            continue
+        j = d.get("journal", {})
+        s = d.get("summary", {})
+        ec = d.get("eligible_completeness", {})
+        geo = d.get("geography", {})
+        bias = d.get("bias_score", 0)
+        aq = d.get("author_geography", {})
+        dq = d.get("data_quality", {})
+        entries.append({
+            "doi": r["doi"],
+            "title": j.get("title", "Unknown"),
+            "year": j.get("year", ""),
+            "society": j.get("society", ""),
+            "screened": s.get("total_screened", 0),
+            "total_with_data": s.get("total_with_data", 0),
+            "eligible": s.get("eligible", 0),
+            "participants": s.get("total_participants", 0),
+            "bias_score": bias,
+            "verdict": "USABLE" if bias < 30 else "QUESTIONABLE" if bias < 60 else "NOT USABLE",
+            "sex_report_pct": ec.get("sex_both", {}).get("pct", 0),
+            "race_any_pct": ec.get("any_race", {}).get("pct", 0),
+            "race_all5_pct": ec.get("all_5_race", {}).get("pct", 0),
+            "usa_pct": geo.get("usa_pct", 0),
+            "non_usa_pct": geo.get("non_usa_pct", 0),
+            "author_countries": aq.get("unique_countries", []),
+            "author_country_count": aq.get("country_count", 0),
+            "avg_quality": dq.get("avg_quality_score", 0),
+            "precomputed": r.get("precomputed", False),
+        })
+    return JSONResponse({"results": results, "comparison": entries})
+
+
 @app.get("/api/guidelines")
 async def list_guidelines():
     return {doi: {"disease": v["disease"], "society": v["society"], "year": v["year"]}

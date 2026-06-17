@@ -441,7 +441,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Beyond Comorbidity Counts: How Do Comorbidity Type and Severity Influence Diabetes Patients\u2019 Treatment Priorities and Self-Management?",
@@ -464,7 +468,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Language Barriers, Physician-Patient Language Concordance, and Glycemic Control Among Insured Latinos with Diabetes: The Diabetes Study of Northern California (DISTANCE)",
@@ -487,7 +495,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Trends in Glycemic Control Among Youth and Young Adults With Diabetes: The SEARCH for Diabetes in Youth Study.",
@@ -510,7 +522,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Measurement and Validation of the Comprehensive Score for Financial Toxicity (COST) in a Population With Diabetes.",
@@ -533,7 +549,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Primary care team and its association with quality of care for people with multimorbidity: a systematic review",
@@ -556,7 +576,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Primary Care Engagement in Value-Based Reform Programs With Health Services Outcomes",
@@ -579,7 +603,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effects of a Digital Diabetes Prevention Program: An RCT.",
@@ -602,7 +630,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Patterns of Telemedicine Use and Glycemic Outcomes of Endocrinology Care for Patients With Type 2 Diabetes",
@@ -625,7 +657,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Telemedicine in the Management of Type 1 Diabetes",
@@ -648,7 +684,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Implementation of an Intensive Telehealth Intervention for Rural Patients with Clinic-Refractory Diabetes",
@@ -671,7 +711,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effectiveness, reach, uptake, and feasibility of digital health interventions for adults with type 2 diabetes: a systematic review and meta-analysis of randomised controlled trials.",
@@ -694,7 +738,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Telemedicine in Improving Glycemic Control Among Children and Adolescents With Type 1 Diabetes Mellitus: Systematic Review and Meta-Analysis",
@@ -717,7 +765,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Implementation Science Perspectives on Implementing Telemedicine Interventions for Hypertension or Diabetes Management: Scoping Review",
@@ -740,7 +792,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Making Diabetes Electronic Medical Record Data Actionable: Promoting Benchmarking and Population Health Improvement Using the T1D Exchange Quality Improvement Portal",
@@ -763,7 +819,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Strategies for overcoming therapeutic inertia in type 2 diabetes: A systematic review and meta-analysis.",
@@ -786,7 +846,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The effect of personalized intelligent digital systems for self-care training on type II diabetes: a systematic review and meta-analysis of clinical trials.",
@@ -809,7 +873,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Comparison of Diabetes Medications Used by Adults With Commercial Insurance vs Medicare Advantage, 2016 to 2019",
@@ -832,7 +900,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Glucagon fill rates and cost among children and adolescents with type 1 diabetes in the United States, 2011\u20132021",
@@ -855,7 +927,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Gaps in glucagon fills among commercially insured patients receiving a glucagon prescription",
@@ -878,7 +954,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Disparities in Continuous Glucose Monitor Use Between Children With Type 1 Diabetes Living in Urban and Rural Areas.",
@@ -901,7 +981,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Race/Ethnicity, Gender, and Socioeconomic Status With Sodium-Glucose Cotransporter 2 Inhibitor Use Among Patients With Diabetes in the US",
@@ -924,7 +1008,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 90.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Racial, Ethnic, and Socioeconomic Inequities in Glucagon-Like Peptide-1 Receptor Agonist Use Among Patients With Diabetes in the US",
@@ -947,7 +1035,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 90.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Prescription Co-payment With Adherence to Glucagon-Like Peptide-1 Receptor Agonist and Sodium-Glucose Cotransporter-2 Inhibitor Therapies in Patients With Heart Failure and Diabetes",
@@ -970,7 +1062,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "\u201cUse and Continuity of Weight-modifying Medications among Adults with Diabetes and Overweight/Obesity: U.S. population study\u201d",
@@ -993,7 +1089,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Evaluation of High-Deductible Health Plans and Acute Glycemic Complications Among Adults With Diabetes",
@@ -1016,7 +1116,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Enrollment in High-Deductible Health Plans and Incident Diabetes Complications",
@@ -1039,7 +1143,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association Between High-Deductible Health Plans and Engagement in Routine Medical Care for Type 2 Diabetes in a Privately Insured Population: A Propensity Score-Matched Study.",
@@ -1062,7 +1170,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Estimates of the Percentage of US Adults With Diabetes Who Could Be Screened for Diabetic Retinopathy in Primary Care Settings.",
@@ -1085,7 +1197,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Increasing Social Determinants of Health Screening Rates Among Six Endocrinology Centers Across the United States: Results From the T1D Exchange Quality Improvement Collaborative",
@@ -1108,7 +1224,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Access to Diabetes Care Should Be a Universal Right for People With Type 1 Diabetes: Lessons Learned From the Norwegian Childhood Diabetes Registry.",
@@ -1131,7 +1251,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Metabolic Syndrome and COVID-19 Mortality Among Adult Black Patients in New Orleans",
@@ -1154,7 +1278,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Racial and Ethnic Disparities in Glycemic Control Among Insured US Adults",
@@ -1177,7 +1305,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 70.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Nonmedical Interventions For Type 2 Diabetes: Evidence, Actionable Strategies, And Policy Opportunities",
@@ -1200,7 +1332,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Implicit Racial\u2013Ethnic and Insurance-Mediated Bias to Recommending Diabetes Technology: Insights from T1D Exchange Multicenter Pediatric and Adult Diabetes Provider Cohort",
@@ -1223,7 +1359,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     }
   ],
   "live_pipeline": true,
@@ -1255,5 +1395,23 @@
     }
   },
   "bias_score": 63.0,
-  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 1. Improving Care and Promoting Health in Populations: Standards of Care in Diabetes\u20142025\nYear: 2025 | Society: \n\nBIAS SCORE: 63.0%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 35 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 62.9% of studies\n\u26a0 Race data MISSING in 54.3% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 1. Improving Care and Promoting Health in Populations: Standards of Care in Diabetes\u20142025\nYear: 2025 | Society: \n\nBIAS SCORE: 63.0%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 35 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 62.9% of studies\n\u26a0 Race data MISSING in 54.3% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics",
+  "data_quality": {
+    "avg_quality_score": 70.0,
+    "quality_distribution": {
+      "high": 17,
+      "medium": 18,
+      "low": 0
+    },
+    "source_breakdown": {
+      "PMC Full-text": 16,
+      "PubMed Abstract": 19
+    }
+  },
+  "author_geography": {
+    "unique_countries": [],
+    "country_count": 0,
+    "avg_author_diversity": 0,
+    "max_author_diversity": 0
+  }
 }

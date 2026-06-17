@@ -192,7 +192,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Scaling of adult body weight to height across sex and race/ethnic groups: relevance to BMI",
@@ -220,7 +224,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Faculty Opinions recommendation of A common variant in the FTO gene is associated with body mass index and predisposes to childhood and adult obesity.",
@@ -248,7 +256,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The medical care costs of obesity: An instrumental variables approach",
@@ -276,7 +288,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence of Obesity and Trends in Body Mass Index Among US Children and Adolescents, 1999-2010",
@@ -304,7 +320,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Micronutrient quality of weight loss diets that focus on macronutrients: results from the A TO Z study",
@@ -332,7 +352,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Whole Genome Scan for Obstructive Sleep Apnea and Obesity in African-American Families",
@@ -360,7 +384,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence of Obesity and Trends in the Distribution of Body Mass Index Among US Adults, 1999-2010",
@@ -388,7 +416,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence and Trends in Obesity and Severe Obesity Among Children in the United States, 1999-2012",
@@ -416,7 +448,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Challenging obesity: Patient, provider, and expert perspectives on the roles of available and emerging nonsurgical therapies",
@@ -444,7 +480,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Normal vs. High-Protein Weight Loss Diets in Men: Effects on Body Composition and Indices of Metabolic Syndrome",
@@ -472,7 +512,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effects of macronutrient composition of the diet on body fat in indigenous people at high risk of type 2 diabetes",
@@ -500,7 +544,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Development and Validation of Improved Algorithms for the Assessment of Global Cardiovascular Risk in Women",
@@ -528,7 +576,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sleep Duration and Cardiovascular Disease: Results from the National Health Interview Survey",
@@ -556,7 +608,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Accuracy of body mass index in diagnosing obesity in the adult general population",
@@ -584,7 +640,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence and Trends in Obesity and Severe Obesity Among Children in the United States, 1999-2012",
@@ -612,7 +672,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Dual-Energy X-Ray Performs as Well as Clinical Computed Tomography for the Measurement of Visceral Fat",
@@ -640,7 +704,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Association of Esophageal Inflammation, Obesity and Gastroesophageal Reflux Disease: From FDG PET/CT Perspective",
@@ -668,7 +736,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Depressive Symptom Clusters as Predictors of 6-Year Increases in Insulin Resistance",
@@ -696,7 +768,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Obstructive Sleep Apnea Among Obese Patients With Type 2 Diabetes",
@@ -724,7 +800,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence of Symptoms and Risk of Sleep Apnea in the US Population",
@@ -752,7 +832,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sleep-Disordered Breathing and Mortality: A Prospective Cohort Study",
@@ -780,7 +864,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body mass index and asthma severity in the National Asthma Survey",
@@ -808,7 +896,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body Mass Index and Response to Asthma Therapy: Fluticasone Propionate/Salmeterol versus Montelukast",
@@ -836,7 +928,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The pro-inflammatory profile of depressed patients is (partly) related to obesity",
@@ -864,7 +960,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body Mass Index and Headaches: Findings from a National Sample of US Adults",
@@ -892,7 +992,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Relationships between obesity and DSM-IV major depressive disorder, suicide ideation, and suicide attempts",
@@ -920,7 +1024,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prescribing Exercise at Varied Levels of Intensity and Frequency",
@@ -948,7 +1056,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Comparison of the Atkins, Ornish, Weight Watchers, and Zone Diets for Weight Loss and Heart Disease Risk Reduction",
@@ -976,7 +1088,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effect of nateglinide on the incidence of diabetes and cardiovascular events",
@@ -1004,7 +1120,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Maintenance of weight loss after lifestyle interventions for overweight and obesity, a systematic review",
@@ -1032,7 +1152,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevention of Type 2 Diabetes in Subjects With Prediabetes and Metabolic Syndrome Treated With Phentermine and Topiramate Extended Release",
@@ -1060,7 +1184,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 1
+      "has_all_5_race": 1,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Acarbose for prevention of type 2 diabetes mellitus: the STOP-NIDDM randomised trial",
@@ -1088,7 +1216,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "DASH Diet Lowers Blood Pressure and Lipid-Induced Oxidative Stress in Obesity",
@@ -1116,7 +1248,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Ethnic-Specific Obesity Cutoffs for Diabetes Risk: Cross-sectional Study of 490,288 UK Biobank Participants",
@@ -1144,7 +1280,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Lower BMI cutoffs to define overweight and obesity in China",
@@ -1172,7 +1312,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body Weight and Mortality Among Men and Women in China",
@@ -1200,7 +1344,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Effect of adjustable gastric banding on changes in gastroesophageal reflux disease (GERD) and quality of life",
@@ -1228,7 +1376,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Healthy percentage body fat ranges: an approach for developing guidelines based on body mass index",
@@ -1256,7 +1408,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body Adiposity and Type 2 Diabetes: Increased Risk With a High Body Fat Percentage Even Having a Normal BMI",
@@ -1284,7 +1440,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body mass index classification misses subjects with increased cardiometabolic risk factors",
@@ -1312,7 +1472,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Comparisons of percentage body fat, body mass index, waist circumference, and waist-stature ratio in adults",
@@ -1340,7 +1504,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "A systematic review of body fat distribution and mortality in older people",
@@ -1368,7 +1536,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "BMI and all-cause mortality in older adults: a meta-analysis",
@@ -1396,7 +1568,11 @@
       "has_sex": 0,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "BMI and Mortality in Non-Hispanic Black Adults in the NIH-AARP Study",
@@ -1424,7 +1600,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Relation of central adiposity and body mass index to diabetes in the DPP",
@@ -1452,7 +1632,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Waist circumference and cardiometabolic risk: a consensus statement",
@@ -1480,7 +1664,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "CrossRef",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "A comparison of BMI, WHR and WC as predictors of all-cause mortality among the elderly",
@@ -1508,7 +1696,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 70.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Measurement of fat mass using DEXA: a validation study in elderly adults",
@@ -1536,7 +1728,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Comparison of ADP with DXA and 3 field methods",
@@ -1564,7 +1760,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body fat %, BMI and WHR as predictors of mortality and CVD",
@@ -1592,7 +1792,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Comparison of ADP and BI for assessing body composition changes",
@@ -1620,7 +1824,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Body Composition Analysis by ADP in Normal Weight to Extremely Obese Adults",
@@ -1648,7 +1856,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 100.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "ADP for Estimating Body Composition Changes with Weight Loss in Japanese Men",
@@ -1676,7 +1888,11 @@
       "has_sex": 1,
       "has_age": 1,
       "has_any_race": 1,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 80.0,
+      "best_source": "PMC Full-text",
+      "author_countries": [],
+      "author_geo_diversity": 0
     }
   ],
   "continent_breakdown": {
@@ -1972,5 +2188,24 @@
       "any_race": 100.0,
       "all_5_race": 19.4
     }
+  },
+  "data_quality": {
+    "avg_quality_score": 95.4,
+    "quality_distribution": {
+      "high": 53,
+      "medium": 1,
+      "low": 0
+    },
+    "source_breakdown": {
+      "PMC Full-text": 52,
+      "CrossRef": 1,
+      "PubMed Abstract": 1
+    }
+  },
+  "author_geography": {
+    "unique_countries": [],
+    "country_count": 0,
+    "avg_author_diversity": 0,
+    "max_author_diversity": 0
   }
 }

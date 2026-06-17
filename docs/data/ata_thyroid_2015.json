@@ -397,7 +397,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Advances in diagnostic practices affect thyroid cancer incidence in France.",
@@ -420,7 +424,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Usefulness of ultrasonography in the management of nodular thyroid disease.",
@@ -443,7 +451,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Role of ultrasound-guided fine-needle aspiration biopsy in evaluation of nonpalpable thyroid nodules.",
@@ -466,7 +478,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Familial non-medullary thyroid carcinoma displays the features of clinical anticipation suggestive of a distinct biological entity.",
@@ -489,7 +505,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence, clinicopathologic features, and somatic genetic mutation profile in familial versus sporadic nonmedullary thyroid cancer.",
@@ -512,7 +532,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "In patients with thyroid cancer of follicular cell origin, a family history of nonmedullary thyroid cancer in one first-degree relative is associated with more aggressive disease.",
@@ -535,7 +559,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The long-term outcomes of the second generation of familial nonmedullary thyroid carcinoma are more aggressive than sporadic cases.",
@@ -558,7 +586,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Solid cancers after bone marrow transplantation.",
@@ -581,7 +613,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Higher serum thyroid stimulating hormone level in thyroid nodule patients is associated with greater risks of differentiated thyroid cancer and advanced tumor stage.",
@@ -604,7 +640,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Is Hashimoto's Thyroiditis a Risk Factor for Papillary Thyroid Cancer?",
@@ -627,7 +667,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Impact of routine measurement of serum calcitonin on the diagnosis and outcome of medullary thyroid cancer: experience in 10,864 patients with nodular thyroid disorders.",
@@ -650,7 +694,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Preoperative Serum Thyroglobulin as a Useful Predictive Marker to Differentiate Follicular Thyroid Cancer from Benign Nodules in Indeterminate Nodules",
@@ -673,7 +721,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Routine measurement of serum calcitonin is useful for early detection of medullary thyroid carcinoma in patients with nodular thyroid diseases.",
@@ -696,7 +748,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Interest of routine measurement of serum calcitonin: study in a large series of thyroidectomized patients. The French Medullary Study Group.",
@@ -719,7 +775,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Predictive value of serum calcitonin levels for preoperative diagnosis of medullary thyroid carcinoma in a cohort of 5817 consecutive patients with thyroid nodules.",
@@ -742,7 +802,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The use of preoperative routine measurement of basal serum thyrocalcitonin in candidates for thyroidectomy due to nodular thyroid disorders: results from 2733 consecutive patients.",
@@ -765,7 +829,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The diagnostic value of calcitonin measurement in wash-out fluid from fine-needle aspiration of thyroid nodules in the diagnosis of medullary thyroid cancer.",
@@ -788,7 +856,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk of Malignancy in Thyroid Incidentalomas Detected by\n                    <sup>18</sup>\n                    F-Fluorodeoxyglucose Positron Emission Tomography: A Systematic Review",
@@ -811,7 +883,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Evaluation of thyroid FDG uptake incidentally identified on FDG-PET/CT imaging.",
@@ -834,7 +910,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sources of diagnostic error in fine needle aspiration of the thyroid.",
@@ -857,7 +937,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 40.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Incidental thyroid \"PETomas\": clinical significance and novel description of the self-resolving variant of focal FDG-PET thyroid uptake.",
@@ -880,7 +964,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Assessment of nondiagnostic ultrasound-guided fine needle aspirations of thyroid nodules.",
@@ -903,7 +991,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Risk of Thyroid Cancer Based on Thyroid Ultrasound Imaging Characteristics: Results of a Population-Based Study",
@@ -926,7 +1018,11 @@
       "has_sex": 1,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 70.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Correlation of findings from iodine 123 scan and ultrasonography in the recommendation for thyroid fine-needle aspiration biopsy.",
@@ -949,7 +1045,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Diagnostic accuracy of conventional versus sonography-guided fine-needle aspiration biopsy of thyroid nodules.",
@@ -972,7 +1072,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Benign and malignant thyroid nodules: US differentiation--multicenter retrospective study.",
@@ -995,7 +1099,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Can Vascularity at Power Doppler US Help Predict Thyroid Malignancy?",
@@ -1018,7 +1126,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Predictive value of sonographic features in preoperative evaluation of malignant thyroid nodules in a multinodular goiter.",
@@ -1041,7 +1153,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prevalence and distribution of carcinoma in patients with solitary and multiple thyroid nodules on sonography.",
@@ -1064,7 +1180,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Sonographic features of follicular variant papillary thyroid carcinomas in comparison with conventional papillary thyroid carcinomas.",
@@ -1087,7 +1207,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Thyroid Nodules with Macrocalcification: Sonographic Findings Predictive of Malignancy",
@@ -1110,7 +1234,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The predictive value of ultrasound findings in the management of thyroid nodules.",
@@ -1133,7 +1261,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Evaluating the Degree of Conformity of Papillary Carcinoma and Follicular Carcinoma to the Reported Ultrasonographic Findings of Malignant Thyroid Tumor",
@@ -1156,7 +1288,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The prognostic value of primary tumor size in papillary and follicular thyroid carcinoma.",
@@ -1179,7 +1315,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Ultrasonography-guided fine-needle aspiration of thyroid incidentaloma: correlation with pathological findings.",
@@ -1202,7 +1342,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Pattern Recognition of Benign Nodules at Ultrasound of the Thyroid: Which Nodules Can Be Left Alone?",
@@ -1225,7 +1369,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Prospective evaluation of thyroid imaging reporting and data system on 4550 nodules with and without elastography.",
@@ -1248,7 +1396,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Ultrasonographic evaluation of thyroid nodules in 900 patients: comparison among ultrasonographic, cytological, and histological findings.",
@@ -1271,7 +1423,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Patient age is significantly related to the progression of papillary microcarcinoma of the thyroid under observation.",
@@ -1294,7 +1450,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "Elastography: new developments in ultrasound for predicting malignancy in thyroid nodules.",
@@ -1317,7 +1477,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     },
     {
       "title": "The Bethesda thyroid fine-needle aspiration classification system: year 1 at an academic institution.",
@@ -1340,7 +1504,11 @@
       "has_sex": 0,
       "has_age": 0,
       "has_any_race": 0,
-      "has_all_5_race": 0
+      "has_all_5_race": 0,
+      "quality_score": 50.0,
+      "best_source": "PubMed Abstract",
+      "author_countries": [],
+      "author_geo_diversity": 0
     }
   ],
   "live_pipeline": true,
@@ -1384,5 +1552,22 @@
     }
   },
   "bias_score": 82.3,
-  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 2015 American Thyroid Association Management Guidelines for Adult Patients with Thyroid Nodules and Differentiated Thyroid Cancer: The American Thyroid Association Guidelines Task Force on Thyroid Nodules and Differentiated Thyroid Cancer\nYear: 2016 | Society: \n\nBIAS SCORE: 82.3%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 42 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 97.6% of studies\n\u26a0 Race data MISSING in 100.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics"
+  "report": "CLINICAL BIAS ASSESSMENT REPORT\n============================================================\nGuideline: 2015 American Thyroid Association Management Guidelines for Adult Patients with Thyroid Nodules and Differentiated Thyroid Cancer: The American Thyroid Association Guidelines Task Force on Thyroid Nodules and Differentiated Thyroid Cancer\nYear: 2016 | Society: \n\nBIAS SCORE: 82.3%\nVERDICT: NOT USABLE\n\nKEY FINDINGS:\n- Studies analyzed: 42 of 100 eligible\n\u26a0 Age data MISSING in 100.0% of studies\n\u26a0 Sex data INCOMPLETE in 97.6% of studies\n\u26a0 Race data MISSING in 100.0% of studies\n\nUSABILITY ASSESSMENT:\nThis guideline's cited studies have INADEQUATE demographic reporting.\nRecommend: Do not use for diversity metrics",
+  "data_quality": {
+    "avg_quality_score": 50.2,
+    "quality_distribution": {
+      "high": 1,
+      "medium": 41,
+      "low": 0
+    },
+    "source_breakdown": {
+      "PubMed Abstract": 42
+    }
+  },
+  "author_geography": {
+    "unique_countries": [],
+    "country_count": 0,
+    "avg_author_diversity": 0,
+    "max_author_diversity": 0
+  }
 }

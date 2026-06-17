@@ -1,10 +1,12 @@
-import re, io, time, requests, xml.etree.ElementTree as ET
+import re, io, time, requests, json, xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
 import threading
 
 CROSSREF_HEADERS = {"User-Agent": "RADAR/1.0 (mailto:radar@demo.edu)"}
 NCBI_HEADERS = {"User-Agent": "RADAR/1.0 (mailto:radar@demo.edu)"}
+OPENALEX_HEADERS = {"User-Agent": "RADAR/1.0 (mailto:radar@demo.edu)"}
+UNPAYWALL_EMAIL = "radar@demo.edu"
 CACHE_DIR = Path(__file__).parent / "cache"
 CACHE_DIR.mkdir(exist_ok=True)
 
@@ -113,3 +115,94 @@ def get_crossref_meta(doi: str) -> Optional[dict]:
             "publisher": msg.get("publisher", ""),
         }
     except: return None
+
+
+# --- Unpaywall ---
+def search_unpaywall(doi: str) -> Optional[dict]:
+    try:
+        r = requests.get(
+            f"https://api.unpaywall.org/v2/{doi}?email={UNPAYWALL_EMAIL}",
+            timeout=10
+        )
+        if r.status_code != 200:
+            return None
+        data = r.json()
+        oa_location = data.get("best_oa_location") or data.get("oa_locations", [None]) or [None]
+        if isinstance(oa_location, list):
+            oa_location = oa_location[0]
+        if oa_location:
+            landing = oa_location.get("url_for_landing_page", "")
+            pdf = oa_location.get("url_for_pdf", "")
+            return {
+                "is_oa": data.get("is_oa", False),
+                "oa_status": data.get("oa_status", "unknown"),
+                "landing_url": landing,
+                "pdf_url": pdf,
+                "host_type": oa_location.get("host_type", ""),
+                "publisher": oa_location.get("publisher", ""),
+            }
+        return {"is_oa": False, "oa_status": "closed"}
+    except:
+        return None
+
+
+def get_fulltext_via_unpaywall(doi: str) -> Optional[str]:
+    """Try fetching full-text XML/HTML via Unpaywall landing page."""
+    up = search_unpaywall(doi)
+    if not up or not up.get("is_oa"):
+        return None
+    pdf_url = up.get("pdf_url", "")
+    landing_url = up.get("landing_url", "")
+    if pdf_url:
+        try:
+            r = requests.get(pdf_url, timeout=15)
+            if r.status_code == 200 and len(r.text) > 1000:
+                return r.text
+        except:
+            pass
+    return None
+
+
+# --- OpenAlex ---
+def search_openalex(doi: str) -> Optional[dict]:
+    try:
+        r = requests.get(
+            f"https://api.openalex.org/works/doi:{doi}",
+            headers=OPENALEX_HEADERS, timeout=10
+        )
+        if r.status_code != 200:
+            return None
+        data = r.json()
+        authorships = data.get("authorships", [])
+        author_names = []
+        author_countries = set()
+        institutions = []
+        for a in authorships:
+            name = a.get("author", {}).get("display_name", "")
+            if name:
+                author_names.append(name)
+            for inst in a.get("institutions", []):
+                country = inst.get("country_code", "")
+                if country:
+                    author_countries.add(country)
+                inst_name = inst.get("display_name", "")
+                if inst_name:
+                    institutions.append(inst_name)
+        primary_location = data.get("primary_location", {})
+        source = primary_location.get("source", {}) if primary_location else {}
+        return {
+            "title": data.get("title", ""),
+            "authors": author_names[:10],
+            "author_str": "; ".join(author_names[:5]),
+            "year": data.get("publication_year"),
+            "journal": source.get("display_name", ""),
+            "publisher": source.get("publisher", ""),
+            "type": data.get("type", ""),
+            "author_countries": list(author_countries),
+            "institutions": institutions[:5],
+            "cited_by_count": data.get("cited_by_count", 0),
+            "is_oa": data.get("is_oa", False),
+            "primary_location_url": (primary_location or {}).get("landing_page_url", ""),
+        }
+    except:
+        return None
