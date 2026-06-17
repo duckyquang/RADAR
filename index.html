@@ -609,11 +609,11 @@ async function _ncbiFetch(url) {
     if (wait > 0) await new Promise(r => setTimeout(r, wait));
     _lastFetch = Date.now();
     return await fetch(url);
-  } catch(e) { return new Response(null, {status:0}); }
+  } catch(e) { return { ok: false, json: async () => ({}), text: async () => '' }; }
 }
 
 async function _ncbiSearch(url) {
-  try { return await fetch(url); } catch(e) { return new Response(null, {status:0}); }
+  try { return await fetch(url); } catch(e) { return { ok: false, json: async () => ({}), text: async () => '' }; }
 }
 
 async function browserFetchCrossrefRefs(doi) {
