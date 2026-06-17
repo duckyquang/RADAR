@@ -1345,15 +1345,15 @@ function renderDashboard() {
   `;
 
   destroyCharts();
-  renderOverviewCharts(d);
-  renderDemographicsCharts(d);
-  renderGeographyCharts(d);
-  renderTimelineCharts(d);
-  renderTable(d);
+  try { renderOverviewCharts(d); } catch(e) {}
+  try { renderDemographicsCharts(d); } catch(e) {}
+  try { renderGeographyCharts(d); } catch(e) {}
+  try { renderTimelineCharts(d); } catch(e) {}
+  try { renderTable(d); } catch(e) {}
 }
 
 function destroyCharts() { Object.values(state.charts).forEach(c => { try { c.destroy(); } catch(e) {} }); state.charts = {}; }
-function mkChart(id, config) { const el = document.getElementById(id); if (el) state.charts[id] = new Chart(el, config); }
+function mkChart(id, config) { try { const el = document.getElementById(id); if (el && typeof Chart !== 'undefined') state.charts[id] = new Chart(el, config); } catch(e) {} }
 
 function renderOverviewCharts(d) {
   const c = d.completeness, s = d.summary;
