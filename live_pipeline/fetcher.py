@@ -87,34 +87,41 @@ def fetch_pmc_fulltext(pmcid: str) -> Optional[str]:
     return None
 
 
+_crossref_cache: dict[str, Optional[dict]] = {}
+
 def get_crossref_meta(doi: str) -> Optional[dict]:
+    if doi in _crossref_cache:
+        return _crossref_cache[doi]
+    result = None
     try:
         r = requests.get(f"https://api.crossref.org/works/{doi}", headers=CROSSREF_HEADERS, timeout=10)
-        if r.status_code != 200: return None
-        msg = r.json().get("message", {})
-        title = msg.get("title", [None])
-        if isinstance(title, list): title = title[0] if title else None
-        authors = []
-        for a in msg.get("author", []):
-            name = f"{a.get('given','')} {a.get('family','')}".strip()
-            if name: authors.append(name)
-        container = msg.get("container-title", [None])
-        if isinstance(container, list): container = container[0] if container else None
-        pub_date = msg.get("published-print", {}).get("date-parts", [[None]])[0]
-        if not pub_date or pub_date == [None]:
-            pub_date = msg.get("published-online", {}).get("date-parts", [[None]])[0]
-        year = pub_date[0] if pub_date and pub_date[0] else None
-        return {
-            "doi": doi,
-            "title": title,
-            "authors": authors[:5],
-            "author_str": "; ".join(authors[:5]),
-            "year": year,
-            "journal": container,
-            "type": msg.get("type", ""),
-            "publisher": msg.get("publisher", ""),
-        }
-    except: return None
+        if r.status_code == 200:
+            msg = r.json().get("message", {})
+            title = msg.get("title", [None])
+            if isinstance(title, list): title = title[0] if title else None
+            authors = []
+            for a in msg.get("author", []):
+                name = f"{a.get('given','')} {a.get('family','')}".strip()
+                if name: authors.append(name)
+            container = msg.get("container-title", [None])
+            if isinstance(container, list): container = container[0] if container else None
+            pub_date = msg.get("published-print", {}).get("date-parts", [[None]])[0]
+            if not pub_date or pub_date == [None]:
+                pub_date = msg.get("published-online", {}).get("date-parts", [[None]])[0]
+            year = pub_date[0] if pub_date and pub_date[0] else None
+            result = {
+                "doi": doi,
+                "title": title,
+                "authors": authors[:5],
+                "author_str": "; ".join(authors[:5]),
+                "year": year,
+                "journal": container,
+                "type": msg.get("type", ""),
+                "publisher": msg.get("publisher", ""),
+            }
+    except: pass
+    _crossref_cache[doi] = result
+    return result
 
 
 # --- Unpaywall ---

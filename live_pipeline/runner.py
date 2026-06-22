@@ -75,16 +75,27 @@ def _best_data_source(sources):
 
 
 def enrich_single(ref_doi):
-    s={"doi":ref_doi, "data_sources": [], "_quality": 0}
+    s={"doi":ref_doi, "data_sources": [], "_quality": 0, "pmid": None}
     sources = []
-    meta=fetcher.get_crossref_meta(ref_doi)
+
+    # Parallelize independent source fetches (CrossRef + OpenAlex + Unpaywall)
+    meta = None; oa = None; up_text = None
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
+        f_cr = ex.submit(fetcher.get_crossref_meta, ref_doi)
+        f_oa = ex.submit(fetcher.search_openalex, ref_doi)
+        f_up = ex.submit(fetcher.get_fulltext_via_unpaywall, ref_doi)
+        try: meta = f_cr.result()
+        except: pass
+        try: oa = f_oa.result()
+        except: pass
+        try: up_text = f_up.result()
+        except: pass
+
     if meta:
         s.update(title=meta.get("title",""),author_str=meta.get("author_str",""),
                  year=meta.get("year"),journal=meta.get("journal",""),type=meta.get("type",""))
         sources.append("crossref_only")
 
-    # Try OpenAlex for richer metadata (author countries, institutions)
-    oa = fetcher.search_openalex(ref_doi)
     if oa:
         sources.append("openalex_meta")
         if not s.get("title") and oa.get("title"):
@@ -96,11 +107,9 @@ def enrich_single(ref_doi):
         if oa.get("institutions"):
             s["institutions"] = oa["institutions"]
 
-    # Try Unpaywall for OA fulltext (catches non-PMC OA)
-    up_text = fetcher.get_fulltext_via_unpaywall(ref_doi)
     if up_text:
         sources.append("unpaywall_pdf")
-        pi = demographics.parse_pmc_fulltext(up_text)  # reuse PMC parser for XML
+        pi = demographics.parse_pmc_fulltext(up_text)
         if pi:
             demo_keys = {k:v for k,v in pi.items() if k not in ("title","journal","year","authors","affiliations","abstract")}
             for k, v in demo_keys.items():
@@ -111,48 +120,57 @@ def enrich_single(ref_doi):
                 if aff and not s.get("country"):
                     s["country"] = aff
 
-    try:
-        pmid=fetcher.search_pubmed_by_doi(ref_doi)
-        if pmid:
-            pmcid=fetcher.pmid_to_pmcid(pmid)
-            fulltext=None
-            if pmcid:
-                fulltext=fetcher.fetch_pmc_fulltext(pmcid)
-            if fulltext:
-                sources.append("pmc_fulltext_xml" if "<body>" in fulltext else "pmc_table")
-                pi=demographics.parse_pmc_fulltext(fulltext)
-                s.update({k:v for k,v in pi.items() if k not in ("title","journal","year","authors","affiliations","abstract")})
-                if "sample_size" not in s:
+    # Short-circuit: if we already have sample_size + sex + any race + country from above, skip PubMed/PMC
+    has_all_from_first_pass = (
+        s.get("sample_size")
+        and s.get("male_pct") and s.get("female_pct")
+        and any(s.get(k) for k in ["white_pct","black_pct","hispanic_pct","asian_pct","other_pct"])
+        and s.get("country") and s["country"] not in ("Unknown","")
+    )
+    if not has_all_from_first_pass:
+        try:
+            pmid=fetcher.search_pubmed_by_doi(ref_doi)
+            if pmid:
+                s["pmid"] = pmid
+                pmcid=fetcher.pmid_to_pmcid(pmid)
+                fulltext=None
+                if pmcid:
+                    fulltext=fetcher.fetch_pmc_fulltext(pmcid)
+                if fulltext:
+                    sources.append("pmc_fulltext_xml" if "<body>" in fulltext else "pmc_table")
+                    pi=demographics.parse_pmc_fulltext(fulltext)
+                    s.update({k:v for k,v in pi.items() if k not in ("title","journal","year","authors","affiliations","abstract")})
+                    if "sample_size" not in s:
+                        xml=fetcher.fetch_pubmed_xml(pmid)
+                        if xml:
+                            pi2=demographics.parse_pubmed_xml(xml)
+                            abstract=pi2.get("abstract","")
+                            if abstract:
+                                demo=demographics.extract_demographics_from_text(abstract)
+                                s.update(demo)
+                                if not s.get("title") and pi2.get("title"): s["title"]=pi2["title"]
+                                sources.append("pubmed_abstract")
+                    if pi.get("affiliations"):
+                        aff=demographics.infer_country_from_affiliations(pi["affiliations"])
+                        if aff: s["country"]=aff
+                    if pi.get("title") and len(pi["title"])>len(s.get("title","")): s["title"]=pi["title"]
+                    if not s.get("year") and pi.get("year"): s["year"]=pi["year"]
+                else:
                     xml=fetcher.fetch_pubmed_xml(pmid)
                     if xml:
+                        sources.append("pubmed_abstract")
                         pi2=demographics.parse_pubmed_xml(xml)
                         abstract=pi2.get("abstract","")
                         if abstract:
                             demo=demographics.extract_demographics_from_text(abstract)
                             s.update(demo)
-                            if not s.get("title") and pi2.get("title"): s["title"]=pi2["title"]
-                            sources.append("pubmed_abstract")
-                if pi.get("affiliations"):
-                    aff=demographics.infer_country_from_affiliations(pi["affiliations"])
-                    if aff: s["country"]=aff
-                if pi.get("title") and len(pi["title"])>len(s.get("title","")): s["title"]=pi["title"]
-                if not s.get("year") and pi.get("year"): s["year"]=pi["year"]
-            else:
-                xml=fetcher.fetch_pubmed_xml(pmid)
-                if xml:
-                    sources.append("pubmed_abstract")
-                    pi2=demographics.parse_pubmed_xml(xml)
-                    abstract=pi2.get("abstract","")
-                    if abstract:
-                        demo=demographics.extract_demographics_from_text(abstract)
-                        s.update(demo)
-                    if not s.get("country"):
-                        aff=demographics.infer_country_from_affiliations(pi2.get("affiliations",[]))
-                        if aff: s["country"]=aff
-                    if pi2.get("title") and len(pi2["title"])>len(s.get("title","")): s["title"]=pi2["title"]
-                    if not s.get("year") and pi2.get("year"): s["year"]=pi2["year"]
-    except Exception as e:
-        s["_error"] = str(e)
+                        if not s.get("country"):
+                            aff=demographics.infer_country_from_affiliations(pi2.get("affiliations",[]))
+                            if aff: s["country"]=aff
+                        if pi2.get("title") and len(pi2["title"])>len(s.get("title","")): s["title"]=pi2["title"]
+                        if not s.get("year") and pi2.get("year"): s["year"]=pi2["year"]
+        except Exception as e:
+            s["_error"] = str(e)
 
     s["data_sources"] = sources
     best = _best_data_source(sources)
@@ -279,17 +297,22 @@ def run(guideline_doi):
                 "best_source": s.get("best_source_label", "CrossRef"),
                 "author_countries": author_countries,
                 "author_geo_diversity": author_geo_diversity,
+                "pmid": s.get("pmid"),
             })
 
         n_all=len(entries)
 
         eligible=[e for e in entries if (e.get("sample_size") or 0)>0]
+        for e in eligible: e["eligibility_tier"] = 1
         if not eligible:
             eligible=[e for e in entries if e["has_sex"] or e["has_any_race"]]
+            for e in eligible: e["eligibility_tier"] = 2
         if not eligible:
             eligible=[e for e in entries if e.get("country") and e["country"]!="Unknown"]
+            for e in eligible: e["eligibility_tier"] = 3
         if not eligible:
             eligible=entries[:10] if entries else []
+            for e in eligible: e["eligibility_tier"] = 4
 
         n_eligible=len(eligible)
         samples=[e["sample_size"] for e in eligible if (e.get("sample_size") or 0)>0]

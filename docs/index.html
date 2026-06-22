@@ -250,6 +250,7 @@ td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap
         <button class="download-btn" onclick="downloadReport()">⬇ CSV Report</button>
         <button class="download-btn" onclick="downloadHTMLReport()">⬇ HTML Report</button>
         <button class="download-btn alt" onclick="downloadPerStudyCSV()">⬇ Per-Study Data</button>
+        <button class="download-btn alt" onclick="downloadSourceList()" style="border-color:var(--crimson);color:var(--crimson);">📋 Source List for Review</button>
       </div>
     </div>
 
@@ -542,6 +543,58 @@ function downloadPerStudyCSV() {
   el.click();
 }
 
+function downloadSourceList() {
+  if (!state.data) return alert('No report available');
+  const d = state.data;
+  const eligible = d.eligible_studies || [];
+  const allEntries = d.completeness ? null : []; // not available, use eligible only
+  const lines = [];
+  lines.push('DOI,PMID,Title,Author,Year,Journal,Sample Size,Country,Male %,Female %,White %,Black %,Hispanic %,Asian %,Other %,Race Cats,Has Sex,Has Any Race,Has All 5 Race,Quality Score,Data Source,Eligibility Tier,Data Sources Available');
+  eligible.forEach((st, i) => {
+    const rc = st.race_cats || 0;
+    lines.push([
+      st.link || '',
+      st.pmid || '',
+      '"' + (st.title||'').replace(/"/g,'""') + '"',
+      '"' + (st.author||'').replace(/"/g,'""') + '"',
+      st.year || '',
+      '"' + (st.journal||'').replace(/"/g,'""') + '"',
+      st.sample_size || 0,
+      st.country || '',
+      st.male_pct != null ? st.male_pct : '',
+      st.female_pct != null ? st.female_pct : '',
+      st.white_pct != null ? st.white_pct : '',
+      st.black_pct != null ? st.black_pct : '',
+      st.hispanic_pct != null ? st.hispanic_pct : '',
+      st.asian_pct != null ? st.asian_pct : '',
+      st.other_pct != null ? st.other_pct : '',
+      rc,
+      (st.male_pct && st.female_pct) ? 1 : 0,
+      rc > 0 ? 1 : 0,
+      rc === 5 ? 1 : 0,
+      st.quality_score || 0,
+      st.best_source || '',
+      st.eligibility_tier || 1,
+      '"' + (st.data_sources || st.best_source || '') + '"',
+    ].join(','));
+  });
+  lines.push('');
+  lines.push('### CASCADE EXPLANATION');
+  lines.push('Eligibility Tier 1 = sample_size > 0 (primary criterion)');
+  lines.push('Eligibility Tier 2 = has sex or race data (fallback 1)');
+  lines.push('Eligibility Tier 3 = has valid country (fallback 2)');
+  lines.push('Eligibility Tier 4 = first 10 entries (last resort)');
+  lines.push('');
+  lines.push('### VALIDATION INSTRUCTIONS');
+  lines.push('For each study, verify: (1) Is the DOI correct? (2) Is the PMID correct? (3) Does the sample size look right? (4) Are sex percentages plausible (M+F ≈ 100%)? (5) Are race categories complete and plausible?');
+  lines.push('Mark each study as: FOUND (correctly caught), MISSED (should be eligible but pipeline flagged wrong), or FALSE POSITIVE (not actually eligible).');
+  const csv = lines.join('\n');
+  const el = document.createElement('a');
+  el.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  el.download = (d.journal.id || 'radar_report') + '_eligible_sources_for_review.csv';
+  el.click();
+}
+
 function downloadHTMLReport() {
   if (!state.data) return alert('No report available');
   const d = state.data;
@@ -602,6 +655,12 @@ td{padding:8px 12px;border-bottom:1px solid var(--gray-100);}
 const NCBI_RATE_MS = 250;
 let _lastFetch = 0;
 
+// In-memory caches for repeated DOI lookups
+const _crossrefMetaCache = new Map();
+const _crossrefRefsCache = new Map();
+const _pubmedPmidCache = new Map();
+const _pubmedXmlCache = new Map();
+
 async function _ncbiFetch(url) {
   try {
     const now = Date.now();
@@ -617,40 +676,60 @@ async function _ncbiSearch(url) {
 }
 
 async function browserFetchCrossrefRefs(doi) {
+  if (_crossrefRefsCache.has(doi)) return _crossrefRefsCache.get(doi);
   try {
     const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
     if (!r.ok) return [];
     const msg = (await r.json()).message || {};
-    return (msg.reference || []).map(ref => ref.DOI).filter(Boolean);
+    const refs = (msg.reference || []).map(ref => ref.DOI).filter(Boolean);
+    _crossrefRefsCache.set(doi, refs);
+    return refs;
   } catch(e) { return []; }
 }
 
 async function browserFetchCrossrefMeta(doi) {
+  if (_crossrefMetaCache.has(doi)) return _crossrefMetaCache.get(doi);
+  let result = null;
   try {
     const r = await fetch(`https://api.crossref.org/works/${doi}`, {headers: {'User-Agent': 'RADAR/1.0'}});
-    if (!r.ok) return null;
-    const msg = (await r.json()).message || {};
-    const title = Array.isArray(msg.title) ? msg.title[0] : msg.title;
-    const authors = (msg.author || []).map(a => `${a.given||''} ${a.family||''}`.trim()).filter(Boolean);
-    const container = Array.isArray(msg['container-title']) ? msg['container-title'][0] : msg['container-title'];
-    const pp = msg['published-print'] || msg['published-online'] || {};
-    const pd = pp['date-parts'] || [[null]];
-    return {doi, title: title||'', 'author_str': authors.slice(0,5).join('; '), year: pd[0]?.[0], journal: container||'', type: msg.type||'', publisher: msg.publisher||''};
-  } catch(e) { return null; }
+    if (r.ok) {
+      const msg = (await r.json()).message || {};
+      const title = Array.isArray(msg.title) ? msg.title[0] : msg.title;
+      const authors = (msg.author || []).map(a => `${a.given||''} ${a.family||''}`.trim()).filter(Boolean);
+      const container = Array.isArray(msg['container-title']) ? msg['container-title'][0] : msg['container-title'];
+      const pp = msg['published-print'] || msg['published-online'] || {};
+      const pd = pp['date-parts'] || [[null]];
+      result = {doi, title: title||'', 'author_str': authors.slice(0,5).join('; '), year: pd[0]?.[0], journal: container||'', type: msg.type||'', publisher: msg.publisher||''};
+    }
+  } catch(e) {}
+  _crossrefMetaCache.set(doi, result);
+  return result;
 }
 
 async function browserSearchPubMedByDOI(doi) {
-  const r = await _ncbiSearch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(doi+'[DOI]')}&retmax=5&retmode=json`);
-  if (!r || !r.ok) return null;
-  const body = await r.json();
-  const ids = (body && body.esearchresult && body.esearchresult.idlist) || [];
-  return ids[0] || null;
+  if (_pubmedPmidCache.has(doi)) return _pubmedPmidCache.get(doi);
+  let result = null;
+  try {
+    const r = await _ncbiSearch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(doi+'[DOI]')}&retmax=5&retmode=json`);
+    if (r && r.ok) {
+      const body = await r.json();
+      const ids = (body && body.esearchresult && body.esearchresult.idlist) || [];
+      result = ids[0] || null;
+    }
+  } catch(e) {}
+  _pubmedPmidCache.set(doi, result);
+  return result;
 }
 
 async function browserFetchPubMed(pmid) {
-  const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
-  if (!r || !r.ok) return null;
-  return await r.text();
+  if (_pubmedXmlCache.has(pmid)) return _pubmedXmlCache.get(pmid);
+  let result = null;
+  try {
+    const r = await _ncbiFetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
+    if (r && r.ok) result = await r.text();
+  } catch(e) {}
+  _pubmedXmlCache.set(pmid, result);
+  return result;
 }
 
 async function browserFetchPMC(pmid) {
@@ -800,10 +879,14 @@ function browserInferCountry(affiliations) {
 async function browserEnrichSingle(refDoi) {
   const s = {doi: refDoi};
   try {
-    const meta = await browserFetchCrossrefMeta(refDoi);
+    // Parallelize CrossRef + PubMed search
+    const [meta, pmid] = await Promise.all([
+      browserFetchCrossrefMeta(refDoi),
+      browserSearchPubMedByDOI(refDoi),
+    ]);
     if (meta) Object.assign(s, meta);
-    const pmid = await browserSearchPubMedByDOI(refDoi);
     if (!pmid) return {...s, _quality: 5, best_source: 'CrossRef'};
+    s.pmid = pmid;
     const pubXml = await browserFetchPubMed(pmid);
     if (pubXml) {
       const pi = browserParsePubmedXML(pubXml);
@@ -817,8 +900,12 @@ async function browserEnrichSingle(refDoi) {
       }
       if (pi.title && (!s.title || pi.title.length > s.title.length)) s.title = pi.title;
       if (pi.year && !s.year) s.year = pi.year;
-      // If PubMed gave no sample_size AND article has PMC, try PMC full-text for tables
-      if (!s.sample_size && pi.pmc_id) {
+      // Short-circuit: if we already have sample_size + sex + race from abstract, skip PMC
+      const hasAllFromAbstract = s.sample_size && (s.male_pct != null) && (s.female_pct != null) &&
+        (s.white_pct != null || s.black_pct != null || s.hispanic_pct != null || s.asian_pct != null || s.other_pct != null);
+      if (hasAllFromAbstract) return {...s, _quality: 30, best_source: 'PubMed'};
+      // Try PMC full-text for tables if we're missing sample_size
+      if (pi.pmc_id) {
         const pmcXml = await browserFetchPMC(pmid);
         if (pmcXml) {
           const pmi = browserParsePMCXML(pmcXml);
@@ -865,8 +952,9 @@ async function browserRunAnalysis(doi, onProgress) {
   const entries = rawStudies.map(s => {
     const mp = s.male_pct; const fp = s.female_pct;
     const rc = ['white_pct','black_pct','hispanic_pct','asian_pct','other_pct'].filter(k => s[k] != null && s[k] > 0).length;
+    const doiStr = s.doi || '';
     return {
-      title: s.title || 'Untitled', link: s.doi ? `https://doi.org/${s.doi}` : '', author: s.author_str || '',
+      title: s.title || 'Untitled', link: doiStr ? `https://doi.org/${doiStr}` : '', author: s.author_str || '',
       country: s.country || 'Unknown', year: s.year, journal: s.journal || '', sample_size: s.sample_size,
       age: '', male_pct: mp, female_pct: fp,
       white_pct: s.white_pct, black_pct: s.black_pct, hispanic_pct: s.hispanic_pct,
@@ -876,15 +964,17 @@ async function browserRunAnalysis(doi, onProgress) {
       has_age: 0, has_any_race: rc > 0 ? 1 : 0, has_all_5_race: rc === 5 ? 1 : 0,
       quality_score: s._quality || 5, best_source: s.best_source || 'CrossRef',
       author_countries: [], author_geo_diversity: 0,
+      pmid: s.pmid || null,
     };
   });
 
   // Build same result structure as the server
   const nAll = entries.length;
   let eligible = entries.filter(e => (e.sample_size || 0) > 0);
-  if (!eligible.length) eligible = entries.filter(e => e.has_sex || e.has_any_race);
-  if (!eligible.length) eligible = entries.filter(e => e.country && e.country !== 'Unknown');
-  if (!eligible.length) eligible = entries.slice(0, 10);
+  eligible.forEach(e => e.eligibility_tier = 1);
+  if (!eligible.length) { eligible = entries.filter(e => e.has_sex || e.has_any_race); eligible.forEach(e => e.eligibility_tier = 2); }
+  if (!eligible.length) { eligible = entries.filter(e => e.country && e.country !== 'Unknown'); eligible.forEach(e => e.eligibility_tier = 3); }
+  if (!eligible.length) { eligible = entries.slice(0, 10); eligible.forEach(e => e.eligibility_tier = 4); }
 
   const nEl = eligible.length;
   const samples = eligible.map(e => e.sample_size).filter(Boolean);
