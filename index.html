@@ -777,29 +777,38 @@ function browserParsePMCXML(xml) {
       const table = tw.querySelector('table');
       if (!table || table.querySelectorAll('tr').length < 2) return;
       const rows = table.querySelectorAll('tr');
-      const hdrCells = rows[0].querySelectorAll('th, td');
-      const hdrTexts = [];
-      hdrCells.forEach(c => hdrTexts.push(c.textContent.trim().toLowerCase()));
-      const ilbl = [], ivals = [];
       for (let ri = 1; ri < rows.length; ri++) {
         const cells = rows[ri].querySelectorAll('td, th');
         if (cells.length < 2) continue;
         const label = cells[0].textContent.trim().toLowerCase();
         for (let ci = 1; ci < cells.length; ci++) {
-          const nums = (cells[ci].textContent||'').replace(/%/g,'').match(/[\d,.]+/g);
-          if (nums) {
-            const v = parseFloat(nums[0].replace(/,/g,''));
-            if (/n\s*[:=]/.test(label) && /total|overall|all|entire/.test(label) && v > 10 && v < 1e8) info.sample_size = v;
-            else if (/female|women/.test(label) && v <= 100) info.female_pct = v;
-            else if (/male|men/.test(label) && v <= 100) info.male_pct = v;
-            else if (/white/.test(label) && v <= 100) info.white_pct = v;
-            else if (/black|african.?american/.test(label) && v <= 100) info.black_pct = v;
-            else if (/hispanic|latino/.test(label) && v <= 100) info.hispanic_pct = v;
-            else if (/^asian$/.test(label) && v <= 100) info.asian_pct = v;
-          }
+          const cellText = cells[ci].textContent||'';
+          // Prefer N(pct) format for percentage fields
+          const parenMatch = cellText.match(/([\d,]+)\s*\((\d+(?:\.\d+)?)/);
+          const nums = cellText.replace(/%/g,'').match(/[\d,.]+/g);
+          if (!nums) continue;
+          const firstNum = parseFloat(nums[0].replace(/,/g,''));
+          const parenPct = parenMatch ? parseFloat(parenMatch[2]) : null;
+          if (/n\s*[:=]/.test(label) && /total|overall|all|entire/.test(label) && firstNum > 10 && firstNum < 1e8) info.sample_size = firstNum;
+          else if (/female|women/.test(label) && firstNum <= 100) info.female_pct = firstNum;
+          else if (/male|men/.test(label) && firstNum <= 100) info.male_pct = firstNum;
+          else if (/white/.test(label) && firstNum <= 100) info.white_pct = firstNum;
+          else if (/black|african.?american/.test(label) && firstNum <= 100) info.black_pct = firstNum;
+          else if (/hispanic|latino/.test(label) && firstNum <= 100) info.hispanic_pct = firstNum;
+          else if (/^asian$/.test(label) && firstNum <= 100) info.asian_pct = firstNum;
         }
       }
     });
+    // Post-extraction validation
+    if (info.male_pct != null && info.female_pct != null) {
+      const sum = info.male_pct + info.female_pct;
+      if (sum < 80 || sum > 120) { delete info.male_pct; delete info.female_pct; }
+    }
+    const raceFields = ['white_pct','black_pct','hispanic_pct','asian_pct','other_pct'];
+    const raceFound = raceFields.filter(k => info[k] != null);
+    if (raceFound.length && raceFound.every(k => info[k] < 2)) {
+      raceFound.forEach(k => delete info[k]);
+    }
   } catch(e) {}
   return info;
 }
@@ -867,13 +876,15 @@ function browserInferCountry(affiliations) {
     'nigeria':'NGA','kenya':'KEN','thailand':'THA','uae':'ARE','saudi arabia':'SAU','czech republic':'CZE',
   };
   if (!affiliations || !affiliations.length) return null;
+  const votes = {};
   for (const aff of affiliations) {
     const al = aff.toLowerCase();
     for (const [name, code] of Object.entries(ctryMap)) {
-      if (al.includes(name)) return code;
+      if (al.includes(name)) { votes[code] = (votes[code]||0) + 1; break; }
     }
   }
-  return null;
+  const best = Object.entries(votes).sort((a,b) => b[1]-a[1]);
+  return best.length ? best[0][0] : null;
 }
 
 async function browserEnrichSingle(refDoi) {

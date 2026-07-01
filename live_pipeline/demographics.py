@@ -324,11 +324,25 @@ def _parse_demographic_tables(root) -> dict:
                     elif sub_field is not None and sub_field not in race_set:
                         break
 
+        # Post-extraction validation: reject values that are likely NOT demographic percentages
+        # Check 1: M+F must sum to ~100% (±10%) if both present
+        if "male_pct" in result and "female_pct" in result:
+            sex_sum = result["male_pct"] + result["female_pct"]
+            if sex_sum < 80 or sex_sum > 120:
+                del result["male_pct"]
+                del result["female_pct"]
+        # Check 2: if race values are all < 2%, they're likely regression coefficients (HR/OR), not %
+        race_keys_found = {k: result[k] for k in ["white_pct","black_pct","hispanic_pct","asian_pct","other_pct"] if k in result}
+        if race_keys_found and all(v < 2 for v in race_keys_found.values()):
+            for k in race_keys_found:
+                del result[k]
+
     return result
 
 
 def _set_from_cell(result, field, cells):
     for cell in cells[1:]:
+        # Prefer N(pct) format: "120 (55.0%)" -> use 55.0
         m = re.search(r"([\d,]+)\s*\((\d+(?:\.\d+)?)", cell)
         if m:
             try:
@@ -337,14 +351,13 @@ def _set_from_cell(result, field, cells):
                     result[field] = pct
                     return
             except: pass
+        # Fallback: use last number <= 100, not first (first is often raw N, not %)
         m2 = re.findall(r"(\d+(?:\.\d+)?)", cell)
         if m2:
-            try:
-                pct = float(m2[0])
-                if 0 <= pct <= 100:
-                    result[field] = pct
-                    return
-            except: pass
+            pct_candidates = [float(x.replace(",","")) for x in m2 if float(x.replace(",","")) <= 100]
+            if pct_candidates:
+                result[field] = pct_candidates[-1]
+                return
 
 
 def _map_row_label(label: str):
@@ -442,8 +455,13 @@ def parse_pubmed_xml(xml_text: str) -> dict:
 
 
 def infer_country_from_affiliations(affiliations: list) -> Optional[str]:
+    from collections import Counter
+    countries = []
     for aff in affiliations:
         for name, code in COUNTRY_CODES.items():
             if name.lower() in aff.lower() or code.lower() in aff.lower():
-                return code
-    return None
+                countries.append(code)
+                break
+    if not countries:
+        return None
+    return Counter(countries).most_common(1)[0][0]
